@@ -22,9 +22,9 @@ const HomePage: FC = () => {
     return (
         <main className="main">
             <section className="main__image">
-                {/*<div className="main__container">*/}
-
-                {/*</div>*/}
+                <div className="main__container block-1">
+                    <Link to={''} className="btn btn-1">Записатись на прийом →</Link>
+                </div>
             </section>
 
             <section className="about">
