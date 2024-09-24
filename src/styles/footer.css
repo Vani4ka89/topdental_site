@@ -1,0 +1,108 @@
+.footer__top {
+    padding: 50px 0 40px 0;
+    background: linear-gradient(to top, #aaaaaa, #595b5e);
+}
+
+.footer__top h4 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.fb-size {
+    width: 30%;
+}
+
+.footer__description {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__description h3 {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Martel', serif;
+}
+
+.footer__description p {
+    margin: 25px 0;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+
+.description__list {
+    display: flex;
+    gap: 15px;
+}
+
+.description__list .list__item a {
+    display: block;
+    height: 30px;
+    width: 30px;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    transition: all 300ms ease;
+
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.description__list .list__item a:hover {
+    background-color: #FFFFFF;
+}
+
+.description__list .list__item a.fb {
+    background-image: url('../assets/images/icons/fb-white.svg');
+}
+
+.description__list .list__item a.fb:hover {
+    background-image: url('../assets/images/icons/fb-grey.svg');
+}
+
+.description__list .list__item a.ig {
+    background-image: url('../assets/images/icons/inst-white.svg');
+}
+
+.description__list .list__item a.ig:hover {
+    background-image: url('../assets/images/icons/inst-grey.svg');
+}
+
+.description__list .list__item a.tg {
+    background-image: url('../assets/images/icons/tg-white.svg');
+}
+
+.description__list .list__item a.tg:hover {
+    background-image: url('../assets/images/icons/tg-grey.svg');
+}
+
+
+.footer__additionally, .footer__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.additionally h4::after, .info h4::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 40%;
+    background: #b2b8bb;
+    margin-top: 20px;
+}
+
+.additionally__list, .info__list {
+    display: flex;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+.footer__bottom {
+    background: linear-gradient(to top, #6e6e6e, #222222);
+    padding: 15px 0 20px 0;
+}
+
+.footer__bottom p {
+    font-size: 15px;
+    color: #FFFFFF;
+}

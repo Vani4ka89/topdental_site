@@ -1,0 +1,22 @@
+.cover {
+    height: 80vh;
+    background-image: url('../assets/images/tdent.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.cover::after {
+    content: '';
+    background: rgba(2, 2, 2, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.cover__info * {
+    color: #FFFFFF;
+}

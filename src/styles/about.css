@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap');
+
+
+.about {
+    background: linear-gradient(to top, #ffffff, #b2b8bb);
+    padding: 100px 0;
+}
+
+.about__description {
+    width: 55%;
+}
+
+.about__description p {
+    margin: 20px 0 50px 0;
+}
+
+.about__description p span {
+    font-weight: bold;
+}
+
+.about__image img {
+    width: 450px;
+    height: 550px;
+}

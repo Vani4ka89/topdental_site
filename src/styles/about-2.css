@@ -1,0 +1,12 @@
+.about-2 {
+    background: linear-gradient(to top, #ffffff, #b2b8bb);
+    padding: 100px 0;
+}
+
+.about-2__image img{
+    width: 80%;
+}
+
+.about-2__description {
+    width: 40%;
+}
