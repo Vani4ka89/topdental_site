@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import '../../styles/about.css';
-import aboutImg from '../../assets/images/about-image.jpg';
+import aboutImg from '../../assets/images/img_2.jpeg';
 
 const AboutPage: FC = () => {
     return (

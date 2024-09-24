@@ -2,7 +2,7 @@ import {FC} from 'react';
 import {Link} from "react-router-dom";
 
 import '../../styles/header.css';
-import topDentalLogo from '../../assets/images/topdental_logo.png';
+import topDentalLogo from '../../assets/images/logo.jpeg';
 
 const Header: FC = () => {
     return (

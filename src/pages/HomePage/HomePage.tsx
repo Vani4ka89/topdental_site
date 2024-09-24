@@ -9,9 +9,9 @@ import '../../styles/about-2.css';
 import '../../styles/questions.css';
 
 import {Questions} from "../../components";
-import aboutImg from "../../assets/images/about-image.jpg";
-import aboutImg_1 from "../../assets/images/taras-petrovych.png";
-import aboutImg_2 from "../../assets/images/yana_viktorivna.png";
+import aboutImg from "../../assets/images/img_2.jpeg";
+import aboutImg_1 from "../../assets/images/img_4.png";
+import aboutImg_2 from "../../assets/images/img_5.png";
 
 const HomePage: FC = () => {
 
