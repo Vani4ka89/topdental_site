@@ -10,11 +10,10 @@ import '../../styles/questions.css';
 import '../../styles/contact.css';
 import '../../styles/contact-form.css';
 
-import {Questions} from "../../components";
+import {Form, Questions} from "../../components";
 import aboutImg from "../../assets/images/img_2.jpeg";
 import aboutImg_1 from "../../assets/images/img_4.png";
 import aboutImg_2 from "../../assets/images/img_5.png";
-import {Form} from "../../components/Form/Form";
 
 const HomePage: FC = () => {
 
