@@ -7,6 +7,7 @@ import '../../styles/cover.css';
 import '../../styles/about-1.css';
 import '../../styles/about-2.css';
 import '../../styles/questions.css';
+import '../../styles/contact.css';
 
 import {Questions} from "../../components";
 import aboutImg from "../../assets/images/img_2.jpeg";
@@ -23,7 +24,7 @@ const HomePage: FC = () => {
         <main className="main">
             <section className="main__image">
                 <div className="main__container block-1">
-                    <Link to={''} className="btn btn-1">Записатись на прийом →</Link>
+                    <Link to='#contact' className="btn btn-1">Записатись на прийом →</Link>
                 </div>
             </section>
 
@@ -121,6 +122,49 @@ const HomePage: FC = () => {
                         <p className={'description'}>Перегляньте відповіді на найпопулярніші питання.</p>
                         <Questions/>
                     </div>
+                </div>
+            </section>
+
+            <section className="contact" id="contact">
+                <div className="contact__container">
+                    <div className="contact__description">
+                        <div className="description">
+                            <h3>Зв'яжіться з нами</h3>
+                            <p>
+                                Не соромтеся зв’язатися з лікарем, якщо вам потрібна додаткова інформація або ви хочете
+                                записатися на першу консультацію.
+                            </p>
+                        </div>
+                        <div className="contact-info">
+                            <div className="contact__address">
+                                <p className="w10">Адреса</p>
+                                <p>вулиця Антона Монастирського 40, Тернопіль, Тернопільська область, 46002.</p>
+                            </div>
+                            <div className="contact__time">
+                                <p className="w10">Години <br/> роботи</p>
+                                <p>
+                                    Понеділок - п'ятниця: 10:00 - 19:00. <br/>
+                                    Субота: за попереднім записом. <br/>
+                                    Неділя: вихідний.
+                                </p>
+                            </div>
+                            <div className="contact__email">
+                                <p className="w10">E-mail</p>
+                                <p>
+                                    +38 (096) 227 05 30 <br/>
+                                    topdental@пmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <iframe title={'map'}
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2588.7732761835105!2d25.613749776542626!3d49.545431071433526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473031eacc9c2c2f%3A0x4f7b7abec0d6a973!2zVG9wRGVudGFsL9Ci0L7Qv9CU0LXQvdGC0LDQuw!5e0!3m2!1suk!2sua!4v1727214411513!5m2!1suk!2sua"
+                            width="600" height="230" style={{border: 0}} loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <form className="contact__form">
+
+                    </form>
                 </div>
             </section>
         </main>
