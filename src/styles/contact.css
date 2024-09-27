@@ -1,13 +1,14 @@
 .contact {
     background: linear-gradient(to top, #ffffff, #b2b8bb);
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .contact__description {
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 48%;
     gap: 25px;
+    padding: 20px 10px;
 }
 
 .contact .description h3 {
@@ -27,13 +28,10 @@
 
 .contact .description p {
     font-style: italic;
+    font-size: 15px;
 }
 
-.contact-info p {
-    font-weight: bold;
-}
-
-.contact .contact__address, .contact__time, .contact__email {
+.contact__address, .contact__time, .contact__email {
     display: flex;
     align-items: center;
     gap: 60px;
@@ -48,5 +46,10 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.contact-info p {
+    font-size: 16px;
+    font-weight: 500;
 }
 

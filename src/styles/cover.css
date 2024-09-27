@@ -1,5 +1,5 @@
 .cover {
-    height: 80vh;
+    height: 85vh;
     background-image: url('../assets/images/img_3.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,6 +17,14 @@
     width: 100%;
 }
 
-.cover__info * {
+.cover .cover__container {
+   position: relative;
+}
+
+.cover__info {
+    z-index: 1;
+}
+
+.cover__info h2 {
     color: #FFFFFF;
 }

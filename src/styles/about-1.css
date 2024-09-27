@@ -3,10 +3,22 @@
     padding: 80px 0;
 }
 
-.about-1__image img{
-    width: 80%;
+.about-1__image {
+    width: 48%;
+}
+
+.about-1__image img {
+    width: 100%;
 }
 
 .about-1__description {
-    width: 50%;
+    width: 48%;
+}
+
+.about-1__list {
+    margin: 15px 0;
+}
+
+.about-1__list .list__item {
+    font-style: italic;
 }

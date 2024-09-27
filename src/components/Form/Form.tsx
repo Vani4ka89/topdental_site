@@ -3,7 +3,6 @@ import {SubmitHandler, useForm} from "react-hook-form";
 
 import {IForm} from "../../interfaces/form.interface";
 
-import '../../styles/contact.css';
 import '../../styles/contact-form.css';
 
 const Form: FC = () => {
@@ -21,7 +20,7 @@ const Form: FC = () => {
                     type="text"
                     id="name"
                     {...register('name')}
-                    placeholder="Ваше ім'я"
+                    placeholder="Ваше ім'я*"
                     required
                 />
             </div>
@@ -31,7 +30,7 @@ const Form: FC = () => {
                     type="tel"
                     id="phone"
                     {...register('phoneNumber')}
-                    placeholder="Номер телефону"
+                    placeholder="Номер телефону*"
                     required
                 />
             </div>

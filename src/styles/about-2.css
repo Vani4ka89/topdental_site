@@ -3,10 +3,26 @@
     padding: 100px 0;
 }
 
+.about-2__image {
+    width: 48%;
+}
+
 .about-2__image img{
-    width: 80%;
+    width: 100%;
 }
 
 .about-2__description {
-    width: 40%;
+    width: 48%;
+}
+
+.about-2__description p:nth-of-type(2) {
+    margin-top: 15px;
+}
+
+.about-2__list {
+    margin: 15px 0;
+}
+
+.about-2__list .list__item {
+    font-style: italic;
 }

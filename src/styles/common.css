@@ -8,7 +8,7 @@ body {
     height: 100%;
     font-family: 'Montserrat', sans-serif;
     color: #595b5e;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.5;
 }
 
@@ -79,4 +79,8 @@ h3, h4 {
 .wrapper {
     display: flex;
     flex-direction: column;
+}
+
+.main {
+    flex-grow: 1;
 }

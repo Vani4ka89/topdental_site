@@ -1,19 +1,15 @@
-.main {
-    flex-grow: 1;
-}
-
-.main__image {
+.custom {
     background: url('../assets/images/img_1.png') no-repeat center center;
     background-size: 100% 100%;
     height: 100vh;
 }
 
-.block-1 {
+.custom .block-1 {
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
-.main__image a.btn-1 {
+.custom a.btn-1 {
     margin-top: 550px;
 }

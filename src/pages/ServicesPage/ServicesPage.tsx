@@ -1,10 +1,12 @@
 import {FC} from 'react';
 
+import {Services} from "../../components";
+
 const ServicesPage: FC = () => {
     return (
-        <div>
-            ServicesPage
-        </div>
+        <main className="main">
+            <Services/>
+        </main>
     );
 };
 
