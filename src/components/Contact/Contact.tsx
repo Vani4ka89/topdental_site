@@ -19,7 +19,7 @@ const Contact: FC = () => {
                     <div className="contact__info info">
                         <div className="info__address">
                             <p className="width-10">Адреса</p>
-                            <p>вулиця Антона Монастирського 40, Тернопіль, Тернопільська область, 46002.</p>
+                            <p>вул. Антона Монастирського 40, Тернопіль, Тернопільська область, 46002.</p>
                         </div>
                         <div className="info__time">
                             <ul>

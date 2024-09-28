@@ -1,0 +1,52 @@
+.contacts {
+    background: linear-gradient(to top, #FFFFFF, #b2b8bb);
+}
+
+.contacts-title {
+    color: #FFFFFF;
+}
+
+.contacts .contacts__container {
+    flex-direction: column;
+    padding: 80px 0;
+}
+
+.contacts-description {
+    text-align: center;
+}
+
+.contacts-description h2::after {
+    height: 4px;
+    width: 18%;
+    margin: 20px auto;
+}
+
+.contacts-description p {
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.contacts-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.contacts .content__map {
+    width: 48%;
+}
+
+.contacts .content__map h3 {
+    margin: 20px 0;
+    color: #595b5e;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.contacts .content__map p {
+    margin: 10px 0;
+    color: #595b5e;
+    font-size: 17px;
+    font-weight: 600;
+}
