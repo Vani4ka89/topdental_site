@@ -4,7 +4,7 @@ import {ContactForm} from "../ContactForm/ContactForm";
 import {Map} from "../Map/Map";
 import '../../styles/contact.css';
 
-const ContactDescription: FC = () => {
+const Contact: FC = () => {
     return (
         <section className="contact" id="contact">
             <div className="contact__container">
@@ -48,4 +48,4 @@ const ContactDescription: FC = () => {
     );
 };
 
-export {ContactDescription};
+export {Contact};

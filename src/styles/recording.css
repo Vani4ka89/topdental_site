@@ -1,0 +1,16 @@
+.recording {
+    height: 70vh;
+    background: url('../assets/images/IMG_1756.png') top center no-repeat fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.recording::after {
+    content: '';
+    background: rgba(2, 2, 2, .6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}

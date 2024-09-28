@@ -4,11 +4,12 @@ import {
     About,
     AboutFirstPerson,
     AboutSecondPerson,
-    ContactDescription,
+    Contact,
     Cover,
     Custom,
-    Questions
+    Questions, Recording, Reviews
 } from "../../components";
+import ImageSlider from "../../components/ImageSlider/ImageSlider";
 
 const HomePage: FC = () => {
     return (
@@ -18,9 +19,11 @@ const HomePage: FC = () => {
             <Cover/>
             <AboutFirstPerson/>
             <AboutSecondPerson/>
-            {/*<ImageSlider/>*/}
+            <ImageSlider/>
+            <Reviews/>
+            <Recording/>
             <Questions/>
-            <ContactDescription/>
+            <Contact/>
         </main>
     );
 };

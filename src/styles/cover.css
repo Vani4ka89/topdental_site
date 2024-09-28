@@ -1,5 +1,5 @@
 .cover {
-    height: 85vh;
+    height: 80vh;
     background-image: url('../assets/images/img_3.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,7 +9,7 @@
 
 .cover::after {
     content: '';
-    background: rgba(2, 2, 2, .5);
+    background: rgba(2, 2, 2, .6);
     position: absolute;
     top: 0;
     left: 0;
