@@ -1,28 +1,28 @@
-.about-2 {
+.about-second {
     background: linear-gradient(to top, #ffffff, #b2b8bb);
     padding: 100px 0;
 }
 
-.about-2__image {
+.about-second__image {
     width: 48%;
 }
 
-.about-2__image img{
+.about-second__image img{
     width: 100%;
 }
 
-.about-2__description {
+.about-second__description {
     width: 48%;
 }
 
-.about-2__description p:nth-of-type(2) {
+.about-second__description p:nth-of-type(2) {
     margin-top: 15px;
 }
 
-.about-2__list {
+.about-second__list {
     margin: 15px 0;
 }
 
-.about-2__list .list__item {
+.about-second__list .list__item {
     font-style: italic;
 }

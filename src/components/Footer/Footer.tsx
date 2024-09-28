@@ -20,7 +20,9 @@ const Footer: FC = () => {
                             <li className="list__item">
                                 <Link
                                     to={'https://www.facebook.com/p/%D0%9F%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D0%B0-%D0%A1%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F-TopDental-100063561343890/'}
-                                    className="fb"></Link>
+                                    className="fb"
+                                >
+                                </Link>
                             </li>
                             <li className="list__item">
                                 <Link to={'https://instagram.com/topdentalternopil'} className="ig"></Link>
@@ -46,10 +48,10 @@ const Footer: FC = () => {
                         <h4>Інформація</h4>
                         <ul className="info__list list">
                             <li className="list__item">
-                                <Link to={''}>Наші послуги</Link>
+                                <Link to={'/services'} onClick={scrollWindow}>Наші послуги</Link>
                             </li>
                             <li className="list__item">
-                                <Link to={''}>Контакти</Link>
+                                <Link to={'/contacts'} onClick={scrollWindow}>Контакти</Link>
                             </li>
                         </ul>
                     </div>

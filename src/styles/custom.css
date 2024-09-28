@@ -1,15 +1,12 @@
 .custom {
     background: url('../assets/images/img_1.png') no-repeat center center;
-    background-size: 100% 100%;
+    background-size: cover;
     height: 100vh;
-}
-
-.custom .block-1 {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 }
 
-.custom a.btn-1 {
-    margin-top: 550px;
+.custom .custom__container {
+    margin-top: 170px;
 }

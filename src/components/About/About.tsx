@@ -11,7 +11,7 @@ const About: FC = () => {
 
     return (
         <section className="about">
-            <div className="main__container">
+            <div className="about__container">
                 <div className="about__description">
                     <h2>Про TopDental</h2>
                     <p>Ми приватна стоматологія <span>"ТоpDental"</span>.
@@ -20,16 +20,19 @@ const About: FC = () => {
                         імплантологія та ортодонтія. Для своєї роботи використовуємо лише якісні сучасні матеріали
                         та
                         інструментарій.
-                        <br/><br/>
+                    </p>
+                    <p>
                         Наші лікарі мають досвід роботи від 11 років і більше. Велика кількість постійних та
                         задоволених
                         пацієнтів говорить про наш результат праці. Ми не кажемо, що ми найкращі - Ваша посмішка це
                         скаже за нас)
                     </p>
-                    <Link to={'/about'} onClick={scrollWindow} className="btn">Більше →</Link>
+                    <div className="about__link">
+                        <Link to={'/about'} onClick={scrollWindow} className="btn">Більше →</Link>
+                    </div>
                 </div>
                 <div className="about__image">
-                    <img src={aboutImg} alt="about-photo"/>
+                    <img src={aboutImg} alt="reception"/>
                 </div>
             </div>
         </section>

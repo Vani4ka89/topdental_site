@@ -3,11 +3,14 @@
     background: linear-gradient(to top, #ffffff, #b2b8bb);
 }
 
-.questions .description {
+.questions .content__description {
     margin-bottom: 25px;
+    font-size: 19px;
     font-style: italic;
 }
 
-.bgColor {
-    background: linear-gradient(to bottom, #d2d2d2, #e1e6e9);
+.questions__list {
+    margin-bottom: 15px;
+    padding-left: 40px;
+    list-style-type: disc;
 }

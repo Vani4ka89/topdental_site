@@ -5,7 +5,7 @@ import {IForm} from "../../interfaces/form.interface";
 
 import '../../styles/contact-form.css';
 
-const Form: FC = () => {
+const ContactForm: FC = () => {
     const {register, handleSubmit, reset} = useForm<IForm>({mode: "onSubmit"});
 
     const send: SubmitHandler<IForm> = (data: IForm) => {
@@ -48,4 +48,4 @@ const Form: FC = () => {
     );
 };
 
-export {Form};
+export {ContactForm};

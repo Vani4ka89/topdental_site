@@ -1,16 +1,16 @@
 import {FC} from 'react';
 
-import '../../styles/about-2.css';
+import '../../styles/about-second.css';
 import aboutImg_2 from "../../assets/images/img_5.png";
 
 const AboutSecondPerson: FC = () => {
     return (
-        <section className="about-2">
-            <div className="main__container">
-                <div className="about-2__image">
-                    <img src={aboutImg_2} alt="image-2"/>
+        <section className="about-second">
+            <div className="about-second__container">
+                <div className="about-second__image">
+                    <img src={aboutImg_2} alt="image-second"/>
                 </div>
-                <div className="about-2__description">
+                <div className="about-second__description">
                     <h2>Яна Вікторівна</h2>
                     <p>
                         Усмішка вашої мрії починається з професійного ортодонта у клініці TopDental.
@@ -19,7 +19,7 @@ const AboutSecondPerson: FC = () => {
                         Познайомтесь з нашим талановитим лікарем - ортодонтом, Яною Вікторівною!
                         Професіоналізм і турбота - це те, що ми гарантуємо кожному пацієнту!
                     </p>
-                    <ul className="about-2__list list">
+                    <ul className="about-second__list list">
                         <li className="list__item">☑️ Виправлення прикусу</li>
                         <li className="list__item">☑️ Вирівнювання зубів за допомогою сучасних методів</li>
                         <li className="list__item">☑️ Лікування брекетами та елайнерами</li>

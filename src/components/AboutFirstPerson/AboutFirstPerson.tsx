@@ -1,23 +1,23 @@
 import {FC} from 'react';
 
-import '../../styles/about-1.css';
+import '../../styles/about-first.css';
 import aboutImg_1 from "../../assets/images/img_4.png";
 
 const AboutFirstPerson: FC = () => {
     return (
-        <section className="about-1">
-            <div className="main__container">
-                <div className="about-1__image">
-                    <img src={aboutImg_1} alt="image-1"/>
+        <section className="about-first">
+            <div className="about-first__container">
+                <div className="about-first__image">
+                    <img src={aboutImg_1} alt="image-first"/>
                 </div>
-                <div className="about-1__description">
+                <div className="about-first__description">
                     <h2>Тарас Петрович</h2>
                     <p>
                         Справжній професіонал своєї справи з багаторічним досвідом. Завдяки його майстерності і
                         увазі до
                         деталей, наші пацієнти отримують найвищий рівень обслуговування та чудові результати.
                     </p>
-                    <ul className="about-1__list list">
+                    <ul className="about-first__list list">
                         <li>Особливості:</li>
                         <li className="list__item">✔️ Висококваліфікований фахівець</li>
                         <li className="list__item">✔️ Індивідуальний підхід до кожного пацієнта</li>
@@ -25,7 +25,7 @@ const AboutFirstPerson: FC = () => {
                         <li className="list__item">✔️ Використання сучасних технологій та методик</li>
                         <li className="list__item">✔️ Дбайливе ставлення до пацієнтів</li>
                     </ul>
-                    <ul className="about-1__list list">
+                    <ul className="about-first__list list">
                         <li>Тарас Петрович працює в багатьох напрямках стоматології, включаючи:</li>
                         <li className="list__item">☑️ Хірургічну стоматологію</li>
                         <li className="list__item">☑️ Ортопедичну стоматологію</li>

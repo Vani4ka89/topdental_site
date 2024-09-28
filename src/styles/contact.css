@@ -3,7 +3,7 @@
     padding: 60px 0;
 }
 
-.contact__description {
+.contact__content {
     display: flex;
     flex-direction: column;
     width: 48%;
@@ -11,13 +11,13 @@
     padding: 20px 10px;
 }
 
-.contact .description h3 {
+.contact .content__description h3 {
     color: #595b5e;
     font-size: 24px;
     font-weight: 600;
 }
 
-.contact .description h3::after {
+.contact .content__description h3::after {
     content: '';
     display: block;
     height: 2px;
@@ -26,29 +26,29 @@
     margin: 15px 0;
 }
 
-.contact .description p {
+.contact .content__description p {
     font-style: italic;
     font-size: 15px;
 }
 
-.contact__address, .contact__time, .contact__email {
+.info__address, .info__time, .info__email {
     display: flex;
     align-items: center;
     gap: 60px;
     text-align: left;
 }
 
-.w10 {
+.width-10 {
     width: 10%;
 }
 
-.contact-info {
+.contact__info {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.contact-info p {
+.contact__info p, ul {
     font-size: 16px;
     font-weight: 500;
 }

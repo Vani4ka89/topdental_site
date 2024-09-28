@@ -5,7 +5,7 @@ export * from './ContactDescription/ContactDescription';
 export * from './Cover/Cover';
 export * from './Custom/Custom';
 export * from './Footer/Footer';
-export * from './Form/Form';
+export * from './ContactForm/ContactForm';
 export * from './Header/Header';
 export * from './ImageSlider/ImageSlider';
 export * from './Map/Map';
