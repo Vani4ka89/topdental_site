@@ -1,8 +1,8 @@
 .recording {
-    height: 70vh;
     background: url('../assets/images/IMG_1756.png') top center no-repeat fixed;
     background-size: cover;
     position: relative;
+    padding: 125px 0;
 }
 
 .recording::after {
@@ -13,4 +13,26 @@
     left: 0;
     height: 100%;
     width: 100%;
+}
+
+.recording__content {
+    width: 60%;
+    z-index: 10;
+}
+
+.recording__content h2, .recording__content p {
+    color: #FFFFFF;
+}
+
+.recording__content p:last-child {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.recording__content h2::after {
+    background-color: #FFFFFF;
+}
+
+.recording__content p:last-of-type {
+    color: #b2b8bb;
 }

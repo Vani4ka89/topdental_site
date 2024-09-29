@@ -1,0 +1,42 @@
+.recording-form {
+    width: 40%;
+    z-index: 10;
+}
+
+.recording-form .submit-btn {
+    margin-top: 35px;
+    padding: 15px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.recording-form input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(89, 91, 94, 0.91);
+    color: #b2b8bb;
+    border-radius: 30px;
+    border: none;
+    font-size: 14px;
+}
+
+.recording-form input::placeholder {
+    color: #b2b8bb;
+}
+
+.recording-form input:focus {
+    border-color: #595b5e;
+    outline: none;
+    box-shadow: 0 0 5px rgba(72, 73, 74, 0.5);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
