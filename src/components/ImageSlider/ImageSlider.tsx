@@ -1,42 +1,35 @@
-import React from 'react';
-
-import '../../styles/slider.css';
-
-// import {Swiper, SwiperSlide} from 'swiper/react';
+import React, {FC} from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Navigation, Pagination, A11y, Autoplay} from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import '../../styles/slider.css';
+import {sliderClients} from "../../constants";
 
-// import slide1 from '../../assets/images/img_6.jpeg';
-// import slide2 from '../../assets/images/img_7.jpeg';
-// import slide3 from '../../assets/images/img_8.jpeg';
-// import {A11y, Navigation, Pagination, Scrollbar} from "swiper/types/modules";
-
-const ImageSlider = () => {
+const ImageSlider: FC = () => {
     return (
         <section className="slider">
             <div className="slider__container">
-                {/*<Swiper*/}
-                {/*    // modules={[Navigation, Pagination, Scrollbar, A11y]}*/}
-                {/*    navigation*/}
-                {/*    spaceBetween={50}*/}
-                {/*    slidesPerView={1}*/}
-                {/*    autoplay={{delay: 2500}}>*/}
-                {/*    <SwiperSlide>*/}
-                {/*        <img src={slide1} alt="Slide 1"/>*/}
-                {/*    </SwiperSlide>*/}
-                {/*    <SwiperSlide>*/}
-                {/*        <img src={slide2} alt="Slide 2"/>*/}
-                {/*    </SwiperSlide>*/}
-                {/*    <SwiperSlide>*/}
-                {/*        <img src={slide3} alt="Slide 3"/>*/}
-                {/*    </SwiperSlide>*/}
-                {/*</Swiper>*/}
+                <h2>Фото</h2>
+                <Swiper
+                    modules={[Navigation, Pagination, A11y, Autoplay]}
+                    navigation={true}
+                    pagination={{clickable: true}}
+                    spaceBetween={50}
+                    slidesPerView={3}
+                    autoplay={{delay: 4000}}
+                >
+                    {sliderClients.map((el, index) => (
+                        <SwiperSlide key={index}>
+                            <img src={el} alt="slide-photo"/>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </section>
     );
 };
 
-export default ImageSlider;
+export {ImageSlider};

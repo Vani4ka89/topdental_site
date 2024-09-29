@@ -7,9 +7,9 @@ import {
     Contact,
     Cover,
     Custom,
+    ImageSlider,
     Questions, Recording, Reviews
 } from "../../components";
-import ImageSlider from "../../components/ImageSlider/ImageSlider";
 
 const HomePage: FC = () => {
     return (
