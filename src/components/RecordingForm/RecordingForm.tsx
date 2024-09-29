@@ -1,9 +1,10 @@
 import {FC, useState} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 
-import {IFormTwo} from "../../interfaces/form.interface";
+import {IFormTwo} from "../../interfaces";
 
 import '../../styles/recording-form.css';
+import {sendFormService} from "../../services";
 
 const RecordingForm: FC = () => {
     const {register, handleSubmit, reset} = useForm<IFormTwo>({mode: "onSubmit"});
@@ -17,12 +18,17 @@ const RecordingForm: FC = () => {
     if (day < 10) day = '0' + day
 
     const today = `${year}-${month}-${day}`
-    const [ dateValue, setDateValue ] = useState<string>(today);
+    const [dateValue, setDateValue] = useState<string>(today);
 
-    const send: SubmitHandler<IFormTwo> = (data: IFormTwo) => {
-        console.log(data);
-        setDateValue(today);
-        reset();
+    const send: SubmitHandler<IFormTwo> = async (data: IFormTwo) => {
+        try {
+            const res = await sendFormService.sendSecondForm(data);
+            setDateValue(today);
+            reset();
+            console.log(res.data);
+        } catch (e) {
+            console.log('Server Error!!!');
+        }
     };
 
     return (

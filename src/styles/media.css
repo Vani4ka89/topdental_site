@@ -1,0 +1,16 @@
+/*@media screen and (max-width: 477px) {*/
+/*    [class*=__container] {*/
+/*        max-width: 80%;*/
+/*        margin: 0 auto;*/
+/*        display: flex;*/
+/*        flex-direction: column;*/
+/*        !*justify-content: space-between;*!*/
+/*        !*align-items: center;*!*/
+/*    }*/
+/*    .wrapper  {*/
+/*        border: 2px solid red;*/
+/*    }*/
+/*    body {*/
+/*        border: 2px solid black;*/
+/*    }*/
+/*}*/

@@ -1,16 +1,22 @@
 import {FC} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 
-import {IForm} from "../../interfaces/form.interface";
+import {IForm} from "../../interfaces";
 
 import '../../styles/contact-form.css';
+import {sendFormService} from "../../services";
 
 const ContactForm: FC = () => {
     const {register, handleSubmit, reset} = useForm<IForm>({mode: "onSubmit"});
 
-    const send: SubmitHandler<IForm> = (data: IForm) => {
-        console.log(data);
-        reset();
+    const send: SubmitHandler<IForm> = async (data: IForm) => {
+        try {
+            const res = await sendFormService.sendFirstForm(data);
+            reset();
+            console.log(res.data);
+        } catch (e) {
+            console.log('Server Error!!!');
+        }
     };
 
     return (

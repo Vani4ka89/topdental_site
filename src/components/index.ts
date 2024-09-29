@@ -11,5 +11,6 @@ export * from './ImageSlider/ImageSlider';
 export * from './Map/Map';
 export * from './Questions/Questions';
 export * from './Recording/Recording';
+export * from './RecordingForm/RecordingForm';
 export * from './Reviews/Reviews';
 export * from './Services/Services';

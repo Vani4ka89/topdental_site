@@ -111,3 +111,88 @@
     color: #b2b8bb;
     margin-left: 5px;
 }
+
+
+/**************************/
+
+@media screen and (max-width: 477px) {
+    header {
+        display: none;
+    }
+    [class*=__container] {
+        flex-direction: column;
+    }
+}
+
+/*!* Стилі для бургер-кнопки *!*/
+/*.burger {*/
+/*    display: none; !* Бургер кнопка буде прихована на великих екранах *!*/
+/*    flex-direction: column;*/
+/*    gap: 5px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.burger span {*/
+/*    width: 25px;*/
+/*    height: 3px;*/
+/*    background-color: #595b5e;*/
+/*    transition: background-color 400ms ease;*/
+/*}*/
+
+/*!* Приховуємо бургер-кнопку для великих екранів *!*/
+/*@media (max-width: 768px) {*/
+/*    .menu__list {*/
+/*        display: none; !* Приховуємо стандартне меню для малих екранів *!*/
+/*    }*/
+
+/*    .burger {*/
+/*        display: flex; !* Показуємо бургер-кнопку на малих екранах *!*/
+/*    }*/
+/*}*/
+
+/*!* Стилі для випадаючого меню *!*/
+/*.mobile-menu {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    top: 50px;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    background-color: #fff;*/
+/*    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*.mobile-menu.active {*/
+/*    display: block; !* Показуємо меню, коли активне *!*/
+/*}*/
+
+/*.mobile-menu__list {*/
+/*    list-style: none;*/
+/*    padding: 10px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.mobile-menu__item {*/
+/*    margin: 10px 0;*/
+/*}*/
+
+/*.mobile-menu__item a {*/
+/*    font-size: 18px;*/
+/*    color: #595b5e;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*.mobile-menu__item a:hover {*/
+/*    color: #222222;*/
+/*}*/
+
+/*!* Адаптація нижнього блоку хедера *!*/
+/*@media (max-width: 480px) {*/
+/*    .header__bottom p {*/
+/*        font-size: 12px;*/
+/*    }*/
+
+/*    .header__container {*/
+/*        flex-direction: column;*/
+/*        align-items: center;*/
+/*    }*/
+/*}*/
