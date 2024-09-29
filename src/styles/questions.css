@@ -9,8 +9,11 @@
     font-style: italic;
 }
 
+.questions .MuiPaper-root {
+    background:linear-gradient(0deg, rgb(210, 210, 210) 0%, rgb(225, 230, 233) 100%);
+}
+
 .questions__list {
     margin-bottom: 15px;
     padding-left: 40px;
-    list-style-type: disc;
 }

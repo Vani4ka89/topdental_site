@@ -91,9 +91,9 @@ const Questions: FC = () => {
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography sx={{fontStyle: 'italic'}}>
+                            <Typography sx={{fontStyle: 'italic'}} component={'div'}>
                                 Не обовʼязково, але рекомендовано якщо:
-                                <ol className="questions__list list">
+                                <ul className="questions__list list">
                                     <li className="list__item">вони створюють дискомфорт і біль під час прорізування.
                                     </li>
                                     <li className="list__item">
@@ -112,7 +112,7 @@ const Questions: FC = () => {
                                         фронтальній
                                         ділянці.
                                     </li>
-                                </ol>
+                                </ul>
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
@@ -149,18 +149,18 @@ const Questions: FC = () => {
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography sx={{fontStyle: 'italic'}}>
+                            <Typography sx={{fontStyle: 'italic'}} component={'div'}>
                                 Брекети:
-                                <ol className="questions__list list">
+                                <ul className="questions__list list">
                                     <li className="list__item">незнімні</li>
                                     <li className="list__item">візит кожні 1 - 1,5 міс</li>
                                     <li className="list__item">обмеження в їжі</li>
                                     <li className="list__item">ретельніша гігієна</li>
                                     <li className="list__item">довший час лікування</li>
                                     <li className="list__item">лікування складних випадків</li>
-                                </ol>
+                                </ul>
                                 Елайнери:
-                                <ol className="questions__list">
+                                <ul className="questions__list">
                                     <li className="list__item">знімні, прозорі, майже не помітні</li>
                                     <li className="list__item">активовуються за допомогою атачменів, які фіксуються на
                                         зубах
@@ -169,7 +169,7 @@ const Questions: FC = () => {
                                     <li className="list__item">прогнозоване лікування та результат</li>
                                     <li className="list__item">немає обмежень в їжі</li>
                                     <li className="list__item">переважно для лікування нескладних випадків</li>
-                                </ol>
+                                </ul>
                                 Який метод лікування буде ефективнішим саме для вашого випадку може визначити лише
                                 ортодонт
                                 після огляду та консультації.

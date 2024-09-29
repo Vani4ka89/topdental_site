@@ -17,6 +17,7 @@
 
 .about-first__list {
     margin: 15px 0;
+    list-style: none;
 }
 
 .about-first__list .list__item {

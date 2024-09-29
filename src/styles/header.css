@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     gap: 40px;
+    list-style: none;
 }
 
 .menu__item a {
@@ -42,6 +43,7 @@
 .social__list {
     display: flex;
     gap: 15px;
+    list-style: none;
 }
 
 .social__item a {
