@@ -1,7 +1,6 @@
 import {FC} from 'react';
 
-import {Services} from "../../components";
-import {ServicesBottomContent} from "../../components/ServicesBottomContent/ServicesBottomContent";
+import {Services, ServicesBottomContent} from "../../components";
 
 const ServicesPage: FC = () => {
     return (
