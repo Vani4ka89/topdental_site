@@ -5,8 +5,8 @@ import {Navigation, Pagination, A11y, Autoplay} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import '../../styles/slider.css';
-import {sliderClients} from "../../constants";
+import './image-slider.css';
+import {sliderImages} from "../../constants";
 
 const ImageSlider: FC = () => {
     return (
@@ -21,7 +21,7 @@ const ImageSlider: FC = () => {
                     slidesPerView={3}
                     autoplay={{delay: 4000}}
                 >
-                    {sliderClients.map((el, index) => (
+                    {sliderImages.map((el, index) => (
                         <SwiperSlide key={index}>
                             <img src={el} alt="slide-photo"/>
                         </SwiperSlide>

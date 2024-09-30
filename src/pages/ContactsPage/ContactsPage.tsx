@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import '../../styles/contacts-info.css';
+import './contacts-page.css';
 
 const ContactsPage: FC = () => {
     return (

@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import '../../styles/cover.css';
+import './cover.css';
 
 const Cover: FC = () => {
     return (

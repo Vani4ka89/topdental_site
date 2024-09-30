@@ -1,0 +1,264 @@
+.header__top {
+    padding: 2px 0;
+    background: linear-gradient(to top, #f9fcfc, #b2b8bb);
+}
+
+.header__logo img {
+    width: 45%;
+}
+
+.menu__list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+}
+
+.menu__item a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #595b5e;
+    transition: color 400ms ease;
+}
+
+.menu__item a:hover {
+    color: #222222;
+}
+
+.menu__item a::after {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: 2px;
+    background-color: #222222;
+    transition: width 400ms ease;
+}
+
+.menu__item a:hover::after {
+    width: 100%;
+    height: 2px;
+}
+
+.social__list {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.social__item a {
+    display: block;
+    border: 1px solid #595b5e;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    transition: all 300ms ease;
+
+    background-image: url('../../assets/images/icons/fb-white.svg');
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.social__item a:hover {
+    background-color: #595b5e;
+}
+
+.social__item a.phone {
+    background-image: url('../../assets/images/icons/phone-grey.svg');
+}
+
+.social__item a.phone:hover {
+    background-image: url('../../assets/images/icons/phone-white.svg');
+}
+
+.social__item a.mail {
+    background-image: url('../../assets/images/icons/mail-grey.svg');
+}
+
+.social__item a.mail:hover {
+    background-image: url('../../assets/images/icons/mail-white.svg');
+}
+
+.social__item a.facebook {
+    background-image: url('../../assets/images/icons/fb-grey.svg');
+}
+
+.social__item a.facebook:hover {
+    background-image: url('../../assets/images/icons/fb-white.svg');
+}
+
+.social__item a.instagram {
+    background-image: url('../../assets/images/icons/inst-grey.svg');
+}
+
+.social__item a.instagram:hover {
+    background-image: url('../../assets/images/icons/inst-white.svg');
+}
+
+
+.header__bottom {
+    background: linear-gradient(to top, #6e6e6e, #222222);
+    padding: 10px 0;
+}
+
+.header__bottom p {
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+.header__time {
+    color: #b2b8bb;
+    margin-left: 5px;
+}
+
+
+/**************************/
+
+@media screen and (max-width: 477px) {
+    header {
+        display: none;
+    }
+    [class*=__container] {
+        flex-direction: column;
+    }
+}
+
+/*!* Основні стилі *!*/
+/*.header__container {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    padding: 10px 20px;*/
+/*    background-color: #f9fcfc;*/
+/*}*/
+
+/*.header__logo img {*/
+/*    width: 150px;*/
+/*}*/
+
+/*!* Стилі для меню *!*/
+/*.menu__list {*/
+/*    display: flex;*/
+/*    gap: 20px;*/
+/*    list-style: none;*/
+/*}*/
+
+/*.menu__item a {*/
+/*    color: #595b5e;*/
+/*    text-decoration: none;*/
+/*    font-size: 18px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.menu__item a:hover {*/
+/*    color: #222222;*/
+/*}*/
+
+/*!* Стилі для соціальних іконок *!*/
+/*.social__list {*/
+/*    display: flex;*/
+/*    gap: 15px;*/
+/*    list-style: none;*/
+/*}*/
+
+/*.social__item a {*/
+/*    display: block;*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    border-radius: 50%;*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    transition: background-color 300ms ease;*/
+/*}*/
+
+/*.social__item a.phone {*/
+/*    background-image: url('../assets/images/icons/phone-grey.svg');*/
+/*}*/
+
+/*.social__item a.phone:hover {*/
+/*    background-image: url('../assets/images/icons/phone-white.svg');*/
+/*}*/
+
+/*.social__item a.mail {*/
+/*    background-image: url('../assets/images/icons/mail-grey.svg');*/
+/*}*/
+
+/*.social__item a.mail:hover {*/
+/*    background-image: url('../assets/images/icons/mail-white.svg');*/
+/*}*/
+
+/*.social__item a.facebook {*/
+/*    background-image: url('../assets/images/icons/fb-grey.svg');*/
+/*}*/
+
+/*.social__item a.facebook:hover {*/
+/*    background-image: url('../assets/images/icons/fb-white.svg');*/
+/*}*/
+
+/*.social__item a.instagram {*/
+/*    background-image: url('../assets/images/icons/inst-grey.svg');*/
+/*}*/
+
+/*.social__item a.instagram:hover {*/
+/*    background-image: url('../assets/images/icons/inst-white.svg');*/
+/*}*/
+
+/*!* Адаптивність для мобільних пристроїв *!*/
+/*@media (max-width: 768px) {*/
+/*    .header__burger {*/
+/*        display: flex;*/
+/*        flex-direction: column;*/
+/*        gap: 5px;*/
+/*        cursor: pointer;*/
+/*    }*/
+
+/*    .burger-line {*/
+/*        width: 25px;*/
+/*        height: 3px;*/
+/*        background-color: #222;*/
+/*    }*/
+
+/*    .header__menu {*/
+/*        display: none;*/
+/*    }*/
+
+/*    .header__menu.open {*/
+/*        display: block;*/
+/*        position: absolute;*/
+/*        top: 60px;*/
+/*        left: 0;*/
+/*        right: 0;*/
+/*        background-color: #fff;*/
+/*        padding: 10px 0;*/
+/*        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+/*    }*/
+
+/*    .menu__list {*/
+/*        flex-direction: column;*/
+/*        gap: 10px;*/
+/*        padding: 0;*/
+/*        margin: 0;*/
+/*    }*/
+
+/*    .menu__item a {*/
+/*        font-size: 20px;*/
+/*        color: #222;*/
+/*    }*/
+
+/*    .header__social {*/
+/*        display: flex;*/
+/*        justify-content: center;*/
+/*        margin-top: 20px;*/
+/*    }*/
+
+/*    .social__list {*/
+/*        gap: 20px;*/
+/*    }*/
+
+/*    .social__item a {*/
+/*        width: 40px;*/
+/*        height: 40px;*/
+/*    }*/
+/*}*/

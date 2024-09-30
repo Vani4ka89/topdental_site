@@ -3,7 +3,7 @@ import {FC, SyntheticEvent, useState} from 'react';
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import '../../styles/questions.css';
+import './questions.css';
 
 const Questions: FC = () => {
     const [expanded, setExpanded] = useState<string | false>(false);

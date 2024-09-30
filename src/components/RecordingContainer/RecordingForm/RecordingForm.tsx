@@ -1,10 +1,10 @@
 import {FC, useState} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 
-import {IFormTwo} from "../../interfaces";
+import {IFormTwo} from "../../../interfaces";
 
-import '../../styles/recording-form.css';
-import {sendFormService} from "../../services";
+import './recording-form.css';
+import {sendFormService} from "../../../services";
 
 const RecordingForm: FC = () => {
     const {register, handleSubmit, reset} = useForm<IFormTwo>({mode: "onSubmit"});

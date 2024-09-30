@@ -53,27 +53,27 @@
 }
 
 .description__list .list__item a.fb {
-    background-image: url('../assets/images/icons/fb-white.svg');
+    background-image: url('../../assets/images/icons/fb-white.svg');
 }
 
 .description__list .list__item a.fb:hover {
-    background-image: url('../assets/images/icons/fb-grey.svg');
+    background-image: url('../../assets/images/icons/fb-grey.svg');
 }
 
 .description__list .list__item a.ig {
-    background-image: url('../assets/images/icons/inst-white.svg');
+    background-image: url('../../assets/images/icons/inst-white.svg');
 }
 
 .description__list .list__item a.ig:hover {
-    background-image: url('../assets/images/icons/inst-grey.svg');
+    background-image: url('../../assets/images/icons/inst-grey.svg');
 }
 
 .description__list .list__item a.tg {
-    background-image: url('../assets/images/icons/tg-white.svg');
+    background-image: url('../../assets/images/icons/tg-white.svg');
 }
 
 .description__list .list__item a.tg:hover {
-    background-image: url('../assets/images/icons/tg-grey.svg');
+    background-image: url('../../assets/images/icons/tg-grey.svg');
 }
 
 

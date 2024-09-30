@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {HashLink} from "react-router-hash-link"
 
-import '../../styles/custom.css';
+import './custom.css';
 
 const Custom: FC = () => {
     return (

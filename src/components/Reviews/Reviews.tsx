@@ -5,8 +5,8 @@ import {A11y, Navigation} from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import '../../styles/reviews.css';
-import {person} from "../../constants/person";
+import './reviews.css';
+import {person} from "../../constants";
 
 const Reviews: FC = () => {
     return (

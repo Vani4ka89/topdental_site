@@ -1,8 +1,7 @@
 import {FC} from 'react';
 
-import {ContactForm} from "../ContactForm/ContactForm";
-import {Map} from "../Map/Map";
-import '../../styles/contact.css';
+import {ContactForm, Map} from "../../../components";
+import './contact.css';
 
 const Contact: FC = () => {
     return (

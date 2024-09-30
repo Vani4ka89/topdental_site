@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
-import '../../styles/recording.css';
-import {RecordingForm} from "../RecordingForm/RecordingForm";
+import './recording.css';
+import {RecordingForm} from "../../../components";
 
 const Recording: FC = () => {
     return (

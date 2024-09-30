@@ -1,5 +1,5 @@
 .custom {
-    background: url('../assets/images/img_1.png') no-repeat center center;
+    background: url('../../assets/images/img_1.png') no-repeat center center;
     background-size: cover;
     height: 100vh;
     display: flex;

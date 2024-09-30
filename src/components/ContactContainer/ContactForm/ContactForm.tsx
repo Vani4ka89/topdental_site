@@ -1,10 +1,10 @@
 import {FC} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 
-import {IForm} from "../../interfaces";
+import {IForm} from "../../../interfaces";
 
-import '../../styles/contact-form.css';
-import {sendFormService} from "../../services";
+import './contact-form.css';
+import {sendFormService} from "../../../services";
 
 const ContactForm: FC = () => {
     const {register, handleSubmit, reset} = useForm<IForm>({mode: "onSubmit"});

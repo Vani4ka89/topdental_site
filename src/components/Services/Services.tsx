@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import '../../styles/services.css';
+import './services.css';
 
 const Services: FC = () => {
     return (
