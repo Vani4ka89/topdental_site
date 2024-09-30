@@ -2,6 +2,9 @@ import {FC} from 'react';
 
 import './contacts-page.css';
 
+import location from '../../assets/images/location_img.png';
+import phone from '../../assets/images/phone_img.png';
+
 const ContactsPage: FC = () => {
     return (
         <main className="main">
@@ -21,8 +24,14 @@ const ContactsPage: FC = () => {
                                         referrerPolicy="no-referrer-when-downgrade">
                                 </iframe>
                                 <h3>TopDental Тернопіль</h3>
-                                <p>вул. Антона Монастирського, 40, Тернопіль, Тернопільська область, 46002</p>
-                                <p>+38 (097) 227 05 30</p>
+                                <div className="box">
+                                    <img src={location} alt="icon-location" className="icon"/>
+                                    <p>вул. Антона Монастирського, 40, Тернопіль, Тернопільська область, 46002</p>
+                                </div>
+                                <div className="box">
+                                    <img src={phone} alt="icon-phone"/>
+                                    <p>+38 (097) 227 05 30</p>
+                                </div>
                             </div>
                             <div className="content__map">
                                 <iframe title="map-2"
@@ -31,8 +40,14 @@ const ContactsPage: FC = () => {
                                         referrerPolicy="no-referrer-when-downgrade">
                                 </iframe>
                                 <h3>TopDental Плотича</h3>
-                                <p>вул. Садова, 4, Плотича, Тернопільська область, 47704</p>
-                                <p>+38 (096) 675-42-35</p>
+                                <div className="box">
+                                    <img src={location} alt="icon-location"/>
+                                    <p>вул. Садова, 4, Плотича, Тернопільська область, 47704</p>
+                                </div>
+                                <div className="box">
+                                    <img src={phone} alt="icon-phone"/>
+                                    <p>+38 (096) 675-42-35</p>
+                                </div>
                             </div>
                         </div>
                     </div>

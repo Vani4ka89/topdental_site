@@ -5,11 +5,17 @@ import {IForm} from "../../../interfaces";
 
 import './contact-form.css';
 import {sendFormService} from "../../../services";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {firstFormValidator} from "../../../validators";
 
 const ContactForm: FC = () => {
-    const {register, handleSubmit, reset} = useForm<IForm>({mode: "onSubmit"});
+    const {register, handleSubmit, reset} = useForm<IForm>({
+        mode: "onSubmit",
+        resolver: joiResolver(firstFormValidator)
+    });
 
     const send: SubmitHandler<IForm> = async (data: IForm) => {
+        console.log(data);
         try {
             const res = await sendFormService.sendFirstForm(data);
             reset();
@@ -32,12 +38,28 @@ const ContactForm: FC = () => {
             </div>
 
             <div className="form-group">
+
                 <input
                     type="tel"
-                    id="phone"
-                    {...register('phoneNumber')}
                     placeholder="Номер телефону*"
                     required
+                    {...register("phoneNumber", {
+                        required: "Phone number is required",
+                        pattern: {
+                            value: /^\+380\d{9}$/, // Номер має починатися з +380 і мати 9 цифр
+                            message: "Invalid phone number. Format should be +380XXXXXXXXX",
+                        },
+                        validate: {
+                            noLetters: (value) =>
+                                /^[+0-9]+$/.test(value) || "Phone number must contain only numbers and '+'", // Забороняємо літери
+                            isNumericOnly: (value) =>
+                                /^[\d]+$/.test(value.slice(4)) || "Phone number must contain only digits after +380", // Після +380 тільки цифри
+                        },
+                        onChange: (e) => {
+                            // Очищення введених символів, які не є цифрами або +
+                            e.target.value = e.target.value.replace(/[^+\d]/g, "");
+                        }
+                    })}
                 />
             </div>
 

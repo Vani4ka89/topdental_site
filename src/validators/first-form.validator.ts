@@ -5,5 +5,5 @@ export const firstFormValidator = Joi.object({
     phoneNumber: Joi.string().pattern(/^(\+?38)?0\d{9}$/).required().messages({
         'string.pattern.base': ''
     }),
-    comment: Joi.string()
+    comment: Joi.string().empty('')
 })

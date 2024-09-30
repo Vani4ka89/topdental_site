@@ -19,7 +19,7 @@ const ImageSlider: FC = () => {
                     pagination={{clickable: true}}
                     spaceBetween={50}
                     slidesPerView={3}
-                    autoplay={{delay: 4000}}
+                    autoplay={{delay: 3000}}
                 >
                     {sliderImages.map((el, index) => (
                         <SwiperSlide key={index}>

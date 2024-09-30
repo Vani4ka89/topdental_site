@@ -5,7 +5,7 @@ import {RecordingForm} from "../../../components";
 
 const Recording: FC = () => {
     return (
-        <section className="recording">
+        <section className="recording" id="recording">
             <div className="recording__container">
                 <div className="recording__content">
                     <h2>Бажаєте записатися на першу консультацію?</h2>

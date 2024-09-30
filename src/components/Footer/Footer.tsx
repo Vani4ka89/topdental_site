@@ -39,9 +39,9 @@ const Footer: FC = () => {
                             <li className="list__item">
                                 <Link to={'/about'} onClick={scrollWindow}>Про нас</Link>
                             </li>
-                            <li className="list__item">
-                                <Link to={''}>Галерея</Link>
-                            </li>
+                            {/*<li className="list__item">*/}
+                            {/*    <Link to={''}>Галерея</Link>*/}
+                            {/*</li>*/}
                         </ul>
                     </div>
                     <div className="footer__info info fb-size">

@@ -2,53 +2,60 @@ import {FC} from 'react';
 
 import './services.css';
 
+import tooth from "../../assets/images/tooth-icon.png";
+
 const Services: FC = () => {
     return (
         <section className="service">
-            <div className="services-container">
-                <h1 className="services-title">Наші послуги</h1>
-                <div className="service-category">
-                    <h2>Професійна гігієна ротової порожнини</h2>
+            <h1 className="services-title">Наші послуги</h1>
+            <div className="service-wrapper">
+                <div className="service-item">
+                    <img src={tooth} alt="Зуб" className="tooth-icon"/>
+                    <strong>Професійна гігієна ротової порожнини</strong>
                 </div>
-
-                <div className="service-category">
-                    <h2>Лікування зубів:</h2>
+                <div className="service-item">
+                    <img src={tooth} alt="Зуб" className="tooth-icon"/>
+                    <strong>Лікування зубів:</strong>
                     <ul>
-                        <li>Герметизація фісур</li>
-                        <li>Лікування карієсу</li>
-                        <li>Лікування кореневих каналів</li>
+                        <li>☑️ Герметизація фісур</li>
+                        <li>☑️ Лікування карієсу</li>
+                        <li>☑️ Лікування кореневих каналів</li>
                     </ul>
                 </div>
-
-                <div className="service-category">
-                    <h2>Видалення зубів</h2>
-                </div>
-
-                <div className="service-category">
-                    <h2>Видалення зубів мудрості</h2>
-                </div>
-
-                <div className="service-category">
-                    <h2>Імплантація</h2>
-                </div>
-
-                <div className="service-category">
-                    <h2>Протезування:</h2>
+                <div className="service-item">
+                    <img src={tooth} alt="Зуб" className="tooth-icon"/>
+                    <strong>Протезування:</strong>
                     <ul>
-                        <li>Металокерамічні коронки</li>
-                        <li>Керамічні коронки</li>
-                        <li>Цирконієві коронки</li>
-                        <li>Зубні протези</li>
+                        <li>☑️ Металокерамічні коронки</li>
+                        <li>☑️ Керамічні коронки</li>
+                        <li>☑️ Цирконієві коронки</li>
+                        <li>☑️ Зубні протези</li>
                     </ul>
                 </div>
-
-                <div className="service-category">
-                    <h2>Ортодонтія дитячого та дорослого віку:</h2>
+                <div className="service-item">
+                    <img src={tooth} alt="Зуб" className="tooth-icon"/>
+                    <strong>Ортодонтія дитячого та дорослого віку:</strong>
                     <ul>
-                        <li>Пластинки</li>
-                        <li>Брекети</li>
-                        <li>Елайнери</li>
+                        <li>☑️ Пластинки</li>
+                        <li>☑️ Брекети</li>
+                        <li>☑️ Елайнери</li>
                     </ul>
+                </div>
+                <div className="service-item">
+                    <img src={tooth} alt="Зуб" className="tooth-icon"/>
+                    <strong>Лікування кореневих каналів</strong>
+                </div>
+                <div className="service-item">
+                    <img src={tooth} alt="Зуб" className="tooth-icon"/>
+                    <strong>Видалення зубів</strong>
+                </div>
+                <div className="service-item">
+                    <img src={tooth} alt="Зуб" className="tooth-icon"/>
+                    <strong>Видалення зубів мудрості</strong>
+                </div>
+                <div className="service-item">
+                    <img src={tooth} alt="Зуб" className="tooth-icon"/>
+                    <strong>Імплантація</strong>
                 </div>
             </div>
         </section>

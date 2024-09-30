@@ -11,6 +11,20 @@
     padding: 80px 0;
 }
 
+.contacts .box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contacts .box img.icon {
+    margin-bottom: 25px;
+}
+
+.contacts .box img {
+    height: 20px;
+}
+
 .contacts-description {
     text-align: center;
 }
