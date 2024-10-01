@@ -22,57 +22,35 @@
     height: 550px;
 }
 
-/*****************************/
+/********* MEDIA ***********/
 
-/*!* Медіа-запити для екранів смартфонів *!*/
-/*@media screen and (max-width: 768px) {*/
-/*    .about {*/
-/*        padding: 50px 0;*/
-/*        flex-direction: column;*/
-/*    }*/
+@media screen and (max-width: 477px) {
+    .about {
+        padding: 25px 0;
+    }
 
-/*    .about__description {*/
-/*        width: 100%;*/
-/*        text-align: center;*/
-/*    }*/
+    .about__description{
+        width: 100%;
+    }
 
-/*    .about__image img {*/
-/*        width: 100%;*/
-/*        height: auto;*/
-/*        margin-top: 20px;*/
-/*    }*/
+    .about__description h2 {
+        font-size: 21px;
+    }
 
-/*    .about__link .btn {*/
-/*        display: inline-block;*/
-/*        margin: 20px auto 0;*/
-/*    }*/
-/*}*/
+    .about__description p {
+        font-size: 14px;
+    }
 
-/*!* Медіа-запити для ще менших екранів, наприклад, до 480px *!*/
-/*@media screen and (max-width: 480px) {*/
-/*    .about {*/
-/*        padding: 30px 0;*/
-/*    }*/
+    .about .btn {
+        font-size: 14px;
+    }
 
-/*    .about__description {*/
-/*        width: 100%;*/
-/*    }*/
+    .about__image {
+        width: 100%;
+    }
 
-/*    .about__description h2 {*/
-/*        font-size: 24px;*/
-/*    }*/
-
-/*    .about__description p {*/
-/*        font-size: 14px;*/
-/*    }*/
-
-/*    .about__image img {*/
-/*        width: 100%;*/
-/*        height: auto;*/
-/*    }*/
-
-/*    .about__link .btn {*/
-/*        font-size: 16px;*/
-/*        padding: 10px 20px;*/
-/*    }*/
-/*}*/
+    .about__image img{
+        height: 300px;
+        object-fit: cover;
+    }
+}

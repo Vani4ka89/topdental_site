@@ -20,6 +20,15 @@ const ImageSlider: FC = () => {
                     spaceBetween={50}
                     slidesPerView={3}
                     autoplay={{delay: 3000}}
+                    breakpoints={{
+                        1: {
+                            slidesPerView: 1,
+                        },
+                        // when window width is >= 768px
+                        477: {
+                            slidesPerView: 2,
+                        },
+                    }}
                 >
                     {sliderImages.map((el, index) => (
                         <SwiperSlide key={index}>

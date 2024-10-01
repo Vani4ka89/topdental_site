@@ -50,3 +50,13 @@ textarea {
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
+
+/********* MEDIA ***********/
+
+@media screen and (max-width: 477px) {
+    .contact-form .submit-btn {
+        margin-top: 20px;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+}

@@ -36,3 +36,28 @@
 .recording__content p:last-of-type {
     color: #b2b8bb;
 }
+
+/********* MEDIA ***********/
+
+@media screen and (max-width: 477px) {
+    .recording {
+        padding: 30px 0;
+    }
+
+    .recording__content, .recording .recording-form{
+        width: 100%;
+    }
+
+    .recording__content h2{
+        font-size: 21px;
+    }
+
+    .recording__content p{
+        font-size: 14px;
+    }
+
+    .recording .recording-form .submit-btn {
+        margin-top: 25px;
+        padding: 12px 0;
+    }
+}

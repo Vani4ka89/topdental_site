@@ -76,3 +76,22 @@
     background-color: #fff;
     content: attr(alt);
 }
+
+/******************************/
+
+@media screen and (max-width: 477px) {
+    .reviews {
+        padding: 25px 0;
+    }
+
+    .reviews .reviews__container {
+        gap: 10px;
+    }
+
+    .swiper {
+        padding: 0;
+    }
+    .reviews__content h2 {
+        font-size: 21px;
+    }
+}

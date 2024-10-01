@@ -27,3 +27,26 @@
 .about-second__list .list__item {
     font-style: italic;
 }
+
+@media screen and (max-width: 477px) {
+    .about-second {
+        padding: 25px 0;
+    }
+
+    .about-second__image img {
+        object-fit: cover;
+        height: 300px;
+    }
+
+    .about-second h2 {
+        font-size: 21px;
+    }
+
+    .about-second__image, .about-second__description{
+        width: 100%;
+    }
+
+    .about-second__description p, ul li{
+        font-size: 14px;
+    }
+}

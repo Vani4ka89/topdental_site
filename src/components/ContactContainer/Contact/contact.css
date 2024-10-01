@@ -57,3 +57,42 @@
     font-weight: 500;
 }
 
+/********* MEDIA ***********/
+
+@media screen and (max-width: 477px) {
+    .contact {
+        padding: 25px 0;
+    }
+
+    .contact__content {
+        padding: 0;
+    }
+
+    .contact .content__description h3 {
+        font-size: 21px;
+    }
+
+    .contact .content__description p {
+        font-size: 14px;
+    }
+
+    .contact__info p, ul li {
+        font-size: 14px;
+    }
+
+    .contact__content, .contact__container .contact-form {
+        width: 100%;
+    }
+
+    .contact__container .contact-form {
+        padding: 20px;
+    }
+
+    .contact .width-10 {
+        width: 19%;
+    }
+
+    .info__address, .info__time, .info__email {
+        gap: 30px;
+    }
+}

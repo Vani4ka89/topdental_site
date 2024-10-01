@@ -23,3 +23,33 @@
 .about-first__list .list__item {
     font-style: italic;
 }
+
+/********* MEDIA ***********/
+
+@media screen and (max-width: 477px){
+    .about-first {
+        padding: 25px 0;
+    }
+
+    .about-first__image{
+        width: 100%;
+    }
+
+    .about-first__image img{
+        width: 100%;
+        object-fit: cover;
+        height: 300px;
+    }
+
+    .about-first__description{
+        width: 100%;
+    }
+
+    .about-first__description h2{
+        font-size: 21px;
+    }
+
+    .about-first__description p, ul li{
+        font-size: 14px;
+    }
+}

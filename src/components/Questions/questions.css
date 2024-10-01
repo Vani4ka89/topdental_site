@@ -17,3 +17,23 @@
     margin-bottom: 15px;
     padding-left: 40px;
 }
+
+/********* MEDIA ***********/
+
+@media screen and (max-width: 477px) {
+   .questions {
+       padding: 25px 0;
+   }
+
+    .questions h2{
+        font-size: 21px;
+    }
+
+    .questions .content__description {
+        font-size: 14px;
+    }
+
+    .questions .MuiTypography-root {
+        font-size: 14px;
+    }
+}

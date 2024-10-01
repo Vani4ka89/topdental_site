@@ -47,3 +47,25 @@
     font-size: 19px;
     font-style: italic;
 }
+
+/********* MEDIA ***********/
+
+@media screen and (max-width: 477px) {
+    .cover {
+        height: 480px;
+        width: 100%;
+        background-position-x: -130px;
+    }
+
+    .cover .cover__container {
+        padding-bottom: 25px;
+    }
+
+    .cover__content h2 {
+        font-size: 19px;
+    }
+
+    .cover__content p {
+        font-size: 12px;
+    }
+}

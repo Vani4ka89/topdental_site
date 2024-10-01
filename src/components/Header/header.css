@@ -112,153 +112,97 @@
     margin-left: 5px;
 }
 
-
-/**************************/
+/********* MEDIA ***********/
 
 @media screen and (max-width: 477px) {
-    header {
+    header .header__top {
+        padding: 0;
+    }
+
+    .header__logo img {
+        width: 65%;
+    }
+
+    header .header__wrapper{
+        display: flex;
+        align-items: center;
+    }
+
+    header.open{
+        height: 70vh;
+        position: absolute;
+        z-index: 20;
+        background: linear-gradient(to top, #f9fcfc, #b2b8bb);
+    }
+    header.open .header__bottom, header.open .header__top{
+        background: rgba(255, 255, 255, 0);
+    }
+    header.open .header__container{
+        gap: 20px;
+        display: flex;
+    }
+    header.open .header__bottom *{
+        background: rgba(255, 255, 255, 0);
+        color: #393A3A;
+    }
+
+    header .header__wrapper{
+        display: flex;
+        flex-direction: row;
+    }
+
+    header .header__menu,
+    header .header__social,
+    header .header__bottom{
         display: none;
     }
-    [class*=__container] {
+
+    header .header__burger{
+        width: 30px;
+        height: 20px;
+        display: grid;
+        gap: 2px;
+    }
+
+    header .header__burger span{
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: #3A3A3A;
+    }
+    header.open .header__burger{
+        width: 40px;
+        height: 10px;
+    }
+    header.open .header__open span{
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: #3A3A3A;
+    }
+    header.open span:first-child{
+        transform: rotate(-45deg);
+        transform-origin: 16px 1px;
+    }
+    header.open span:nth-of-type(2){
+        display: none;
+    }
+    header.open span:last-child{
+        transform: rotate(45deg);
+        transform-origin: 19px 0;
+    }
+
+    header.open .header__menu,
+    header.open .header__social,
+    header.open .header__bottom{
+        display: flex;
+    }
+
+    header.open .header__menu ul{
+        flex-direction: column;
+    }
+
+    header.open .header__menu ul{
         flex-direction: column;
     }
 }
-
-/*!* Основні стилі *!*/
-/*.header__container {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*    padding: 10px 20px;*/
-/*    background-color: #f9fcfc;*/
-/*}*/
-
-/*.header__logo img {*/
-/*    width: 150px;*/
-/*}*/
-
-/*!* Стилі для меню *!*/
-/*.menu__list {*/
-/*    display: flex;*/
-/*    gap: 20px;*/
-/*    list-style: none;*/
-/*}*/
-
-/*.menu__item a {*/
-/*    color: #595b5e;*/
-/*    text-decoration: none;*/
-/*    font-size: 18px;*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.menu__item a:hover {*/
-/*    color: #222222;*/
-/*}*/
-
-/*!* Стилі для соціальних іконок *!*/
-/*.social__list {*/
-/*    display: flex;*/
-/*    gap: 15px;*/
-/*    list-style: none;*/
-/*}*/
-
-/*.social__item a {*/
-/*    display: block;*/
-/*    width: 30px;*/
-/*    height: 30px;*/
-/*    border-radius: 50%;*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    background-repeat: no-repeat;*/
-/*    transition: background-color 300ms ease;*/
-/*}*/
-
-/*.social__item a.phone {*/
-/*    background-image: url('../assets/images/icons/phone-grey.svg');*/
-/*}*/
-
-/*.social__item a.phone:hover {*/
-/*    background-image: url('../assets/images/icons/phone-white.svg');*/
-/*}*/
-
-/*.social__item a.mail {*/
-/*    background-image: url('../assets/images/icons/mail-grey.svg');*/
-/*}*/
-
-/*.social__item a.mail:hover {*/
-/*    background-image: url('../assets/images/icons/mail-white.svg');*/
-/*}*/
-
-/*.social__item a.facebook {*/
-/*    background-image: url('../assets/images/icons/fb-grey.svg');*/
-/*}*/
-
-/*.social__item a.facebook:hover {*/
-/*    background-image: url('../assets/images/icons/fb-white.svg');*/
-/*}*/
-
-/*.social__item a.instagram {*/
-/*    background-image: url('../assets/images/icons/inst-grey.svg');*/
-/*}*/
-
-/*.social__item a.instagram:hover {*/
-/*    background-image: url('../assets/images/icons/inst-white.svg');*/
-/*}*/
-
-/*!* Адаптивність для мобільних пристроїв *!*/
-/*@media (max-width: 768px) {*/
-/*    .header__burger {*/
-/*        display: flex;*/
-/*        flex-direction: column;*/
-/*        gap: 5px;*/
-/*        cursor: pointer;*/
-/*    }*/
-
-/*    .burger-line {*/
-/*        width: 25px;*/
-/*        height: 3px;*/
-/*        background-color: #222;*/
-/*    }*/
-
-/*    .header__menu {*/
-/*        display: none;*/
-/*    }*/
-
-/*    .header__menu.open {*/
-/*        display: block;*/
-/*        position: absolute;*/
-/*        top: 60px;*/
-/*        left: 0;*/
-/*        right: 0;*/
-/*        background-color: #fff;*/
-/*        padding: 10px 0;*/
-/*        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-/*    }*/
-
-/*    .menu__list {*/
-/*        flex-direction: column;*/
-/*        gap: 10px;*/
-/*        padding: 0;*/
-/*        margin: 0;*/
-/*    }*/
-
-/*    .menu__item a {*/
-/*        font-size: 20px;*/
-/*        color: #222;*/
-/*    }*/
-
-/*    .header__social {*/
-/*        display: flex;*/
-/*        justify-content: center;*/
-/*        margin-top: 20px;*/
-/*    }*/
-
-/*    .social__list {*/
-/*        gap: 20px;*/
-/*    }*/
-
-/*    .social__item a {*/
-/*        width: 40px;*/
-/*        height: 40px;*/
-/*    }*/
-/*}*/

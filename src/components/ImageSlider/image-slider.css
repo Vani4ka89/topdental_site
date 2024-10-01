@@ -37,3 +37,27 @@
     height: 2px;
     width: 100%;
 }
+
+/************************/
+
+@media screen and (max-width: 477px) {
+    .slider {
+        padding: 25px 0;
+    }
+
+    .slider .slider__container {
+        gap: 0;
+    }
+
+    .slider h2 {
+        font-size: 21px;
+    }
+
+    .slider img {
+        height: 300px;
+    }
+
+    .slider .swiper {
+        padding: 0;
+    }
+}

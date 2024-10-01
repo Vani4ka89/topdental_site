@@ -46,17 +46,16 @@ const ContactForm: FC = () => {
                     {...register("phoneNumber", {
                         required: "Phone number is required",
                         pattern: {
-                            value: /^\+380\d{9}$/, // Номер має починатися з +380 і мати 9 цифр
+                            value: /^\+380\d{9}$/,
                             message: "Invalid phone number. Format should be +380XXXXXXXXX",
                         },
                         validate: {
                             noLetters: (value) =>
-                                /^[+0-9]+$/.test(value) || "Phone number must contain only numbers and '+'", // Забороняємо літери
+                                /^[+0-9]+$/.test(value) || "Phone number must contain only numbers and '+'",
                             isNumericOnly: (value) =>
-                                /^[\d]+$/.test(value.slice(4)) || "Phone number must contain only digits after +380", // Після +380 тільки цифри
+                                /^[\d]+$/.test(value.slice(4)) || "Phone number must contain only digits after +380",
                         },
                         onChange: (e) => {
-                            // Очищення введених символів, які не є цифрами або +
                             e.target.value = e.target.value.replace(/[^+\d]/g, "");
                         }
                     })}
