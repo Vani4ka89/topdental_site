@@ -16,7 +16,6 @@ const Header: FC = () => {
         }
     }
 
-    console.log(isMenuOpen);
     return (
         <header className={`header ${isMenuOpen ? 'open' : ''}`}>
             <div className="header__top">
