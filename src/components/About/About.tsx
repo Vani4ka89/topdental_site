@@ -2,7 +2,7 @@ import {FC} from 'react';
 import {Link} from "react-router-dom";
 
 import './about.css';
-import aboutImg from "../../assets/images/img_2.jpeg";
+import aboutImg from "../../assets/images/img_2.png";
 
 const About: FC = () => {
     const scrollWindow = () => {

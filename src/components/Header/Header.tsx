@@ -2,7 +2,7 @@ import {FC, useState} from 'react';
 import {Link} from "react-router-dom";
 
 import './header.css';
-import topDentalLogo from '../../assets/images/logo.jpeg';
+import topDentalLogo from '../../assets/images/logo.png';
 
 const Header: FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
