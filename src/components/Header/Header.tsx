@@ -7,16 +7,23 @@ import topDentalLogo from '../../assets/images/logo.png';
 const Header: FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+        setIsMenuOpen(prevState => !prevState);
     };
 
+    const close = () => {
+        if (isMenuOpen) {
+            setIsMenuOpen(false);
+        }
+    }
+
+    console.log(isMenuOpen);
     return (
         <header className={`header ${isMenuOpen ? 'open' : ''}`}>
             <div className="header__top">
                 <div className="header__container">
                     <div className="header__wrapper">
                         <div className="header__logo">
-                            <Link to={'home'}>
+                            <Link to={'home'} onClick={close}>
                                 <img src={topDentalLogo} alt="TopDental логотип"/>
                             </Link>
                         </div>
@@ -29,13 +36,13 @@ const Header: FC = () => {
                     <nav className="header__menu menu">
                         <ul className="menu__list">
                             <li className="menu__item">
-                                <Link to={'about'}>Про нас</Link>
+                                <Link to={'about'} onClick={close}>Про нас</Link>
                             </li>
                             <li className="menu__item">
-                                <Link to={'services'}>Послуги</Link>
+                                <Link to={'services'} onClick={close}>Послуги</Link>
                             </li>
                             <li className="menu__item">
-                                <Link to={'contacts'}>Контакти</Link>
+                                <Link to={'contacts'} onClick={close}>Контакти</Link>
                             </li>
                         </ul>
                     </nav>

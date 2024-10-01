@@ -77,26 +77,40 @@
 .service-item {
     background: linear-gradient(to top, #e8e8e8, #9f9f9f);
     border-radius: 8px;
-    padding: 10px 10px 10px 50px;
+    /*padding: 10px 10px 10px 50px;*/
+    padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
     text-align: left;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
 }
 .service-item strong {
     display: block;
+    margin-left: 20px;
     margin-bottom: 10px;
     font-size: 1.2em;
+    text-align: center;
     color: #595b5e;
 }
 
 .service-item ul {
-    padding-left: 20px;
+    padding-left: 10px;
     list-style-type: none;
 }
 
 .service-item ul li {
     margin: 5px 0;
     font-style: italic;
+}
+
+.service-item ul li:before {
+    content: '☑️';
+    display: inline-block;
+    margin-right: 10px;
+
 }
 .tooth-icon {
     width: 30px;

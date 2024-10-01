@@ -90,6 +90,10 @@ h3, h4 {
         flex-direction: column;
         gap: 30px;
     }
+
+    body div.wrapper main.main > section {
+        padding: 10% 0;
+    }
 }
 
 

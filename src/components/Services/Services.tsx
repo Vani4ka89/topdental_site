@@ -17,28 +17,28 @@ const Services: FC = () => {
                     <img src={tooth} alt="Зуб" className="tooth-icon"/>
                     <strong>Лікування зубів:</strong>
                     <ul>
-                        <li>☑️ Герметизація фісур</li>
-                        <li>☑️ Лікування карієсу</li>
-                        <li>☑️ Лікування кореневих каналів</li>
+                        <li>Герметизація фісур</li>
+                        <li>Лікування карієсу</li>
+                        <li>Лікування кореневих каналів</li>
                     </ul>
                 </div>
                 <div className="service-item">
                     <img src={tooth} alt="Зуб" className="tooth-icon"/>
                     <strong>Протезування:</strong>
                     <ul>
-                        <li>☑️ Металокерамічні коронки</li>
-                        <li>☑️ Керамічні коронки</li>
-                        <li>☑️ Цирконієві коронки</li>
-                        <li>☑️ Зубні протези</li>
+                        <li>Металокерамічні коронки</li>
+                        <li>Керамічні коронки</li>
+                        <li>Цирконієві коронки</li>
+                        <li>Зубні протези</li>
                     </ul>
                 </div>
                 <div className="service-item">
                     <img src={tooth} alt="Зуб" className="tooth-icon"/>
                     <strong>Ортодонтія дитячого та дорослого віку:</strong>
                     <ul>
-                        <li>☑️ Пластинки</li>
-                        <li>☑️ Брекети</li>
-                        <li>☑️ Елайнери</li>
+                        <li>Пластинки</li>
+                        <li>Брекети</li>
+                        <li>Елайнери</li>
                     </ul>
                 </div>
                 <div className="service-item">

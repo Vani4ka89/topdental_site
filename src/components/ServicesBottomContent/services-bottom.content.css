@@ -32,3 +32,13 @@
     font-weight: bold;
     font-size: 18px;
 }
+
+@media screen and (max-width: 477px) {
+    .content-block h2{
+        font-size: 21px;
+    }
+
+    .content-block p, .content-block a.btn{
+        font-size: 14px;
+    }
+}
