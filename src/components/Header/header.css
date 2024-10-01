@@ -128,14 +128,22 @@
         align-items: center;
     }
 
+    body:has(header.open){
+        overflow: hidden;
+    }
+
     header.open{
-        height: 70vh;
+        /*height: 70vh;*/
+        height: 100vh;
         position: absolute;
         z-index: 20;
         background: linear-gradient(to top, #f9fcfc, #b2b8bb);
     }
     header.open .header__bottom, header.open .header__top{
         background: rgba(255, 255, 255, 0);
+    }
+    header.open .header__top{
+        height: 50vh;
     }
     header.open .header__container{
         gap: 20px;
