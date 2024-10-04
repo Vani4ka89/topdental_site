@@ -133,7 +133,6 @@
     }
 
     header.open{
-        /*height: 70vh;*/
         height: 100vh;
         position: absolute;
         z-index: 20;

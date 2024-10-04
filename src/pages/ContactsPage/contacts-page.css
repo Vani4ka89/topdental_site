@@ -64,3 +64,45 @@
     font-size: 17px;
     font-weight: 600;
 }
+
+/******** MEDIA ********/
+
+@media screen and (max-width: 477px) {
+    .main section.contacts, .main section.big-map {
+        padding: 0;
+    }
+
+    .contacts .contacts__container {
+        padding: 40px 0;
+        gap: 0;
+    }
+
+    .contacts .content__map h3 {
+        font-size: 19px;
+    }
+
+    .contacts .content__map p {
+        font-size: 14px;
+    }
+
+    .contacts-description p {
+        font-size: 15px;
+    }
+
+    .contacts h2 {
+        font-size: 21px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .contacts-content {
+        flex-direction: column;
+    }
+
+    .contacts .content__map {
+        width: 100%;
+    }
+
+    .contacts .content__map iframe {
+        width: 100%;
+    }
+}

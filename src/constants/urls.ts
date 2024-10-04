@@ -1,4 +1,5 @@
-const baseURL = 'http://localhost:5050';
+// const baseURL = 'http://localhost:5050';
+const baseURL = 'https://topdental.pp.ua';
 
 const users = '/users';
 

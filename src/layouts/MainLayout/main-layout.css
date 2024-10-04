@@ -91,7 +91,7 @@ h3, h4 {
         gap: 30px;
     }
 
-    body div.wrapper main.main > section {
+     main.main > section {
         padding: 10% 0;
     }
 }
