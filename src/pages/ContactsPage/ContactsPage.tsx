@@ -23,14 +23,16 @@ const ContactsPage: FC = () => {
                                         width="550" height="200" loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade">
                                 </iframe>
-                                <h3>TopDental Тернопіль</h3>
-                                <div className="box">
-                                    <img src={location} alt="icon-location" className="icon"/>
-                                    <p>вул. Антона Монастирського, 40, Тернопіль, Тернопільська область, 46002</p>
-                                </div>
-                                <div className="box">
-                                    <img src={phone} alt="icon-phone"/>
-                                    <p>+38 (097) 227 05 30</p>
+                                <div className="content-address">
+                                    <h3>TopDental Тернопіль</h3>
+                                    <div className="box">
+                                        <img src={location} alt="icon-location" className="icon"/>
+                                        <p>вул. Антона Монастирського, 40, Тернопіль, Тернопільська область, 46002</p>
+                                    </div>
+                                    <div className="box">
+                                        <img src={phone} alt="icon-phone"/>
+                                        <p>+38 (097) 227 05 30</p>
+                                    </div>
                                 </div>
                             </div>
                             <div className="content__map">

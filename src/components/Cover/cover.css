@@ -54,7 +54,10 @@
     .cover {
         height: 480px;
         width: 100%;
-        background-position-x: -130px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
     }
 
     .cover .cover__container {

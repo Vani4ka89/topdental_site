@@ -9,8 +9,8 @@ import {joiResolver} from "@hookform/resolvers/joi";
 import {secondFormValidator} from "../../../validators";
 
 const RecordingForm: FC = () => {
-    const {register, handleSubmit, reset} = useForm<IFormTwo>({
-        mode: "onSubmit",
+    const {register, handleSubmit, reset, formState: {errors}} = useForm<IFormTwo>({
+        mode: "onChange",
         resolver: joiResolver(secondFormValidator)
     });
     const date = new Date();
@@ -43,10 +43,26 @@ const RecordingForm: FC = () => {
                 <input
                     type="text"
                     id="name"
-                    {...register('name')}
+                    {...register('name', {
+                        pattern: {
+                            value: /^[a-zA-Zа-яА-Я]{1,20}$/,
+                            message: 'Невірно введено ім\'я'
+                        },
+                        validate: {
+                            lettersOnly: value => value.trim() !== '' ||  /^[a-zA-Zа-яА-Я]{1,20}$/.test(value) || 'Невірно введено ім\'я'
+                        }
+                    })}
                     placeholder="Ваше ім'я*"
                     required
                 />
+                {
+                    errors.name?.message &&
+                    <div
+                        style={{fontSize: '12px', color: 'red'}}
+                    >
+                        {errors.name?.message}
+                    </div>
+                }
             </div>
 
             <div className="form-group">
@@ -72,6 +88,14 @@ const RecordingForm: FC = () => {
                         }
                     })}
                 />
+                {
+                    errors.phoneNumber?.message &&
+                    <div
+                        style={{fontSize: '12px', color: 'red'}}
+                    >
+                        {errors.phoneNumber?.message}
+                    </div>
+                }
             </div>
 
             <div className="form-group">

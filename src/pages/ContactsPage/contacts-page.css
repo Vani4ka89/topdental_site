@@ -77,12 +77,21 @@
         gap: 0;
     }
 
+    .content-address {
+        order: 1;
+    }
+
     .contacts .content__map h3 {
         font-size: 19px;
     }
 
     .contacts .content__map p {
         font-size: 14px;
+    }
+
+    .contacts-description h2::after {
+        margin: 5px auto 15px;
+        height: 3px;
     }
 
     .contacts-description p {

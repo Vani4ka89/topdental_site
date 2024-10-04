@@ -91,9 +91,18 @@ h3, h4 {
         gap: 30px;
     }
 
+    .wrapper {
+        padding: 0 2px;
+    }
+
      main.main > section {
         padding: 10% 0;
     }
+
+     h1 {
+         font-size: 25px;
+         padding: 5px 0;
+     }
 }
 
 

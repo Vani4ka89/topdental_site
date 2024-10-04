@@ -9,8 +9,8 @@ import {joiResolver} from "@hookform/resolvers/joi";
 import {firstFormValidator} from "../../../validators";
 
 const ContactForm: FC = () => {
-    const {register, handleSubmit, reset} = useForm<IForm>({
-        mode: "onSubmit",
+    const {register, handleSubmit, reset, formState: {errors}} = useForm<IForm>({
+        mode: "onChange",
         resolver: joiResolver(firstFormValidator)
     });
 
@@ -31,14 +31,29 @@ const ContactForm: FC = () => {
                 <input
                     type="text"
                     id="name"
-                    {...register('name')}
+                    {...register('name', {
+                        pattern: {
+                            value: /^[a-zA-Zа-яА-Я]{1,20}$/,
+                            message: 'Невірно введено ім\'я'
+                        },
+                        validate: {
+                            lettersOnly: value => /^[a-zA-Zа-яА-Я]{1,20}$/.test(value) || 'Невірно введено ім\'я'
+                        }
+                    })}
                     placeholder="Ваше ім'я*"
                     required
                 />
+                {
+                    errors.name?.message &&
+                    <div
+                        style={{fontSize: '12px', color: 'red'}}
+                    >
+                        {errors.name?.message}
+                    </div>
+                }
             </div>
 
             <div className="form-group">
-
                 <input
                     type="tel"
                     placeholder="Номер телефону*"
@@ -46,7 +61,7 @@ const ContactForm: FC = () => {
                     {...register("phoneNumber", {
                         required: "Phone number is required",
                         pattern: {
-                            value: /^\+380\d{9}$/,
+                            value: /^\+\d{9}$/,
                             message: "Invalid phone number. Format should be +380XXXXXXXXX",
                         },
                         validate: {
@@ -60,6 +75,14 @@ const ContactForm: FC = () => {
                         }
                     })}
                 />
+                {
+                    errors.phoneNumber?.message &&
+                    <div
+                        style={{fontSize: '12px', color: 'red'}}
+                    >
+                        {errors.phoneNumber?.message}
+                    </div>
+                }
             </div>
 
             <div className="form-group">
