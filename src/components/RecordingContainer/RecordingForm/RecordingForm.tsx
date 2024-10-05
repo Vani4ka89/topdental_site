@@ -49,7 +49,7 @@ const RecordingForm: FC = () => {
                             message: 'Невірно введено ім\'я'
                         },
                         validate: {
-                            lettersOnly: value => value.trim() !== '' ||  /^[a-zA-Zа-яА-Я]{1,20}$/.test(value) || 'Невірно введено ім\'я'
+                            lettersOnly: value => value.trim() !== '' || /^[a-zA-Zа-яА-Я]{1,20}$/.test(value) || 'Невірно введено ім\'я'
                         }
                     })}
                     placeholder="Ваше ім'я*"
@@ -57,9 +57,7 @@ const RecordingForm: FC = () => {
                 />
                 {
                     errors.name?.message &&
-                    <div
-                        style={{fontSize: '12px', color: 'red'}}
-                    >
+                    <div className="error">
                         {errors.name?.message}
                     </div>
                 }
@@ -90,9 +88,7 @@ const RecordingForm: FC = () => {
                 />
                 {
                     errors.phoneNumber?.message &&
-                    <div
-                        style={{fontSize: '12px', color: 'red'}}
-                    >
+                    <div className="error">
                         {errors.phoneNumber?.message}
                     </div>
                 }

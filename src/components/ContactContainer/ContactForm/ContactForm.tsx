@@ -37,7 +37,7 @@ const ContactForm: FC = () => {
                             message: 'Невірно введено ім\'я'
                         },
                         validate: {
-                            lettersOnly: value => /^[a-zA-Zа-яА-Я]{1,20}$/.test(value) || 'Невірно введено ім\'я'
+                            lettersOnly: value => /^[a-zA-Zа-яА-Я ]{1,20}$/.test(value) || 'Невірно введено ім\'я'
                         }
                     })}
                     placeholder="Ваше ім'я*"
@@ -45,9 +45,7 @@ const ContactForm: FC = () => {
                 />
                 {
                     errors.name?.message &&
-                    <div
-                        style={{fontSize: '12px', color: 'red'}}
-                    >
+                    <div className="error">
                         {errors.name?.message}
                     </div>
                 }
@@ -77,9 +75,7 @@ const ContactForm: FC = () => {
                 />
                 {
                     errors.phoneNumber?.message &&
-                    <div
-                        style={{fontSize: '12px', color: 'red'}}
-                    >
+                    <div className="error">
                         {errors.phoneNumber?.message}
                     </div>
                 }
