@@ -1,6 +1,6 @@
 .cover {
-    height: 80vh;
-    background: url('../../assets/images/img_3.png') no-repeat center/cover fixed;
+    height: 90vh;
+    background: url('../../assets/images/img_3.png') no-repeat top/cover fixed;
     position: relative;
 }
 
