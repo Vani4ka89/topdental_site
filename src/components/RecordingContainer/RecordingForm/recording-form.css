@@ -58,3 +58,59 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.recording-form .answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top: 32vh;
+    left: 37vw;
+    background-color: #ffffff;
+    padding: 50px;
+    z-index: 50;
+}
+
+.recording-form .answer p:first-child {
+    margin-bottom: 30px;
+}
+
+.recording-form .answer .btn {
+    margin-top: 60px;
+    padding: 2px 50px;
+}
+
+/************** MEDIA **************/
+
+@media screen and (max-width: 477px) {
+    .recording-form .answer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        top: 37vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        padding: 15px;
+        z-index: 50;
+        font-size: 14px;
+    }
+
+    .recording-form .answer p:first-child {
+        margin-bottom: 30px;
+    }
+
+    .recording-form .answer .thanks {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .recording-form .answer .btn {
+        margin-top: 60px;
+        padding: 2px 50px;
+    }
+}

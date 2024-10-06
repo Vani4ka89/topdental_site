@@ -1,6 +1,7 @@
 .contact {
     background: linear-gradient(to top, #ffffff, #b2b8bb);
     padding: 60px 0;
+    position: relative;
 }
 
 .contact__content {

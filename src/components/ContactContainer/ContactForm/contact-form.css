@@ -57,15 +57,68 @@ textarea {
     transition: background-color 0.3s ease-in-out;
 }
 
+.contact-form .answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top: 32vh;
+    left: 37vw;
+    background-color: #ffffff;
+    padding: 50px;
+    z-index: 50;
+}
+
+.contact-form .answer p:first-child {
+    margin-bottom: 30px;
+}
+
+.contact-form .answer .btn {
+    margin-top: 60px;
+    padding: 2px 50px;
+}
+
 /********* MEDIA ***********/
 
 @media screen and (max-width: 477px) {
-    .contact-form{
+    .contact-form {
         order: -1;
     }
+
     .contact-form .submit-btn {
         margin-top: 20px;
         padding: 10px 0;
         font-size: 14px;
+    }
+
+    .contact-form .answer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: fixed;
+        top: 37vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        padding: 15px;
+        z-index: 50;
+        font-size: 14px;
+    }
+
+    .contact-form .answer p:first-child {
+        margin-bottom: 30px;
+    }
+
+    .contact-form .answer .thanks {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .contact-form .answer .btn {
+        margin-top: 60px;
+        padding: 2px 50px;
     }
 }

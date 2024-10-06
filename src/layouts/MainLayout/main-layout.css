@@ -75,11 +75,9 @@ h3, h4 {
 .wrapper {
     display: flex;
     flex-direction: column;
-    /*min-height: 100vh; !*m**!*/
 }
 
 .main {
-    /*flex: 1;*/
     flex-grow: 1;
 }
 
@@ -88,6 +86,7 @@ h3, h4 {
 @media screen and (max-width: 477px) {
     [class*=__container] {
         flex-direction: column;
+        justify-content: flex-end;
         gap: 30px;
     }
 

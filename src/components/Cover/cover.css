@@ -1,9 +1,6 @@
 .cover {
     height: 80vh;
-    background-image: url('../../assets/images/img_3.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: url('../../assets/images/img_3.png') no-repeat center/cover fixed;
     position: relative;
 }
 
@@ -52,12 +49,7 @@
 
 @media screen and (max-width: 477px) {
     .cover {
-        height: 480px;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+        height: 50vh;
     }
 
     .cover .cover__container {
@@ -65,7 +57,7 @@
     }
 
     .cover__content h2 {
-        font-size: 19px;
+        font-size: 18px;
     }
 
     .cover__content p {

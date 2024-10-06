@@ -1,23 +1,24 @@
 .custom {
-    background-image: url(../../assets/images/img_1.png);
-    background-size: cover;
     height: 100vh;
+    background: url('../../assets/images/img_1.png') no-repeat center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .custom .custom__container {
-    margin-top: 170px;
+    height: 100%;
+}
+
+.custom .custom__container .btn {
+    margin-top: 150px;
 }
 
 /********* MEDIA ***********/
 
 @media screen and (max-width: 477px) {
     .custom {
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 270px;
+        height: 30vh;
     }
 
     .custom .btn {
@@ -25,14 +26,8 @@
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (min-width: 478px) and (max-width: 768px){
     .custom {
-        background-position: center;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .custom {
-        background-position: center;
+        height: 80vh;
     }
 }

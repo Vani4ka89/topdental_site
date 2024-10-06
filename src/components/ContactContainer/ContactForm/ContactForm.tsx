@@ -1,27 +1,33 @@
-import {FC} from 'react';
+import {FC, useState} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {Link} from "react-router-dom";
+import {AxiosError} from "axios";
 
 import {IForm} from "../../../interfaces";
-
-import './contact-form.css';
 import {sendFormService} from "../../../services";
-import {joiResolver} from "@hookform/resolvers/joi";
 import {firstFormValidator} from "../../../validators";
 
+import './contact-form.css';
+
 const ContactForm: FC = () => {
+    const [answer, setAnswer] = useState(null);
     const {register, handleSubmit, reset, formState: {errors}} = useForm<IForm>({
         mode: "onChange",
         resolver: joiResolver(firstFormValidator)
     });
 
-    const send: SubmitHandler<IForm> = async (data: IForm) => {
-        console.log(data);
+    const hideAnswer = () => {
+        setAnswer(null);
+    };
+
+    const send: SubmitHandler<IForm> = async (fields: IForm) => {
         try {
-            const res = await sendFormService.sendFirstForm(data);
+            const {data} = await sendFormService.sendFirstForm(fields);
+            setAnswer(data);
             reset();
-            console.log(res.data);
         } catch (e) {
-            console.log('Server Error!!!');
+            throw new AxiosError('Server Error!!!');
         }
     };
 
@@ -31,15 +37,7 @@ const ContactForm: FC = () => {
                 <input
                     type="text"
                     id="name"
-                    {...register('name', {
-                        pattern: {
-                            value: /^[a-zA-Zа-яА-Я]{1,20}$/,
-                            message: 'Невірно введено ім\'я'
-                        },
-                        validate: {
-                            lettersOnly: value => /^[a-zA-Zа-яА-Я ]{1,20}$/.test(value) || 'Невірно введено ім\'я'
-                        }
-                    })}
+                    {...register('name')}
                     placeholder="Ваше ім'я*"
                     required
                 />
@@ -56,22 +54,13 @@ const ContactForm: FC = () => {
                     type="tel"
                     placeholder="Номер телефону*"
                     required
-                    {...register("phoneNumber", {
-                        required: "Phone number is required",
-                        pattern: {
-                            value: /^\+\d{9}$/,
-                            message: "Invalid phone number. Format should be +380XXXXXXXXX",
-                        },
-                        validate: {
-                            noLetters: (value) =>
-                                /^[+0-9]+$/.test(value) || "Phone number must contain only numbers and '+'",
-                            isNumericOnly: (value) =>
-                                /^[\d]+$/.test(value.slice(4)) || "Phone number must contain only digits after +380",
-                        },
-                        onChange: (e) => {
-                            e.target.value = e.target.value.replace(/[^+\d]/g, "");
+                    {...register('phoneNumber',
+                        {
+                            onChange: (e) => {
+                                e.target.value = e.target.value.replace(/[^+\d]/g, "");
+                            }
                         }
-                    })}
+                    )}
                 />
                 {
                     errors.phoneNumber?.message &&
@@ -90,6 +79,14 @@ const ContactForm: FC = () => {
                 />
             </div>
             <button className="submit-btn btn" type="submit">Отримати консультацію</button>
+            {answer &&
+                <div className="answer">
+                    <p> ☑️️</p>
+                    <p className="thanks">Дякую!</p>
+                    <p>Ми Вам перетелефонуємо.</p>
+                    <Link to="" className="btn" onClick={hideAnswer}>OK</Link>
+                </div>
+            }
         </form>
     );
 };

@@ -1,14 +1,17 @@
 import {FC, useState} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {Link} from "react-router-dom";
+import {AxiosError} from "axios";
 
 import {IFormTwo} from "../../../interfaces";
-
-import './recording-form.css';
 import {sendFormService} from "../../../services";
-import {joiResolver} from "@hookform/resolvers/joi";
 import {secondFormValidator} from "../../../validators";
 
+import './recording-form.css';
+
 const RecordingForm: FC = () => {
+    const [answer, setAnswer] = useState(null);
     const {register, handleSubmit, reset, formState: {errors}} = useForm<IFormTwo>({
         mode: "onChange",
         resolver: joiResolver(secondFormValidator)
@@ -25,16 +28,19 @@ const RecordingForm: FC = () => {
     const today = `${year}-${month}-${day}`
     const [dateValue, setDateValue] = useState<string>(today);
 
-    const send: SubmitHandler<IFormTwo> = async (data: IFormTwo) => {
-        console.log(data);
+    const send: SubmitHandler<IFormTwo> = async (fields: IFormTwo) => {
         try {
-            const res = await sendFormService.sendSecondForm(data);
+            const {data} = await sendFormService.sendSecondForm(fields);
+            setAnswer(data)
             setDateValue(today);
             reset();
-            console.log(res.data);
         } catch (e) {
-            console.log('Server Error!!!');
+            throw new AxiosError('Server Error!!!');
         }
+    };
+
+    const hideAnswer = () => {
+        setAnswer(null);
     };
 
     return (
@@ -43,15 +49,7 @@ const RecordingForm: FC = () => {
                 <input
                     type="text"
                     id="name"
-                    {...register('name', {
-                        pattern: {
-                            value: /^[a-zA-Zа-яА-Я]{1,20}$/,
-                            message: 'Невірно введено ім\'я'
-                        },
-                        validate: {
-                            lettersOnly: value => value.trim() !== '' || /^[a-zA-Zа-яА-Я]{1,20}$/.test(value) || 'Невірно введено ім\'я'
-                        }
-                    })}
+                    {...register('name')}
                     placeholder="Ваше ім'я*"
                     required
                 />
@@ -68,23 +66,13 @@ const RecordingForm: FC = () => {
                     type="tel"
                     placeholder="Номер телефону*"
                     required
-                    {...register("phoneNumber", {
-                        required: "Phone number is required",
-                        pattern: {
-                            value: /^\+380\d{9}$/, // Номер має починатися з +380 і мати 9 цифр
-                            message: "Invalid phone number. Format should be +380XXXXXXXXX",
-                        },
-                        validate: {
-                            noLetters: (value) =>
-                                /^[+0-9]+$/.test(value) || "Phone number must contain only numbers and '+'", // Забороняємо літери
-                            isNumericOnly: (value) =>
-                                /^[\d]+$/.test(value.slice(4)) || "Phone number must contain only digits after +380", // Після +380 тільки цифри
-                        },
-                        onChange: (e) => {
-                            // Очищення введених символів, які не є цифрами або +
-                            e.target.value = e.target.value.replace(/[^+\d]/g, "");
+                    {...register("phoneNumber",
+                        {
+                            onChange: (e) => {
+                                e.target.value = e.target.value.replace(/[^+\d]/g, "");
+                            }
                         }
-                    })}
+                    )}
                 />
                 {
                     errors.phoneNumber?.message &&
@@ -108,6 +96,14 @@ const RecordingForm: FC = () => {
                 />
             </div>
             <button className="submit-btn btn" type="submit">Отримати консультацію</button>
+            {answer &&
+                <div className="answer">
+                    <p> ☑️️</p>
+                    <p>Дякую!</p>
+                    <p>Ми Вам перетелефонуємо.</p>
+                    <Link to="" className="btn" onClick={hideAnswer}>OK</Link>
+                </div>
+            }
         </form>
     );
 };

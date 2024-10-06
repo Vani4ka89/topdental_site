@@ -1,6 +1,5 @@
 .recording {
-    background: url('../../../assets/images/IMG_1756.png') top center no-repeat fixed;
-    background-size: cover;
+    background: url('../../../assets/images/IMG_1756.png') no-repeat top center/cover fixed;
     position: relative;
     padding: 125px 0;
 }
@@ -40,13 +39,6 @@
 /********* MEDIA ***********/
 
 @media screen and (max-width: 477px) {
-    .recording {
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-    }
-
     .recording__content, .recording .recording-form{
         width: 100%;
     }
