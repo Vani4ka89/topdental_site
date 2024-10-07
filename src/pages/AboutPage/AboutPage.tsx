@@ -1,4 +1,5 @@
 import {FC} from 'react';
+import {Helmet} from "react-helmet";
 
 import '../../components/About/about.css';
 import aboutImg from '../../assets/images/img_2.png';
@@ -6,6 +7,13 @@ import aboutImg from '../../assets/images/img_2.png';
 const AboutPage: FC = () => {
     return (
         <main className="main">
+
+            <Helmet>
+                <title>Про нас | TopDental</title>
+                <meta name="description"
+                      content="TopDental - сучасна стоматологічна клініка в Тернополі. Ми пропонуємо лікування зубів та ротової порожнини з використанням новітніх технологій."/>
+            </Helmet>
+
             <h1 style={{color: "white"}}>Про нас</h1>
             <section className="about">
                 <div className="main__container">
@@ -27,7 +35,7 @@ const AboutPage: FC = () => {
                         </p>
                     </div>
                     <div className="about__image">
-                        <img src={aboutImg} alt="about-photo"/>
+                        <img src={aboutImg} loading="lazy" alt="about-photo"/>
                     </div>
                 </div>
             </section>

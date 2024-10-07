@@ -4,10 +4,18 @@ import './contacts-page.css';
 
 import location from '../../assets/images/location_img.png';
 import phone from '../../assets/images/phone_img.png';
+import {Helmet} from "react-helmet";
 
 const ContactsPage: FC = () => {
     return (
         <main className="main">
+
+            <Helmet>
+                <title>Контакти | TopDental</title>
+                <meta name="description" content="Контакти клініки TopDental у Тернополі та Плотичі. Ви можете зв'язатися з нами за телефоном або завітати до одного з наших кабінетів." />
+                <meta name="keywords" content="стоматологія Тернопіль, TopDental контакти, стоматолог Плотича" />
+            </Helmet>
+
             <section className="contacts">
                 <div className="contacts-block">
                     <h1 className="contacts-title">Контакти</h1>
@@ -26,11 +34,11 @@ const ContactsPage: FC = () => {
                                 <div className="content-address">
                                     <h3>TopDental Тернопіль</h3>
                                     <div className="box">
-                                        <img src={location} alt="icon-location" className="icon"/>
+                                        <img src={location} loading="lazy" alt="icon-location" className="icon"/>
                                         <p>вул. Антона Монастирського, 40, Тернопіль, Тернопільська область, 46002</p>
                                     </div>
                                     <div className="box">
-                                        <img src={phone} alt="icon-phone"/>
+                                        <img src={phone} loading="lazy" alt="icon-phone"/>
                                         <p>+38 (097) 227 05 30</p>
                                     </div>
                                 </div>
@@ -43,11 +51,11 @@ const ContactsPage: FC = () => {
                                 </iframe>
                                 <h3>TopDental Плотича</h3>
                                 <div className="box">
-                                    <img src={location} alt="icon-location"/>
+                                    <img src={location} loading="lazy" alt="icon-location"/>
                                     <p>вул. Садова, 4, Плотича, Тернопільська область, 47704</p>
                                 </div>
                                 <div className="box">
-                                    <img src={phone} alt="icon-phone"/>
+                                    <img src={phone} loading="lazy" alt="icon-phone"/>
                                     <p>+38 (096) 675-42-35</p>
                                 </div>
                             </div>
