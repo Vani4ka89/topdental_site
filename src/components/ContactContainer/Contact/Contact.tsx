@@ -35,7 +35,7 @@ const Contact: FC = () => {
                             <p className="width-10">E-mail</p>
                             <ul>
                                 <li>+38 (096) 227 05 30</li>
-                                <li>topdental@i.ua</li>
+                                <li>topdentalternopil@gmail.com</li>
                             </ul>
                         </div>
                     </div>

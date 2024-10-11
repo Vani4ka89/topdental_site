@@ -49,7 +49,7 @@
 
 @media screen and (max-width: 477px) {
     .cover {
-        height: 50vh;
+        height: 55vh;
     }
 
     .cover .cover__container {

@@ -28,7 +28,7 @@ const Footer: FC = () => {
                                 <Link to={'https://instagram.com/topdentalternopil'} className="ig"></Link>
                             </li>
                             <li className="list__item">
-                                <Link to={''} className="tg"></Link>
+                                <Link to={'https://t.me/TopDentalTernopil'} className="tg"></Link>
                             </li>
                         </ul>
 

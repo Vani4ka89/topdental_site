@@ -55,7 +55,7 @@ const Header: FC = () => {
                                 <Link to={'tel:+380962270530'} className="phone"></Link>
                             </li>
                             <li className="social__item">
-                                <Link to={'mailto:topdental@i.ua'} className="mail"></Link>
+                                <Link to={'mailto:topdentalternopil@gmail.com'} className="mail"></Link>
                             </li>
                             <li className="social__item">
                                 <Link
@@ -73,7 +73,7 @@ const Header: FC = () => {
                 <div className="header__container">
                     <p>Години роботи:<span className="header__time">10:00 - 19:00</span></p>
                     <p>+38 (096) 227 05 30</p>
-                    <p>topdental@i.ua</p>
+                    <p>topdentalternopil@gmail.com</p>
                 </div>
             </div>
         </header>
