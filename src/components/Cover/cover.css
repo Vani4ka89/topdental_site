@@ -67,7 +67,6 @@
 
 @media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2) {
     .cover {
-        /*background-attachment: scroll; !* Змінюємо на scroll для iPhone *!*/
         display: none;
     }
 }
