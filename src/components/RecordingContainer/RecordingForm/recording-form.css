@@ -84,6 +84,10 @@ input[type=number] {
 /************** MEDIA **************/
 
 @media screen and (max-width: 477px) {
+    .recording-form input {
+        font-size: 13px;
+    }
+
     .recording-form .answer {
         display: flex;
         flex-direction: column;
@@ -112,5 +116,23 @@ input[type=number] {
     .recording-form .answer .btn {
         margin-top: 60px;
         padding: 2px 50px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .recording-form {
+        padding: 10px;
+    }
+
+    .recording-form .submit-btn {
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 15px;
+        padding: 10px 0;
+    }
+
+    .recording-form input {
+        padding: 12px;
+        font-size: 13px;
     }
 }

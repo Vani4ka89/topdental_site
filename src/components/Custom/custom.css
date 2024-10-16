@@ -1,6 +1,7 @@
 .custom {
     height: 100vh;
-    background: url('../../assets/images/img_1.png') no-repeat center/cover;
+    width: 100vw;
+    background: url('../../assets/images/img_1.png') no-repeat top/cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,16 +19,28 @@
 
 @media screen and (max-width: 477px) {
     .custom {
-        height: 30vh;
+        height: 33vh;
     }
 
     .custom .btn {
-        font-size: 14px;
+        font-size: 13px;
+        font-weight: bold;
     }
 }
 
-@media screen and (min-width: 478px) and (max-width: 768px){
+@media screen and (min-width: 478px) and (max-width: 767px) {
     .custom {
         height: 80vh;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .custom {
+        height: 62vh;
+    }
+
+    .custom .btn {
+        font-size: 13px;
+        font-weight: bold;
     }
 }

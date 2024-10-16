@@ -39,20 +39,40 @@
 /********* MEDIA ***********/
 
 @media screen and (max-width: 477px) {
-    .recording__content, .recording .recording-form{
+    .recording__content, .recording .recording-form {
         width: 100%;
     }
 
-    .recording__content h2{
+    .recording__content h2 {
         font-size: 21px;
     }
 
-    .recording__content p{
+    .recording__content p {
         font-size: 14px;
+    }
+
+    .recording__content p:last-child {
+        margin: 20px 0;
     }
 
     .recording .recording-form .submit-btn {
         margin-top: 25px;
         padding: 12px 0;
+        font-size: 13px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .recording {
+        padding: 50px 0;
+    }
+
+    .recording__content {
+        padding-right: 10px;
+    }
+
+    .recording__content p {
+        font-size: 14px;
     }
 }

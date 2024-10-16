@@ -116,15 +116,19 @@
     left: 10px;
 }
 
-@media (min-width: 478px) and (max-width: 991px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
     .service-wrapper {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-title {
+        font-size: 30px;
     }
 }
 
 @media screen and (max-width: 477px) {
     .main section.service {
-        padding: 0;
+        padding: 0 20px;
     }
 
     .service-wrapper {

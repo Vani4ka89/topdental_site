@@ -17,7 +17,7 @@ const Contact: FC = () => {
                     </div>
                     <div className="contact__info info">
                         <div className="info__address">
-                            <p className="width-10">Адреса</p>
+                            <p>Адреса</p>
                             <p>вул. Антона Монастирського 40, Тернопіль, Тернопільська область, 46002.</p>
                         </div>
                         <div className="info__time">
@@ -32,7 +32,7 @@ const Contact: FC = () => {
                             </ul>
                         </div>
                         <div className="info__email">
-                            <p className="width-10">E-mail</p>
+                            <p>E - mail</p>
                             <ul>
                                 <li>+38 (096) 227 05 30</li>
                                 <li>topdentalternopil@gmail.com</li>

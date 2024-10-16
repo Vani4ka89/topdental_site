@@ -3,9 +3,9 @@
     padding: 60px 0;
 }
 
-.swiper {
+.slider .swiper {
     width: 100%;
-    padding: 50px;
+    padding: 10px 50px 30px;
 }
 
 .swiper-pagination-bullet-active {
@@ -14,6 +14,11 @@
 
 .swiper-button-prev:after, .swiper-button-next:after {
     color: gray;
+    font-size: 25px;
+}
+
+.swiper-button-prev:after, .swiper-button-next::after {
+    color: #b2b8bb;
     font-size: 25px;
 }
 
@@ -59,5 +64,15 @@
 
     .slider .swiper {
         padding: 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .slider {
+        padding: 50px 0;
+    }
+
+    .slider .swiper {
+        padding: 10px 35px 30px;
     }
 }

@@ -37,3 +37,17 @@
         font-size: 14px;
     }
 }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .questions {
+        padding: 50px 0;
+    }
+
+    .questions .content__description {
+        font-size: 14px;
+    }
+
+    .questions .MuiTypography-root {
+        font-size: 14px;
+    }
+}

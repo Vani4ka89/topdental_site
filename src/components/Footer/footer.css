@@ -145,4 +145,22 @@
     .additionally h4::after, .info h4::after{
         margin-top: 5px;
     }
+
+    .footer__bottom p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .footer__description p {
+        font-size: 14px;
+    }
+
+    .footer__top h4 {
+        font-size: 17px;
+    }
+
+    .footer__bottom p {
+        font-size: 12px;
+    }
 }

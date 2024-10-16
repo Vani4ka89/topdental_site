@@ -64,8 +64,12 @@ h3, h4 {
     background: linear-gradient(to left, #64656a, #e1e6e9);
 }
 
+img {
+    border-radius: 15px;
+}
+
 [class*=__container] {
-    max-width: 80%;
+    max-width: 85%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -85,55 +89,75 @@ h3, h4 {
 
 @media screen and (max-width: 477px) {
     [class*=__container] {
+        max-width: 100%;
         flex-direction: column;
         justify-content: flex-end;
-        gap: 30px;
+        padding: 0 20px;
     }
 
     .wrapper {
         padding: 0 2px;
     }
 
-     main.main > section {
+    main.main > section {
         padding: 10% 0;
     }
 
-     h1 {
-         font-size: 25px;
-         padding: 5px 0;
-     }
+    h1 {
+        font-size: 25px;
+        padding: 5px 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    [class*=__container] {
+        max-width: 100%;
+        padding: 0 25px;
+    }
+
+    h1 {
+        padding: 10px 0;
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
 }
 
 /******************** ANIMATION *****************/
 
-h2 {
-    opacity: 0; /* Спочатку блок прихований */
-    transform: translateX(-100%); /* Початкове положення — за межами ліворуч */
-    transition: all 1s ease; /* Плавний перехід для появи */
+.header__menu .menu__item, .header__bottom p, .social__list,
+h2, .btn, .footer__description, .footer__additionally, .footer__info,
+.service-item {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 1.5s ease;
 }
 
-h2.visible {
-    opacity: 1; /* Коли блок стане видимим, він стає непрозорим */
-    transform: translateX(0); /* Блок "в'їжджає" на своє місце */
+.header__menu .menu__item.visible, .header__bottom p.visible,
+.social__list.visible, h2.visible, .btn.visible, .footer__additionally.visible,
+.footer__description.visible, .footer__info.visible, .service-item.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.header__menu .menu__item,
-.header__bottom p {
-    position: relative;
-    left: -100%; /* Початкове положення за межами екрану зліва */
-    opacity: 0; /* Блок спочатку прозорий */
-    animation: slideIn 1.5s ease-out forwards; /* Анімація руху та появи за 1.5 секунди */
-}
 
-/* Визначення анімації */
-@keyframes slideIn {
-    0% {
-        left: -100%; /* Початкове положення за межами екрану зліва */
-        opacity: 0; /* Прозорість 0 (невидимий) */
-    }
-    100% {
-        left: 0; /* Кінцеве положення, коли блок повністю з'явиться */
-        opacity: 1; /* Прозорість 1 (видимий) */
-    }
-}
+/*.custom .btn, .about .btn {*/
+/*    position: relative;*/
+/*    left: -100%;*/
+/*    opacity: 0;*/
+/*    animation: slideIn 1.5s ease-out forwards;*/
+/*}*/
+
+/*@keyframes slideIn {*/
+/*    0% {*/
+/*        left: -100%;*/
+/*        opacity: 0;*/
+/*    }*/
+/*    100% {*/
+/*        left: 0;*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
 

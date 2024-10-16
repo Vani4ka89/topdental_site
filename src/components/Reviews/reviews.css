@@ -39,7 +39,7 @@
     color: #d9d9df;
 }
 
-.swiper {
+.reviews .swiper {
     width: 100%;
     padding: 50px 0;
 }
@@ -88,11 +88,15 @@
         gap: 10px;
     }
 
+    .reviews .reviews__container h4 {
+        font-size: 18px;
+    }
+
     .reviews__container p.comment {
         font-size: 14px;
     }
 
-    .swiper {
+    .reviews .swiper {
         padding: 0;
     }
 
@@ -103,5 +107,19 @@
     .reviews .swiper-button-prev, .swiper-rtl .swiper-button-next,
     .reviews .swiper-button-next, .swiper-rtl .swiper-button-prev {
         top: 40%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .reviews {
+        padding: 50px 0 0 0;
+    }
+
+    .reviews .swiper {
+        padding: 10px 0 50px;
+    }
+
+    .reviews p {
+        font-size: 14px;
     }
 }

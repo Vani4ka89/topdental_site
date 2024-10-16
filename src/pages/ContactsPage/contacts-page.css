@@ -69,7 +69,7 @@
 
 @media screen and (max-width: 477px) {
     .main section.contacts, .main section.big-map {
-        padding: 0;
+        padding: 0 20px;
     }
 
     .contacts .contacts__container {
@@ -109,6 +109,20 @@
 
     .contacts .content__map {
         width: 100%;
+    }
+
+    .contacts .content__map iframe {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    main.main .contacts .contacts__container {
+        padding: 50px 25px 25px;
+    }
+
+    .big-map {
+        padding: 25px;
     }
 
     .contacts .content__map iframe {
