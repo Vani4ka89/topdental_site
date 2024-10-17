@@ -128,7 +128,7 @@
 
 @media screen and (max-width: 477px) {
     .main section.service {
-        padding: 0 20px;
+        padding: 0;
     }
 
     .service-wrapper {

@@ -68,13 +68,12 @@
 /******** MEDIA ********/
 
 @media screen and (max-width: 477px) {
-    .main section.contacts, .main section.big-map {
-        padding: 0 20px;
+    .main section.contacts {
+        padding: 0;
     }
 
-    .contacts .contacts__container {
-        padding: 40px 0;
-        gap: 0;
+    .contacts .contacts__container, .main section.big-map {
+        padding: 20px 20px 0;
     }
 
     .content-address {
@@ -118,7 +117,11 @@
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
     main.main .contacts .contacts__container {
-        padding: 50px 25px 25px;
+        padding: 25px;
+    }
+
+    .contacts-content {
+        margin-top: 30px;
     }
 
     .big-map {
@@ -127,5 +130,9 @@
 
     .contacts .content__map iframe {
         width: 100%;
+    }
+
+    .contacts .content__map p {
+        font-size: 15px;
     }
 }
