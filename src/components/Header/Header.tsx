@@ -22,7 +22,7 @@ const Header: FC = () => {
                 <div className="header__container">
                     <div className="header__wrapper">
                         <div className="header__logo">
-                            <Link to={'home'} onClick={close} className="teeth">
+                            <Link to={''} onClick={close} className="teeth">
                                 <img src={topDentalLogo} alt="TopDental логотип"/>
                             </Link>
                             <div className="text">

@@ -2,8 +2,8 @@ import {FC} from 'react';
 
 import './contacts-page.css';
 
-import location from '../../assets/images/location_img.png';
-import phone from '../../assets/images/phone_img.png';
+import location from '../../assets/images/location_img.jpeg';
+import phone from '../../assets/images/phone_img.jpeg';
 import {Helmet} from "react-helmet";
 
 const ContactsPage: FC = () => {

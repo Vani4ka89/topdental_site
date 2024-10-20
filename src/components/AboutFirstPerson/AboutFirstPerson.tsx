@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import './about-first-person.css';
-import aboutImg_1 from "../../assets/images/img_4.png";
+import aboutImg_1 from "../../assets/images/img_4.jpeg";
 
 const AboutFirstPerson: FC = () => {
     return (

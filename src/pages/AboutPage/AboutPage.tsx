@@ -2,7 +2,7 @@ import {FC} from 'react';
 import {Helmet} from "react-helmet";
 
 import '../../components/About/about.css';
-import aboutImg from '../../assets/images/img_2.png';
+import aboutImg from '../../assets/images/img_2.jpeg';
 
 import './about-page.css';
 

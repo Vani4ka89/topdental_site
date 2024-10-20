@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import './about-second-person.css';
-import aboutImg_2 from "../../assets/images/img_5.png";
+import aboutImg_2 from "../../assets/images/img_5.jpeg";
 
 const AboutSecondPerson: FC = () => {
     return (

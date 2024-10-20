@@ -1,6 +1,6 @@
-import photo_1 from '../assets/images/photo_1.png';
-import photo_2 from '../assets/images/photo_2.png';
-import photo_3 from '../assets/images/photo_3.png';
+import photo_1 from '../assets/images/photo_1.jpeg';
+import photo_2 from '../assets/images/photo_2.jpeg';
+import photo_3 from '../assets/images/photo_3.jpeg';
 
 export const person = [
     {

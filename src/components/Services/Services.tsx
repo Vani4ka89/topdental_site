@@ -2,7 +2,7 @@ import {FC} from 'react';
 
 import './services.css';
 
-import tooth from "../../assets/images/tooth-icon.png";
+import tooth from "../../assets/images/tooth-icon.jpeg";
 
 const Services: FC = () => {
     return (
