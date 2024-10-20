@@ -13,7 +13,7 @@ const ServicesBottomContent: FC = () => {
                         Не соромтеся зв’язатися з нами, щоб отримати перший безкоштовний запит на первинну
                         консультацію лікаря.
                     </p>
-                    <HashLink to="/home#recording" className="btn">Консультація</HashLink>
+                    <HashLink to="/#recording" className="btn">Консультація</HashLink>
                 </div>
             </div>
         </section>
