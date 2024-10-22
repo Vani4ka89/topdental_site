@@ -101,7 +101,7 @@ const RecordingForm: FC = () => {
                     <p> ☑️️</p>
                     <p>Дякую!</p>
                     <p>Ми Вам перетелефонуємо.</p>
-                    <Link to="" className="btn" onClick={hideAnswer}>OK</Link>
+                    <Link to="" className="btn-dialog" onClick={hideAnswer}>OK</Link>
                 </div>
             }
         </form>

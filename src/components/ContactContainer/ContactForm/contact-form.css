@@ -74,7 +74,18 @@ textarea {
     margin-bottom: 30px;
 }
 
-.contact-form .answer .btn {
+.btn-dialog {
+    padding: 7px 20px;
+    background: linear-gradient(to left, #dee2e2, #939597);
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+.btn-dialog:hover {
+    background: linear-gradient(to left, #64656a, #e1e6e9);
+}
+
+.contact-form .answer .btn-dialog {
     margin-top: 60px;
     padding: 2px 50px;
 }
@@ -123,8 +134,7 @@ textarea {
         font-weight: bold;
     }
 
-    .contact-form .answer .btn {
-        order: -1;
+    .contact-form .answer .btn-dialog {
         margin-top: 60px;
         padding: 2px 50px;
     }
@@ -143,8 +153,7 @@ textarea {
         padding: 11px 0;
     }
 
-    .contact-form .answer .btn {
-        order: -1;
+    .contact-form .answer .btn-dialog {
         margin-top: 60px;
         padding: 2px 50px;
     }

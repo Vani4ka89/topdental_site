@@ -76,7 +76,18 @@ input[type=number] {
     margin-bottom: 30px;
 }
 
-.recording-form .answer .btn {
+.btn-dialog {
+    padding: 7px 20px;
+    background: linear-gradient(to left, #dee2e2, #939597);
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+.btn-dialog:hover {
+    background: linear-gradient(to left, #64656a, #e1e6e9);
+}
+
+.recording-form .answer .btn-dialog {
     margin-top: 60px;
     padding: 2px 50px;
 }
@@ -113,7 +124,7 @@ input[type=number] {
         font-weight: bold;
     }
 
-    .recording-form .answer .btn {
+    .recording-form .answer .btn-dialog {
         margin-top: 60px;
         padding: 2px 50px;
     }
