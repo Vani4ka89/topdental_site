@@ -1,150 +1,91 @@
 .service {
-    background: linear-gradient(to top, #ffffff, #b2b8bb);
-}
-
-.services-container {
-    max-width: 60%;
-    margin: 0 auto;
-    padding: 20px;
-    background: linear-gradient(to top, #ffffff, #b2b8bb);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: var(--color-soft);
 }
 
 .services-title {
     text-align: center;
-    font-size: 2.5rem;
-    color: #FFFFFF;
 }
-
-.service-category {
-    margin-bottom: 20px;
-}
-
-.service-category h2 {
-    font-size: 1.5rem;
-    color: #6e6e6e;
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 15px;
-}
-
-.service-category ul {
-    list-style-type: disc;
-    padding-left: 40px;
-}
-
-.service-category ul li {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.service-category ul li::marker {
-    color: #737272;
-}
-
-@media (max-width: 768px) {
-    .services-container {
-        padding: 10px;
-    }
-
-    .services-title {
-        font-size: 2rem;
-    }
-
-    .service-category h2 {
-        font-size: 1.6rem;
-    }
-
-    .service-category ul li {
-        font-size: 1.1rem;
-    }
-}
-
-/* New style */
 
 .service-wrapper {
-    width: 80%;
+    width: var(--container);
     display: grid;
     margin: 0 auto;
-    padding: 40px 0;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 40px;
-    row-gap: 60px;
+    padding: clamp(50px, 7vw, 86px) 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
 }
+
 .service-item {
-    background: linear-gradient(to top, #e8e8e8, #9f9f9f);
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
-    text-align: left;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    min-height: 205px;
+    min-height: 230px;
+    padding: 30px 24px 24px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    background: #ffffff;
+    box-shadow: var(--shadow-card);
 }
+
+.service-item::after {
+    content: '';
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(15, 118, 110, 0.08);
+}
+
 .service-item strong {
     display: block;
-    padding: 0 0 10px 20px;
-    font-size: 1.2em;
-    text-align: center;
-    color: #595b5e;
+    margin-bottom: 14px;
+    color: var(--color-ink);
+    font-size: 18px;
+    line-height: 1.35;
 }
 
 .service-item ul {
-    padding-left: 10px;
-    list-style-type: none;
+    display: grid;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
 }
 
 .service-item ul li {
-    margin: 5px 0;
-    font-style: italic;
+    position: relative;
+    padding-left: 16px;
+    color: var(--color-muted);
+    font-size: 15px;
 }
 
-.service-item ul li:before {
-    content: '☑️';
-    display: inline-block;
-    margin-right: 10px;
-
-}
-.tooth-icon {
-    width: 30px;
+.service-item ul li::before {
+    content: '';
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 0.72em;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .service-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.tooth-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-bottom: 18px;
+    border-radius: 0;
+}
 
-    .services-title {
-        font-size: 30px;
+@media screen and (max-width: 1100px) {
+    .service-wrapper {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media screen and (max-width: 477px) {
-    .main section.service {
-        padding: 0;
-    }
-
+@media screen and (max-width: 620px) {
     .service-wrapper {
-        grid-template-columns: repeat(1, 1fr);
-        row-gap: 30px;
-    }
-
-    .services-title {
-        font-size: 25px;
-    }
-
-    .service-item {
-        min-height: 100px;
-    }
-
-    .service-item strong {
-        font-size: 1em;
+        grid-template-columns: 1fr;
+        width: min(100% - 32px, 560px);
     }
 }

@@ -1,6 +1,6 @@
 .consultation-content {
-    padding: 100px 0;
-    background: linear-gradient(to top, #AAAAAA, #595b5e);
+    padding: clamp(72px, 9vw, 112px) 0;
+    background: var(--color-ink);
 }
 
 .consultation-content__container {
@@ -10,56 +10,24 @@
 }
 
 .content-block {
-    width: 80%;
-}
-
-.content-block p {
-    color: #FFFFFF;
-    padding: 30px 0 70px 0;
-    font-size: 19px;
+    width: min(780px, 100%);
 }
 
 .content-block h2 {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .content-block h2::after {
-    display: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.content-block p {
+    padding: 0 0 34px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 19px;
 }
 
 .content-block a.btn {
-    padding: 10px 15px;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-/******************* MEDIA ********************/
-
-@media screen and (max-width: 477px) {
-    .content-block h2 {
-        font-size: 21px;
-    }
-
-    .content-block p {
-        font-size: 14px;
-    }
-
-    .content-block a.btn {
-        font-size: 13px;
-        font-weight: bold;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .consultation-content {
-        padding: 50px 0;
-    }
-
-    .content-block a.btn {
-        font-size: 15px;
-    }
-
-    .content-block p {
-        font-size: 17px;
-    }
+    padding: 12px 22px;
 }

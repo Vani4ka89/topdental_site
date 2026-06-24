@@ -1,46 +1,76 @@
 .custom {
-    height: 100vh;
-    width: 100vw;
-    background: url('../../assets/images/img_1.jpeg') no-repeat top/cover;
+    min-height: calc(100vh - 126px);
+    width: 100%;
+    background:
+        linear-gradient(90deg, rgba(8, 31, 35, 0.74) 0%, rgba(8, 31, 35, 0.48) 48%, rgba(8, 31, 35, 0.12) 100%),
+        url('../../assets/images/img_1.jpeg') no-repeat center/cover;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
 .custom .custom__container {
-    height: 100%;
+    justify-content: flex-start;
 }
 
-.custom .custom__container .btn {
-    margin-top: 150px;
+.custom__content {
+    width: min(650px, 100%);
+    padding: clamp(64px, 11vw, 150px) 0;
+    color: #ffffff;
 }
 
-/********* MEDIA ***********/
+.custom__eyebrow {
+    display: inline-flex;
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 14px;
+    font-weight: 700;
+}
 
-@media screen and (max-width: 477px) {
+.custom h1 {
+    padding: 0;
+    background: none;
+    color: #ffffff;
+    text-align: left;
+    font-size: clamp(56px, 9vw, 104px);
+    line-height: 0.95;
+}
+
+.custom__text {
+    width: min(560px, 100%);
+    margin: 22px 0 32px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(18px, 2vw, 23px);
+    line-height: 1.45;
+}
+
+.custom__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+@media screen and (max-width: 767px) {
     .custom {
-        height: 33vh;
+        min-height: 74vh;
+        background:
+            linear-gradient(180deg, rgba(8, 31, 35, 0.68), rgba(8, 31, 35, 0.46)),
+            url('../../assets/images/img_1.jpeg') no-repeat center/cover;
     }
 
-    .custom .btn {
-        font-size: 13px;
-        font-weight: bold;
-    }
-}
-
-@media screen and (min-width: 478px) and (max-width: 767px) {
-    .custom {
-        height: 80vh;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .custom {
-        height: 62vh;
+    .custom .custom__container {
+        align-items: flex-start;
+        justify-content: center;
     }
 
-    .custom .btn {
-        font-size: 13px;
-        font-weight: bold;
+    .custom__content {
+        padding: 72px 0 56px;
+    }
+
+    .custom__actions {
+        flex-direction: column;
+        align-items: stretch;
     }
 }

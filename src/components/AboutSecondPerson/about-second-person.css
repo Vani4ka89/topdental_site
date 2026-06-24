@@ -1,88 +1,67 @@
 .about-second {
-    background: linear-gradient(to top, #ffffff, #b2b8bb);
-    padding: 100px 0;
+    background: var(--color-surface);
+    padding: clamp(70px, 9vw, 112px) 0;
+}
+
+.about-second__container {
+    gap: clamp(34px, 6vw, 78px);
 }
 
 .about-second__image {
-    width: 50%;
-    padding: 0 25px;
+    width: 44%;
 }
 
 .about-second__image img {
     width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    box-shadow: var(--shadow-card);
 }
 
 .about-second__description {
-    width: 50%;
-    padding: 0 25px;
+    width: 56%;
 }
 
 .about-second__description p {
-    font-size: 14px;
-}
-
-.about-second__description p:nth-of-type(2) {
-    margin-top: 15px;
+    margin-bottom: 14px;
 }
 
 .about-second__list {
-    margin: 15px 0;
-    list-style-type: none;
+    display: grid;
+    gap: 8px;
+    margin: 18px 0;
+    list-style: none;
 }
 
 .about-second__list .list__item {
-    font-style: italic;
+    position: relative;
+    padding-left: 18px;
+    font-style: normal;
 }
 
-@media screen and (max-width: 477px) {
-    .about-second {
-        padding: 25px 0;
+.about-second__list .list__item::before {
+    content: '';
+    position: absolute;
+    top: 0.72em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-accent);
+}
+
+@media screen and (max-width: 991px) {
+    .about-second__container {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .about-second__image {
-        padding: 0;
-        width: 90%;
+    .about-second__image,
+    .about-second__description {
+        width: 100%;
     }
 
     .about-second__image img {
-        object-fit: cover;
-        height: 300px;
-    }
-
-    .about-second h2 {
-        font-size: 21px;
-    }
-
-    .about-second__description {
-        width: 100%;
-        padding: 0;
-    }
-
-    .about-second__description p, ul li {
-        font-size: 14px;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .about-second {
-        padding: 50px 0;
-    }
-
-    .about-second__container {
-        flex-direction: column;
-    }
-
-    .about-second__image {
-        width: 50%;
-        padding: 0;
-    }
-
-    .about-second__description {
-        padding: 25px 0 0 0;
-        width: 100%;
-    }
-
-    .about-second__description p, ul li {
-        font-size: 14px;
+        aspect-ratio: 16 / 11;
     }
 }

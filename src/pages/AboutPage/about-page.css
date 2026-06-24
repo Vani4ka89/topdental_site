@@ -4,11 +4,6 @@ main.main section.about-page {
 
 .about-page h1 {
     width: 100%;
-    color: #FFFFFF;
-}
-
-.about-page .main__container p {
-    margin: 20px 0 0;
 }
 
 .about-page .main__container {
@@ -19,33 +14,25 @@ main.main section.about-page {
 .about-page-content {
     display: flex;
     align-items: center;
-    padding-top: 100px;
+    gap: clamp(34px, 6vw, 76px);
+    padding-top: clamp(54px, 8vw, 96px);
 }
 
-.about-page .about__description {
+.about-page .main__container p {
+    margin: 20px 0 0;
 }
 
 .about-page .about__image {
-    width: 40%;
+    width: 42%;
 }
 
-.about-page .about__image img {
-    border-radius: 15px;
-}
-
-@media screen and (max-width: 477px) {
+@media screen and (max-width: 767px) {
     .about-page-content {
         flex-direction: column;
-        padding-top: 40px;
     }
 
-    .about-page .about__image {
-        width: 80%;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .about-page-content {
-        padding-top: 50px;
+    .about-page .about__image,
+    .about-page .about__description {
+        width: 100%;
     }
 }

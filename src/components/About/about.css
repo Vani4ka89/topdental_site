@@ -1,93 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap');
-
 .about {
-    background: linear-gradient(to top, #ffffff, #b2b8bb);
-    padding: 100px 0;
+    background: var(--color-surface);
+    padding: clamp(70px, 9vw, 118px) 0;
+}
+
+.about__container {
+    gap: clamp(36px, 6vw, 80px);
 }
 
 .about__description {
-    width: 60%;
-    padding: 0 25px;
+    width: 54%;
+}
+
+.about__description p {
+    margin-bottom: 18px;
 }
 
 .about__description p:last-of-type {
-    margin: 20px 0 50px 0;
+    margin-bottom: 34px;
 }
 
 .about__description p span {
-    font-weight: bold;
+    color: var(--color-ink);
+    font-weight: 800;
 }
 
 .about__image {
-    width: 40%;
-    padding: 0 25px;
+    width: 46%;
 }
 
 .about__image img {
+    display: block;
     width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    box-shadow: var(--shadow-soft);
 }
 
-/********* MEDIA ***********/
-
-@media screen and (max-width: 477px) {
-    .about {
-        padding: 25px 0;
-    }
-
-    .about__description{
+@media screen and (max-width: 767px) {
+    .about__description,
+    .about__image {
         width: 100%;
-        padding: 0;
-    }
-
-    .about__description h2 {
-        font-size: 21px;
-    }
-
-    .about__description p {
-        font-size: 14px;
-    }
-
-    .about__description p:last-of-type {
-        margin: 20px 0 30px 0;
-    }
-
-    .about .btn {
-        font-size: 13px;
-        font-weight: bold;
     }
 
     .about__image {
-        margin-top: 30px;
-        width: 80%;
-        padding: 0;
-    }
-
-    .about__image img{
-        object-fit: cover;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-   .about {
-       padding: 50px 0;
-   }
-
-    .about__description {
-        width: 60%;
-        padding: 0 25px 0 0;
-    }
-
-    .about__description p {
-        font-size: 14px;
-    }
-
-    .about .btn {
-        font-size: 13px;
-        font-weight: bold;
-    }
-
-    .about__image {
-        width: 40%;
-        padding: 0 0 0 25px;
+        order: -1;
     }
 }

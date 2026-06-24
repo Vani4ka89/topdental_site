@@ -1,129 +1,90 @@
 .contact {
-    background: linear-gradient(to top, #ffffff, #b2b8bb);
-    padding: 60px 0;
+    background: var(--color-surface);
+    padding: clamp(70px, 9vw, 112px) 0;
     position: relative;
+}
+
+.contact__container {
+    align-items: stretch;
+    gap: clamp(28px, 5vw, 64px);
 }
 
 .contact__content {
     display: flex;
+    width: 50%;
     flex-direction: column;
-    width: 48%;
-    gap: 25px;
-    padding: 20px 10px;
+    gap: 24px;
 }
 
 .contact .content__description h3 {
-    color: #595b5e;
-    font-size: 24px;
-    font-weight: 600;
+    color: var(--color-ink);
+    font-size: 28px;
 }
 
 .contact .content__description h3::after {
     content: '';
     display: block;
-    height: 2px;
-    width: 11%;
-    background: #595b5e;
-    margin: 15px 0;
+    width: 70px;
+    height: 3px;
+    margin: 14px 0 18px;
+    border-radius: 999px;
+    background: var(--color-accent);
 }
 
 .contact .content__description p {
-    font-style: italic;
-    font-size: 15px;
+    color: var(--color-muted);
 }
 
 .contact__info {
-    width: 100%;
+    display: grid;
+    gap: 14px;
 }
 
-.info__address, .info__time, .info__email {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    text-align: left;
-}
-
-.contact__info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.info__address,
+.info__time,
+.info__email {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+    padding: 16px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    background: var(--color-soft);
 }
 
 .contact__info ul {
     list-style-type: none;
 }
 
-.contact__info p, ul {
-    font-size: 16px;
-    font-weight: 500;
+.contact__info p,
+.contact__info ul {
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 600;
 }
 
-/******************** MEDIA ********************/
+.contact iframe {
+    width: 100%;
+    min-height: 250px;
+    border-radius: var(--radius);
+}
 
-@media screen and (max-width: 477px) {
-    main section.contact#contact {
-        padding-bottom: 20px;
+@media screen and (max-width: 991px) {
+    .contact__container {
+        flex-direction: column;
     }
 
-    .contact {
-        padding: 10% 0;
-    }
-
-    .contact__content {
-        padding: 0;
-    }
-
-    .contact .content__description h3 {
-        font-size: 21px;
-    }
-
-    .contact .content__description p {
-        font-size: 14px;
-    }
-
-    .contact__info p, ul li {
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    .contact__content, .contact__container .contact-form {
+    .contact__content,
+    .contact__container .contact-form {
         width: 100%;
     }
-
-    .contact__container .contact-form {
-        padding: 30px 20px 40px;
-    }
-
-    .contact .width-10 {
-        width: 19%;
-    }
-
-    .info__address, .info__time, .info__email {
-        gap: 30px;
-    }
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .contact {
-        padding: 30px 0 15px;
-    }
-
-    .contact__content {
-        width: 55%;
-        gap: 20px;
-        padding: 20px 25px 20px 10px;
-    }
-
-    .contact .content__description p {
-        font-size: 14px;
-    }
-
-    .contact__info p, ul {
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    .info__address, .info__time, .info__email {
-        gap: 28px;
+@media screen and (max-width: 560px) {
+    .info__address,
+    .info__time,
+    .info__email {
+        grid-template-columns: 1fr;
+        gap: 6px;
     }
 }

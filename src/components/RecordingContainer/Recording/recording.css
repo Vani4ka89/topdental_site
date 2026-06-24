@@ -1,78 +1,40 @@
 .recording {
-    background: url('../../../assets/images/IMG_1756.jpeg') no-repeat top center/cover fixed;
-    position: relative;
-    padding: 125px 0;
+    background:
+        linear-gradient(90deg, rgba(8, 31, 35, 0.82), rgba(8, 31, 35, 0.48)),
+        url('../../../assets/images/IMG_1756.jpeg') no-repeat center/cover;
+    padding: clamp(76px, 10vw, 132px) 0;
 }
 
-.recording::after {
-    content: '';
-    background: rgba(2, 2, 2, .6);
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+.recording__container {
+    gap: clamp(34px, 6vw, 78px);
 }
 
 .recording__content {
-    width: 60%;
-    z-index: 10;
+    width: 52%;
 }
 
-.recording__content h2, .recording__content p {
-    color: #FFFFFF;
-}
-
-.recording__content p:last-child {
-    margin-top: 20px;
-    font-style: italic;
+.recording__content h2,
+.recording__content p {
+    color: #ffffff;
 }
 
 .recording__content h2::after {
-    background-color: #FFFFFF;
+    background-color: var(--color-accent);
 }
 
-.recording__content p:last-of-type {
-    color: #b2b8bb;
+.recording__content p {
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 18px;
 }
 
-/********* MEDIA ***********/
-
-@media screen and (max-width: 477px) {
-    .recording__content, .recording .recording-form {
-        width: 100%;
-    }
-
-    .recording__content h2 {
-        font-size: 21px;
-    }
-
-    .recording__content p {
-        font-size: 14px;
-    }
-
-    .recording__content p:last-child {
-        margin: 20px 0;
-    }
-
-    .recording .recording-form .submit-btn {
-        margin-top: 25px;
-        padding: 12px 0;
-        font-size: 13px;
-        font-weight: bold;
-    }
+.recording__content p:last-child {
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 15px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .recording {
-        padding: 50px 0;
-    }
-
+@media screen and (max-width: 767px) {
     .recording__content {
-        padding-right: 10px;
-    }
-
-    .recording__content p {
-        font-size: 14px;
+        width: 100%;
     }
 }

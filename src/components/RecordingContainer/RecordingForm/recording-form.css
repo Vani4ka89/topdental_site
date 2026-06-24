@@ -1,149 +1,93 @@
 .recording-form {
-    width: 40%;
-    z-index: 10;
-}
-
-.recording-form .submit-btn {
-    margin-top: 35px;
-    padding: 15px 0;
+    width: 42%;
+    padding: clamp(24px, 4vw, 42px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.13);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(14px);
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .form-group .error {
-    font-size: 12px;
-    color: red;
+    margin-top: 6px;
+    color: #fecaca;
+    font-size: 13px;
     text-align: center;
 }
 
 .recording-form input {
     width: 100%;
-    padding: 15px;
-    background: rgba(89, 91, 94, 0.91);
-    color: #b2b8bb;
-    border-radius: 30px;
-    border: none;
-    font-size: 14px;
+    padding: 15px 17px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--color-ink);
+    font-size: 15px;
 }
 
 .recording-form input::placeholder {
-    color: #b2b8bb;
+    color: var(--color-muted);
 }
 
 .recording-form input:focus {
-    border-color: #595b5e;
+    border-color: #ffffff;
     outline: none;
-    box-shadow: 0 0 5px rgba(72, 73, 74, 0.5);
+    box-shadow: 0 0 0 4px rgba(214, 168, 79, 0.22);
+}
+
+.recording-form .submit-btn {
+    margin-top: 16px;
+    padding: 15px 0;
 }
 
 .submit-btn {
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
 }
 
-/* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
 }
 
 .recording-form .answer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 50;
     display: flex;
+    width: min(360px, calc(100% - 32px));
+    transform: translate(-50%, -50%);
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    position: fixed;
-    top: 32vh;
-    left: 37vw;
+    padding: 34px;
+    border-radius: var(--radius);
     background-color: #ffffff;
-    padding: 50px;
-    z-index: 50;
-}
-
-.recording-form .answer p:first-child {
-    margin-bottom: 30px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
 }
 
 .btn-dialog {
-    padding: 7px 20px;
-    background: linear-gradient(to left, #dee2e2, #939597);
-    border-radius: 30px;
-    font-size: 16px;
+    display: inline-flex;
+    margin-top: 28px;
+    padding: 8px 34px;
+    border-radius: 999px;
+    background: var(--color-brand);
+    color: #ffffff;
+    font-weight: 700;
 }
 
-.btn-dialog:hover {
-    background: linear-gradient(to left, #64656a, #e1e6e9);
-}
-
-.recording-form .answer .btn-dialog {
-    margin-top: 60px;
-    padding: 2px 50px;
-}
-
-/************** MEDIA **************/
-
-@media screen and (max-width: 477px) {
-    .recording-form input {
-        font-size: 13px;
-    }
-
-    .recording-form .answer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: fixed;
-        top: 37vh;
-        left: 50vw;
-        transform: translate(-50%, -50%);
-        background-color: #ffffff;
-        padding: 15px;
-        z-index: 50;
-        font-size: 14px;
-    }
-
-    .recording-form .answer p:first-child {
-        margin-bottom: 30px;
-    }
-
-    .recording-form .answer .thanks {
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-
-    .recording-form .answer .btn-dialog {
-        margin-top: 60px;
-        padding: 2px 50px;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
+@media screen and (max-width: 767px) {
     .recording-form {
-        padding: 10px;
-    }
-
-    .recording-form .submit-btn {
-        font-size: 14px;
-        font-weight: bold;
-        margin-top: 15px;
-        padding: 10px 0;
-    }
-
-    .recording-form input {
-        padding: 12px;
-        font-size: 13px;
+        width: 100%;
     }
 }
