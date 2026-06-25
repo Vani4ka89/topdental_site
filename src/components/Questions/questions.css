@@ -1,53 +1,67 @@
 .questions {
-    padding: 100px 0;
-    background: linear-gradient(to top, #ffffff, #b2b8bb);
-}
-
-.questions .content__description {
-    margin-bottom: 25px;
-    font-size: 19px;
-    font-style: italic;
-}
-
-.questions .MuiPaper-root {
-    background:linear-gradient(0deg, rgb(210, 210, 210) 0%, rgb(225, 230, 233) 100%);
+    background: var(--color-warm-white);
 }
 
 .questions__list {
-    margin-bottom: 15px;
-    padding-left: 40px;
+    display: grid;
+    gap: 12px;
+    margin-top: var(--space-2xl);
 }
 
-/********* MEDIA ***********/
-
-@media screen and (max-width: 477px) {
-   .questions {
-       padding: 25px 0;
-   }
-
-    .questions h2{
-        font-size: 21px;
-    }
-
-    .questions .content__description {
-        font-size: 14px;
-    }
-
-    .questions .MuiTypography-root {
-        font-size: 14px;
-    }
+.questions .MuiPaper-root {
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: none;
+    transition:
+        border-color var(--duration-normal) var(--ease-standard),
+        box-shadow var(--duration-normal) var(--ease-standard),
+        transform var(--duration-normal) var(--ease-standard);
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .questions {
-        padding: 50px 0;
-    }
+.questions .MuiPaper-root::before {
+    display: none;
+}
 
-    .questions .content__description {
-        font-size: 14px;
-    }
+.questions .MuiPaper-root.Mui-expanded {
+    border-color: rgba(31, 142, 163, 0.28);
+    box-shadow: var(--shadow-sm);
+}
 
-    .questions .MuiTypography-root {
-        font-size: 14px;
-    }
+.questions .MuiAccordionSummary-root {
+    min-height: 68px;
+    padding: 0 20px;
+}
+
+.questions .MuiAccordionSummary-content {
+    margin: 16px 0;
+}
+
+.questions .MuiAccordionSummary-content.Mui-expanded {
+    margin: 16px 0;
+}
+
+.questions .MuiTypography-root {
+    color: var(--color-graphite);
+    font-family: var(--font-sans);
+}
+
+.questions .MuiAccordionSummary-content .MuiTypography-root {
+    color: var(--color-ink);
+    font-size: 1rem;
+    font-weight: 820;
+}
+
+.questions .MuiAccordionDetails-root {
+    padding: 0 20px 22px;
+}
+
+.questions .MuiAccordionDetails-root .MuiTypography-root {
+    color: var(--color-muted);
+    font-size: 0.98rem;
+}
+
+.questions .MuiSvgIcon-root {
+    color: var(--color-blue-strong);
 }

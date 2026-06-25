@@ -1,93 +1,100 @@
 import {FC, useState} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
-import {Link} from "react-router-dom";
-import {AxiosError} from "axios";
 
 import {IForm} from "../../../interfaces";
 import {sendFormService} from "../../../services";
 import {firstFormValidator} from "../../../validators";
-
+import {ModalComponent} from "../../ModalComponent/ModalComponent";
+import {Button, FormField} from "../../ui";
+import {useContent} from '../../../content';
 import './contact-form.css';
 
+const normalizePhone = (value: string) => {
+    const hasPlus = value.trim().startsWith('+');
+    const digits = value.replace(/\D/g, '').slice(0, 12);
+
+    if (hasPlus || digits.startsWith('380')) {
+        return `+${digits}`;
+    }
+
+    return digits;
+};
+
 const ContactForm: FC = () => {
-    const [answer, setAnswer] = useState(null);
-    const {register, handleSubmit, reset, formState: {errors}} = useForm<IForm>({
+    const {content} = useContent();
+    const formContent = content.forms.contact;
+    const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const {register, handleSubmit, reset, formState: {errors, isSubmitting}} = useForm<IForm>({
+        defaultValues: {comment: '', name: '', phoneNumber: ''},
         mode: "onChange",
         resolver: joiResolver(firstFormValidator)
     });
 
-    const hideAnswer = () => {
-        setAnswer(null);
-    };
+    const phoneRegistration = register('phoneNumber', {
+        onChange: (event) => {
+            event.target.value = normalizePhone(event.target.value);
+        }
+    });
 
     const send: SubmitHandler<IForm> = async (fields: IForm) => {
+        setErrorMessage('');
+
         try {
-            const {data} = await sendFormService.sendFirstForm(fields);
-            setAnswer(data);
-            reset();
-        } catch (e) {
-            throw new AxiosError('Server Error!!!');
+            await sendFormService.sendFirstForm(fields);
+            reset({comment: '', name: '', phoneNumber: ''});
+            setIsSuccessOpen(true);
+        } catch {
+            setErrorMessage(formContent.errorMessage);
         }
     };
 
     return (
-        <form className="contact-form" onSubmit={handleSubmit(send)}>
-            <div className="form-group">
-                <input
+        <>
+            <form className="contact-form appointment-form" onSubmit={handleSubmit(send)} noValidate>
+                <FormField
+                    autoComplete="name"
+                    disabled={isSubmitting}
+                    error={errors.name?.message}
+                    label={formContent.nameLabel}
+                    placeholder={formContent.namePlaceholder}
+                    registration={register('name')}
+                    required
                     type="text"
-                    id="name"
-                    {...register('name')}
-                    placeholder="Ваше ім'я*"
-                    required
                 />
-                {
-                    errors.name?.message &&
-                    <div className="error">
-                        {errors.name?.message}
-                    </div>
-                }
-            </div>
-
-            <div className="form-group">
-                <input
+                <FormField
+                    autoComplete="tel"
+                    disabled={isSubmitting}
+                    error={errors.phoneNumber?.message}
+                    helperText={formContent.phoneHelper}
+                    inputMode="tel"
+                    label={formContent.phoneLabel}
+                    placeholder={formContent.phonePlaceholder}
+                    registration={phoneRegistration}
+                    required
                     type="tel"
-                    placeholder="Номер телефону*"
-                    required
-                    {...register('phoneNumber',
-                        {
-                            onChange: (e) => {
-                                e.target.value = e.target.value.replace(/[^+\d]/g, "");
-                            }
-                        }
-                    )}
                 />
-                {
-                    errors.phoneNumber?.message &&
-                    <div className="error">
-                        {errors.phoneNumber?.message}
-                    </div>
-                }
-            </div>
-
-            <div className="form-group">
-                <textarea
-                    id="comment"
-                    {...register('comment')}
-                    placeholder="Коментар"
-                    rows={6}
+                <FormField
+                    as="textarea"
+                    disabled={isSubmitting}
+                    label={formContent.commentLabel}
+                    placeholder={formContent.commentPlaceholder}
+                    registration={register('comment')}
+                    rows={5}
                 />
-            </div>
-            <button className="submit-btn btn" type="submit">Отримати консультацію</button>
-            {answer &&
-                <div className="answer">
-                    <p> ☑️️</p>
-                    <p className="thanks">Дякую!</p>
-                    <p>Ми Вам перетелефонуємо.</p>
-                    <Link to="" className="btn-dialog" onClick={hideAnswer}>OK</Link>
-                </div>
-            }
-        </form>
+                {errorMessage && <p className="form-alert form-alert--error" role="alert">{errorMessage}</p>}
+                <Button className="appointment-form__submit" disabled={isSubmitting} type="submit">
+                    {isSubmitting ? formContent.submittingLabel : formContent.submitLabel}
+                </Button>
+            </form>
+            <ModalComponent
+                isOpen={isSuccessOpen}
+                message={formContent.successMessage}
+                onClose={() => setIsSuccessOpen(false)}
+                title={formContent.successTitle}
+            />
+        </>
     );
 };
 

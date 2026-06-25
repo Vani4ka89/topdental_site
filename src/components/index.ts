@@ -12,5 +12,7 @@ export * from './ModalComponent/ModalComponent';
 export * from './Questions/Questions';
 export * from './RecordingContainer';
 export * from './Reviews/Reviews';
+export * from './Seo/Seo';
 export * from './Services/Services';
 export * from './ServicesBottomContent/ServicesBottomContent';
+export * from './ui';

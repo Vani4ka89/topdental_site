@@ -6,6 +6,36 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Admin panel
+
+The site has a content admin panel at `/admin`.
+
+- Local default password: `topdental-admin`
+- For deployment, set `REACT_APP_ADMIN_PASSWORD` before building.
+- If `REACT_APP_CONTENT_API_URL` is not set, edits are stored only in the current browser `localStorage`.
+- To make edits visible in every browser, run the content API and build the frontend with `REACT_APP_CONTENT_API_URL`.
+
+### Shared content API
+
+Run the API locally:
+
+```bash
+CONTENT_ADMIN_PASSWORD=topdental-admin npm run content:server
+```
+
+Run the frontend against it:
+
+```bash
+REACT_APP_CONTENT_API_URL=http://localhost:4000 npm start
+```
+
+For production, deploy `server/content-server.cjs` as a Node process and set:
+
+- `CONTENT_ADMIN_PASSWORD` - password required for writes.
+- `CONTENT_FILE` - path to the JSON file on the server, defaults to `./data/site-content.json`.
+- `CONTENT_ALLOWED_ORIGIN` - deployed site origin for CORS.
+- `REACT_APP_CONTENT_API_URL` - public API URL used by the frontend.
+
 ### `npm start`
 
 Runs the app in the development mode.\

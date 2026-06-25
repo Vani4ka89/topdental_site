@@ -1,44 +1,36 @@
 import {FC} from 'react';
+import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 
+import {Container, Reveal, SectionTitle} from '../ui';
+import {useContent} from '../../content';
 import './about-first-person.css';
-import aboutImg_1 from "../../assets/images/img_4.jpeg";
 
 const AboutFirstPerson: FC = () => {
+    const {content} = useContent();
+    const doctor = content.doctors.items[0];
+
+    if (!doctor) {
+        return null;
+    }
+
     return (
-        <section className="about-first">
-            <div className="about-first__container">
-                <div className="about-first__image">
-                    <img src={aboutImg_1} alt="image-first"/>
-                </div>
-                <div className="about-first__description">
-                    <h2>Тарас Петрович</h2>
-                    <p>
-                        Справжній професіонал своєї справи з багаторічним досвідом. Завдяки його майстерності і
-                        увазі до
-                        деталей, наші пацієнти отримують найвищий рівень обслуговування та чудові результати.
-                    </p>
-                    <ul className="about-first__list list">
-                        <li>Особливості:</li>
-                        <li className="list__item">✔️ Висококваліфікований фахівець</li>
-                        <li className="list__item">✔️ Індивідуальний підхід до кожного пацієнта</li>
-                        <li className="list__item">✔️ Використання сучасних технологій та методик</li>
-                        <li className="list__item">✔️ Використання сучасних технологій та методик</li>
-                        <li className="list__item">✔️ Дбайливе ставлення до пацієнтів</li>
+        <section className="doctor-section doctor-section--primary td-section">
+            <Container className="doctor-section__container">
+                <Reveal className="doctor-section__image">
+                    <img src={doctor.image.src} alt={doctor.image.alt} loading="lazy"/>
+                </Reveal>
+                <Reveal className="doctor-section__content" delay={100}>
+                    <SectionTitle eyebrow={doctor.role} title={doctor.name} description={doctor.description}/>
+                    <div className="doctor-section__badges">
+                        {doctor.badges.map(badge => <span key={badge}>{badge}</span>)}
+                    </div>
+                    <ul className="doctor-section__list">
+                        {doctor.credentials.map(item => (
+                            <li key={item}><CheckCircleOutlineRoundedIcon fontSize="small"/>{item}</li>
+                        ))}
                     </ul>
-                    <ul className="about-first__list list">
-                        <li>Тарас Петрович працює в багатьох напрямках стоматології, включаючи:</li>
-                        <li className="list__item">☑️ Хірургічну стоматологію</li>
-                        <li className="list__item">☑️ Ортопедичну стоматологію</li>
-                        <li className="list__item">☑️ Естетичну стоматологію</li>
-                        <li className="list__item">☑️ Імплантологію</li>
-                        <li className="list__item">☑️ Реконструктивну стоматологію</li>
-                    </ul>
-                    <p>
-                        Запишіться на консультацію вже сьогодні і відчуйте різницю!
-                        Ваше здоров'я - наш пріоритет!
-                    </p>
-                </div>
-            </div>
+                </Reveal>
+            </Container>
         </section>
     );
 };

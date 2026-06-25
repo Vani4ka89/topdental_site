@@ -1,80 +1,137 @@
-import {FC, useState} from 'react';
-import {Link} from "react-router-dom";
+import {FC, useEffect, useState} from 'react';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import {Link, NavLink, useLocation} from "react-router-dom";
 
+import {Button, Container} from '../ui';
+import {useContent} from '../../content';
 import './header.css';
-import topDentalLogo from '../../assets/images/logo.png';
 
 const Header: FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const toggleMenu = () => {
-        setIsMenuOpen(prevState => !prevState);
-    };
+    const [isScrolled, setIsScrolled] = useState(false);
+    const location = useLocation();
+    const {content} = useContent();
+    const {assets, clinic, navigation} = content;
 
-    const close = () => {
+    useEffect(() => {
+        setIsMenuOpen(false);
+    }, [location.pathname]);
+
+    useEffect(() => {
+        const handleScroll = () => setIsScrolled(window.scrollY > 12);
+
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, {passive: true});
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        const previousOverflow = document.body.style.overflow;
+
         if (isMenuOpen) {
-            setIsMenuOpen(false);
+            document.body.style.overflow = 'hidden';
         }
-    }
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [isMenuOpen]);
+
+    const closeMenu = () => setIsMenuOpen(false);
 
     return (
-        <header className={`header ${isMenuOpen ? 'open' : ''}`}>
-            <div className="header__top">
-                <div className="header__container">
-                    <div className="header__wrapper">
-                        <div className="header__logo">
-                            <Link to={''} onClick={close} className="teeth">
-                                <img src={topDentalLogo} alt="TopDental логотип"/>
-                            </Link>
-                            <div className="text">
-                                <p className="heading"><span className="black">TOP</span>DENTAL</p>
-                                <p className="small">ПІКЛУЄМОСЯ РАЗОМ</p>
-                            </div>
-                        </div>
-                        <div className="header__burger" onClick={toggleMenu}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <nav className="header__menu menu">
-                        <ul className="menu__list">
-                            <li className="menu__item">
-                                <Link to={'about'} onClick={close}>Про нас</Link>
-                            </li>
-                            <li className="menu__item">
-                                <Link to={'services'} onClick={close}>Послуги</Link>
-                            </li>
-                            <li className="menu__item">
-                                <Link to={'contacts'} onClick={close}>Контакти</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div className="header__social social">
-                        <ul className="social__list">
-                            <li className="social__item">
-                                <Link to={'tel:+380962270530'} className="phone"></Link>
-                            </li>
-                            <li className="social__item">
-                                <Link to={'mailto:topdentalternopil@gmail.com'} className="mail"></Link>
-                            </li>
-                            <li className="social__item">
-                                <Link
-                                    to={'https://www.facebook.com/p/%D0%9F%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D0%B0-%D0%A1%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%8F-TopDental-100063561343890/'}
-                                    className="facebook"></Link>
-                            </li>
-                            <li className="social__item">
-                                <Link to={'https://instagram.com/topdentalternopil'} className="instagram"></Link>
-                            </li>
-                        </ul>
-                    </div>
+        <header className={`site-header ${isScrolled ? 'is-scrolled' : ''} ${isMenuOpen ? 'is-menu-open' : ''}`}>
+            <Container className="site-header__container" size="wide">
+                <Link aria-label={`${clinic.name}, на головну`} className="site-header__brand" to="/" onClick={closeMenu}>
+                    <img src={assets.logo.src} alt={assets.logo.alt} width="56" height="56"/>
+                    <span>
+                        <strong><span>{navigation.brandPrefix}</span>{navigation.brandSuffix}</strong>
+                        <small>{navigation.brandTagline}</small>
+                    </span>
+                </Link>
+
+                <nav aria-label="Основна навігація" className="site-header__nav" id="primary-navigation">
+                    {navigation.main.map(item => (
+                        <NavLink
+                            className={({isActive}) => `site-header__link ${isActive ? 'is-active' : ''}`}
+                            key={item.to}
+                            onClick={closeMenu}
+                            to={item.to}
+                        >
+                            {item.label}
+                        </NavLink>
+                    ))}
+                </nav>
+
+                <div className="site-header__meta" aria-label="Швидкі контакти">
+                    <span><AccessTimeOutlinedIcon fontSize="small"/>{clinic.hours.short}</span>
+                    <a href={`tel:${clinic.phone}`}><LocalPhoneOutlinedIcon fontSize="small"/>{clinic.phoneDisplay}</a>
                 </div>
-            </div>
-            <div className="header__bottom">
-                <div className="header__container">
-                    <p>Години роботи:<span className="header__time">10:00 - 19:00</span></p>
-                    <p>+38 (096) 227 05 30</p>
-                    <p>topdentalternopil@gmail.com</p>
+
+                <div className="site-header__actions">
+                    <a aria-label={`Зателефонувати в ${clinic.name}`} className="site-header__icon-link" href={`tel:${clinic.phone}`}>
+                        <LocalPhoneOutlinedIcon fontSize="small"/>
+                    </a>
+                    <a aria-label={`Написати ${clinic.name} на email`} className="site-header__icon-link" href={`mailto:${clinic.email}`}>
+                        <MailOutlineOutlinedIcon fontSize="small"/>
+                    </a>
+                    <a aria-label={`${clinic.name} у Facebook`} className="site-header__icon-link" href={clinic.socials.facebook} rel="noreferrer" target="_blank">
+                        <FacebookIcon fontSize="small"/>
+                    </a>
+                    <a aria-label={`${clinic.name} в Instagram`} className="site-header__icon-link" href={clinic.socials.instagram} rel="noreferrer" target="_blank">
+                        <InstagramIcon fontSize="small"/>
+                    </a>
+                    <Button as="hash" className="site-header__cta" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording">
+                        {navigation.ctaLabel}
+                    </Button>
                 </div>
+
+                <button
+                    aria-controls="mobile-navigation"
+                    aria-expanded={isMenuOpen}
+                    aria-label={isMenuOpen ? 'Закрити меню' : 'Відкрити меню'}
+                    className="site-header__burger"
+                    onClick={() => setIsMenuOpen(value => !value)}
+                    type="button"
+                >
+                    <span></span>
+                    <span></span>
+                </button>
+            </Container>
+
+            <div className="mobile-menu" id="mobile-navigation" aria-hidden={!isMenuOpen}>
+                <nav aria-label="Мобільна навігація" className="mobile-menu__nav">
+                    {navigation.main.map(item => (
+                        <NavLink
+                            className={({isActive}) => `mobile-menu__link ${isActive ? 'is-active' : ''}`}
+                            key={item.to}
+                            onClick={closeMenu}
+                            to={item.to}
+                        >
+                            {item.label}
+                        </NavLink>
+                    ))}
+                </nav>
+                <div className="mobile-menu__panel">
+                    <p><AccessTimeOutlinedIcon fontSize="small"/>{clinic.hours.short}</p>
+                    <a href={`tel:${clinic.phone}`}><LocalPhoneOutlinedIcon fontSize="small"/>{clinic.phoneDisplay}</a>
+                    <a href={`mailto:${clinic.email}`}><MailOutlineOutlinedIcon fontSize="small"/>{clinic.email}</a>
+                </div>
+                <div className="mobile-menu__socials">
+                    <a aria-label={`${clinic.name} у Facebook`} href={clinic.socials.facebook} rel="noreferrer" target="_blank"><FacebookIcon/></a>
+                    <a aria-label={`${clinic.name} в Instagram`} href={clinic.socials.instagram} rel="noreferrer" target="_blank"><InstagramIcon/></a>
+                    <a aria-label={`${clinic.name} у Telegram`} href={clinic.socials.telegram} rel="noreferrer" target="_blank"><TelegramIcon/></a>
+                </div>
+                <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="lg" to="/#recording" onClick={closeMenu}>
+                    {navigation.mobileCtaLabel}
+                </Button>
             </div>
         </header>
     );

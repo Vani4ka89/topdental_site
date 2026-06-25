@@ -1,19 +1,36 @@
 import {FC} from 'react';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 
+import {Container, Reveal, SectionTitle} from "../../ui";
+import {useContent} from '../../../content';
+import {RecordingForm} from "../RecordingForm/RecordingForm";
 import './recording.css';
-import {RecordingForm} from "../../../components";
 
 const Recording: FC = () => {
+    const {content} = useContent();
+    const {clinic} = content;
+    const recording = content.home.recording;
+
     return (
-        <section className="recording" id="recording">
-            <div className="recording__container">
-                <div className="recording__content">
-                    <h2>Бажаєте записатися на першу консультацію?</h2>
-                    <p>Скористайтеся цією формою, щоб записатися на прийом і запланувати свій перший візит до нас.</p>
-                    <p>* Після заповнення форми чекайте дзвінка нашого адміністратора.</p>
-                </div>
-                <RecordingForm/>
-            </div>
+        <section className="recording td-section" id="recording">
+            <Container className="recording__container">
+                <Reveal className="recording__content">
+                    <SectionTitle
+                        inverse
+                        eyebrow={recording.eyebrow}
+                        title={recording.title}
+                        description={recording.description}
+                    />
+                    <div className="recording__facts">
+                        <span><AccessTimeOutlinedIcon fontSize="small"/>{clinic.hours.short}</span>
+                        <a href={`tel:${clinic.phone}`}><PhoneInTalkOutlinedIcon fontSize="small"/>{clinic.phoneDisplay}</a>
+                    </div>
+                </Reveal>
+                <Reveal className="recording__form-card" delay={120}>
+                    <RecordingForm/>
+                </Reveal>
+            </Container>
         </section>
     );
 };

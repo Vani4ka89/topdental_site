@@ -37,6 +37,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "content:server": "node server/content-server.cjs",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

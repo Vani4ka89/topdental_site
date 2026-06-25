@@ -1,65 +1,21 @@
 .consultation-content {
-    padding: 100px 0;
-    background: linear-gradient(to top, #AAAAAA, #595b5e);
+    background: var(--color-warm-white);
 }
 
-.consultation-content__container {
-    flex-direction: column;
-    align-items: center;
+.consultation-content__card {
+    display: grid;
+    min-height: 380px;
+    align-content: center;
+    justify-items: center;
+    border-radius: var(--radius-xl);
+    background:
+        radial-gradient(circle at 15% 10%, rgba(99, 194, 188, 0.26), transparent 30%),
+        linear-gradient(135deg, #11181c, #253037);
+    box-shadow: var(--shadow-lg);
+    padding: clamp(34px, 6vw, 74px);
     text-align: center;
 }
 
-.content-block {
-    width: 80%;
-}
-
-.content-block p {
-    color: #FFFFFF;
-    padding: 30px 0 70px 0;
-    font-size: 19px;
-}
-
-.content-block h2 {
-    color: #FFFFFF;
-}
-
-.content-block h2::after {
-    display: none;
-}
-
-.content-block a.btn {
-    padding: 10px 15px;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-/******************* MEDIA ********************/
-
-@media screen and (max-width: 477px) {
-    .content-block h2 {
-        font-size: 21px;
-    }
-
-    .content-block p {
-        font-size: 14px;
-    }
-
-    .content-block a.btn {
-        font-size: 13px;
-        font-weight: bold;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .consultation-content {
-        padding: 50px 0;
-    }
-
-    .content-block a.btn {
-        font-size: 15px;
-    }
-
-    .content-block p {
-        font-size: 17px;
-    }
+.consultation-content__card .td-button {
+    margin-top: var(--space-xl);
 }

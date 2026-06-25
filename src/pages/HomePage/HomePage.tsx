@@ -1,5 +1,4 @@
 import {FC} from 'react';
-import {Helmet} from 'react-helmet';
 
 import {
     About,
@@ -9,22 +8,25 @@ import {
     Cover,
     Custom,
     ImageSlider,
-    Questions, Recording, Reviews
+    Questions,
+    Recording,
+    Reviews,
+    Seo
 } from "../../components";
+import {createDentalClinicSchema, useContent} from '../../content';
 
 const HomePage: FC = () => {
+    const {content} = useContent();
+
     return (
         <main className="main">
-
-            <Helmet>
-                <title>TopDental | Сучасна стоматологічна клініка</title>
-                <meta name="description"
-                      content="TopDental – це сучасна стоматологічна клініка, яка спеціалізується на лікуванні зубів у Тернополі. Ми пропонуємо професійні послуги стоматології та використовуємо передові методи лікування."
-                />
-                <meta name="keywords"
-                      content="стоматологія, лікування зубів, Тернопіль стоматолог, TopDental, імпланти, ортодонтія"/>
-                <link rel="canonical" href="https://www.topdental.te.ua/"/>
-            </Helmet>
+            <Seo
+                canonicalPath="/"
+                description={content.seo.home.description}
+                preloadImage={content.home.hero.image.src}
+                schema={createDentalClinicSchema(content)}
+                title={content.seo.home.title}
+            />
 
             <Custom/>
             <About/>

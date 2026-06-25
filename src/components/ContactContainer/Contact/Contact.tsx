@@ -1,48 +1,58 @@
 import {FC} from 'react';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 
-import {ContactForm, Map} from "../../../components";
+import {Container, Reveal, SectionTitle} from "../../ui";
+import {useContent} from '../../../content';
+import {ContactForm} from "../ContactForm/ContactForm";
+import {Map} from "../../Map/Map";
 import './contact.css';
 
 const Contact: FC = () => {
+    const {content} = useContent();
+    const {clinic} = content;
+    const contact = content.home.contact;
+    const primaryLocation = clinic.locations[0];
+
     return (
-        <section className="contact" id="contact">
-            <div className="contact__container">
-                <div className="contact__content content">
-                    <div className="content__description">
-                        <h3>Зв'яжіться з нами</h3>
-                        <p>
-                            Не соромтеся зв’язатися з лікарем, якщо вам потрібна додаткова інформація або ви хочете
-                            записатися на першу консультацію.
-                        </p>
-                    </div>
-                    <div className="contact__info info">
-                        <div className="info__address">
-                            <p>Адреса</p>
-                            <p>вул. Антона Монастирського 40, Тернопіль, Тернопільська область, 46002.</p>
+        <section className="contact td-section" id="contact">
+            <Container className="contact__container">
+                <Reveal className="contact__content">
+                    <SectionTitle
+                        eyebrow={contact.eyebrow}
+                        title={contact.title}
+                        description={contact.description}
+                    />
+                    <div className="contact__info">
+                        <div>
+                            <PlaceOutlinedIcon/>
+                            <span>{contact.addressLabel}</span>
+                            <p>{primaryLocation?.address}</p>
                         </div>
-                        <div className="info__time">
-                            <ul>
-                                <li>Години</li>
-                                <li>роботи</li>
-                            </ul>
-                            <ul>
-                                <li>Понеділок - п'ятниця: 10:00 - 19:00.</li>
-                                <li>Субота: за попереднім записом.</li>
-                                <li>Неділя: вихідний.</li>
-                            </ul>
+                        <div>
+                            <AccessTimeOutlinedIcon/>
+                            <span>{contact.hoursLabel}</span>
+                            <p>{clinic.hours.weekdays}. {clinic.hours.saturday}.</p>
                         </div>
-                        <div className="info__email">
-                            <p>E - mail</p>
-                            <ul>
-                                <li>+38 (096) 227 05 30</li>
-                                <li>topdentalternopil@gmail.com</li>
-                            </ul>
+                        <div>
+                            <LocalPhoneOutlinedIcon/>
+                            <span>{contact.phoneLabel}</span>
+                            <p><a href={`tel:${clinic.phone}`}>{clinic.phoneDisplay}</a></p>
+                        </div>
+                        <div>
+                            <MailOutlineOutlinedIcon/>
+                            <span>{contact.emailLabel}</span>
+                            <p><a href={`mailto:${clinic.email}`}>{clinic.email}</a></p>
                         </div>
                     </div>
                     <Map/>
-                </div>
-                <ContactForm/>
-            </div>
+                </Reveal>
+                <Reveal delay={120}>
+                    <ContactForm/>
+                </Reveal>
+            </Container>
         </section>
     );
 };

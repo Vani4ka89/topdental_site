@@ -1,47 +1,59 @@
 import {FC} from 'react';
-import {Helmet} from "react-helmet";
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import BiotechOutlinedIcon from '@mui/icons-material/BiotechOutlined';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 
-import '../../components/About/about.css';
-import aboutImg from '../../assets/images/img_2.jpeg';
-
+import {Button, Container, Reveal, SectionTitle, Seo} from "../../components";
+import {createDentalClinicSchema, useContent} from '../../content';
 import './about-page.css';
 
+const factIcons = [
+    <GroupsOutlinedIcon/>,
+    <BiotechOutlinedIcon/>,
+    <PlaceOutlinedIcon/>,
+];
+
 const AboutPage: FC = () => {
+    const {content} = useContent();
+    const page = content.pages.about;
+
     return (
         <main className="main">
+            <Seo
+                canonicalPath="/about"
+                description={content.seo.about.description}
+                schema={createDentalClinicSchema(content)}
+                title={content.seo.about.title}
+            />
 
-            <Helmet>
-                <title>Про нас | TopDental</title>
-                <meta name="description"
-                      content="TopDental - сучасна стоматологічна клініка в Тернополі. Ми пропонуємо лікування зубів та ротової порожнини з використанням новітніх технологій."/>
-            </Helmet>
-
-            <section className="about about-page">
-                <h1>Про нас</h1>
-                <div className="main__container">
-                    <div className="about-page-content">
-                        <div className="about__description">
-                            <h2>Про TopDental</h2>
-                            <p>
-                                <span>TopDental</span> – це сучасна стоматологічна клініка в Тернополі.
-                                Яка спеціалізується на лікуванні зубів, ротової порожнини, щелеп.
-
-                                Включає діагностику та лікування різних захворювань, відновлення втрачених чи уражених
-                                тканин.
-                                Наша команда досвідчених стоматологів використовує сучасні методи лікування та
-                                обладнання, щоб
-                                забезпечити найкращий результат для наших пацієнтів.
-
-                                Ми уважні до потреб наших пацієнтів і забезпечуємо комфортне та безболісне лікування.
-                                Звертаючись у <span>TopDental</span>, ви можете бути впевнені, що отримаєте якісну
-                                стоматологічну допомогу.
-                            </p>
-                        </div>
-                        <div className="about__image">
-                            <img src={aboutImg} loading="lazy" alt="about-photo"/>
-                        </div>
+            <section className="about-page td-section">
+                <Container className="about-page__container">
+                    <Reveal className="about-page__content">
+                        <SectionTitle
+                            as="h1"
+                            eyebrow={page.eyebrow}
+                            title={page.title}
+                            description={page.description}
+                        />
+                        <p>{page.body}</p>
+                        <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} to="/#recording" variant="dark">
+                            {page.buttonLabel}
+                        </Button>
+                    </Reveal>
+                    <Reveal className="about-page__image" delay={120}>
+                        <img src={page.image.src} loading="lazy" alt={page.image.alt}/>
+                    </Reveal>
+                    <div className="about-page__facts">
+                        {page.facts.map((fact, index) => (
+                            <Reveal className="about-page__fact" delay={index * 80} key={fact.label}>
+                                <span aria-hidden="true">{factIcons[index % factIcons.length]}</span>
+                                <strong>{fact.value}</strong>
+                                <p>{fact.label}</p>
+                            </Reveal>
+                        ))}
                     </div>
-                </div>
+                </Container>
             </section>
         </main>
     );

@@ -1,51 +1,74 @@
-main.main section.about-page {
-    padding-top: 0;
+.about-page {
+    background: linear-gradient(180deg, var(--color-warm-white), var(--color-soft));
 }
 
-.about-page h1 {
-    width: 100%;
-    color: #FFFFFF;
-}
-
-.about-page .main__container p {
-    margin: 20px 0 0;
-}
-
-.about-page .main__container {
-    display: flex;
-    flex-direction: column;
-}
-
-.about-page-content {
-    display: flex;
+.about-page__container {
+    display: grid;
     align-items: center;
-    padding-top: 100px;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.78fr);
+    gap: clamp(32px, 6vw, 86px);
 }
 
-.about-page .about__description {
+.about-page__content > p {
+    margin: var(--space-lg) 0 var(--space-xl);
+    color: var(--color-muted);
+    font-size: 1.04rem;
 }
 
-.about-page .about__image {
-    width: 40%;
+.about-page__image img {
+    width: 100%;
+    aspect-ratio: 0.86 / 1;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    object-fit: cover;
 }
 
-.about-page .about__image img {
-    border-radius: 15px;
+.about-page__facts {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
 
-@media screen and (max-width: 477px) {
-    .about-page-content {
-        flex-direction: column;
-        padding-top: 40px;
+.about-page__fact {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+}
+
+.about-page__fact span {
+    display: inline-grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(31, 142, 163, 0.1);
+    color: var(--color-blue-strong);
+}
+
+.about-page__fact strong {
+    display: block;
+    margin-top: var(--space-lg);
+    color: var(--color-ink);
+    font-size: 1.52rem;
+    line-height: 1;
+}
+
+.about-page__fact p {
+    margin-top: 6px;
+    color: var(--color-muted);
+    font-weight: 720;
+}
+
+@media (max-width: 860px) {
+    .about-page__container,
+    .about-page__facts {
+        grid-template-columns: 1fr;
     }
 
-    .about-page .about__image {
-        width: 80%;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .about-page-content {
-        padding-top: 50px;
+    .about-page__image img {
+        aspect-ratio: 4 / 3;
     }
 }

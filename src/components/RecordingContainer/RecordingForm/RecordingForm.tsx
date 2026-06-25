@@ -1,110 +1,111 @@
 import {FC, useState} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
-import {Link} from "react-router-dom";
-import {AxiosError} from "axios";
 
 import {IFormTwo} from "../../../interfaces";
 import {sendFormService} from "../../../services";
 import {secondFormValidator} from "../../../validators";
-
+import {ModalComponent} from "../../ModalComponent/ModalComponent";
+import {Button, FormField} from "../../ui";
+import {useContent} from '../../../content';
 import './recording-form.css';
 
+const getToday = () => new Date().toISOString().slice(0, 10);
+
+const normalizePhone = (value: string) => {
+    const hasPlus = value.trim().startsWith('+');
+    const digits = value.replace(/\D/g, '').slice(0, 12);
+
+    if (hasPlus || digits.startsWith('380')) {
+        return `+${digits}`;
+    }
+
+    return digits;
+};
+
 const RecordingForm: FC = () => {
-    const [answer, setAnswer] = useState(null);
-    const {register, handleSubmit, reset, formState: {errors}} = useForm<IFormTwo>({
+    const {content} = useContent();
+    const formContent = content.forms.recording;
+    const today = getToday();
+    const [dateValue, setDateValue] = useState<string>(today);
+    const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const {register, handleSubmit, reset, formState: {errors, isSubmitting}} = useForm<IFormTwo>({
+        defaultValues: {date: today, name: '', phoneNumber: ''},
         mode: "onChange",
         resolver: joiResolver(secondFormValidator)
     });
-    const date = new Date();
-    const year = date.getFullYear();
 
-    let month: number | string = date.getMonth() + 1
-    let day: number | string = date.getDate()
+    const phoneRegistration = register("phoneNumber", {
+        onChange: (event) => {
+            event.target.value = normalizePhone(event.target.value);
+        }
+    });
 
-    if (month < 10) month = '0' + month
-    if (day < 10) day = '0' + day
-
-    const today = `${year}-${month}-${day}`
-    const [dateValue, setDateValue] = useState<string>(today);
+    const dateRegistration = register('date', {
+        onChange: (event) => setDateValue(event.target.value),
+    });
 
     const send: SubmitHandler<IFormTwo> = async (fields: IFormTwo) => {
+        setErrorMessage('');
+
         try {
-            const {data} = await sendFormService.sendSecondForm(fields);
-            setAnswer(data)
+            await sendFormService.sendSecondForm(fields);
             setDateValue(today);
-            reset();
-        } catch (e) {
-            throw new AxiosError('Server Error!!!');
+            reset({date: today, name: '', phoneNumber: ''});
+            setIsSuccessOpen(true);
+        } catch {
+            setErrorMessage(formContent.errorMessage);
         }
     };
 
-    const hideAnswer = () => {
-        setAnswer(null);
-    };
-
     return (
-        <form className="recording-form" onSubmit={handleSubmit(send)}>
-            <div className="form-group">
-                <input
+        <>
+            <form className="recording-form appointment-form" onSubmit={handleSubmit(send)} noValidate>
+                <FormField
+                    autoComplete="name"
+                    disabled={isSubmitting}
+                    error={errors.name?.message}
+                    label={formContent.nameLabel}
+                    placeholder={formContent.namePlaceholder}
+                    registration={register('name')}
+                    required
                     type="text"
-                    id="name"
-                    {...register('name')}
-                    placeholder="Ваше ім'я*"
-                    required
                 />
-                {
-                    errors.name?.message &&
-                    <div className="error">
-                        {errors.name?.message}
-                    </div>
-                }
-            </div>
-
-            <div className="form-group">
-                <input
+                <FormField
+                    autoComplete="tel"
+                    disabled={isSubmitting}
+                    error={errors.phoneNumber?.message}
+                    helperText={formContent.phoneHelper}
+                    inputMode="tel"
+                    label={formContent.phoneLabel}
+                    placeholder={formContent.phonePlaceholder}
+                    registration={phoneRegistration}
+                    required
                     type="tel"
-                    placeholder="Номер телефону*"
-                    required
-                    {...register("phoneNumber",
-                        {
-                            onChange: (e) => {
-                                e.target.value = e.target.value.replace(/[^+\d]/g, "");
-                            }
-                        }
-                    )}
                 />
-                {
-                    errors.phoneNumber?.message &&
-                    <div className="error">
-                        {errors.phoneNumber?.message}
-                    </div>
-                }
-            </div>
-
-            <div className="form-group">
-                <input
-                    type="date"
-                    id="date"
-                    {...register('date')}
-                    value={dateValue}
+                <FormField
+                    disabled={isSubmitting}
+                    error={errors.date?.message}
+                    label={formContent.dateLabel}
                     min={today}
+                    registration={dateRegistration}
                     required
-                    onChange={(item) => {
-                        setDateValue(item.target.value);
-                    }}
+                    type="date"
+                    value={dateValue}
                 />
-            </div>
-            <button className="submit-btn btn" type="submit">Отримати консультацію</button>
-            {answer &&
-                <div className="answer">
-                    <p> ☑️️</p>
-                    <p>Дякую!</p>
-                    <p>Ми Вам перетелефонуємо.</p>
-                    <Link to="" className="btn-dialog" onClick={hideAnswer}>OK</Link>
-                </div>
-            }
-        </form>
+                {errorMessage && <p className="form-alert form-alert--error" role="alert">{errorMessage}</p>}
+                <Button className="appointment-form__submit" disabled={isSubmitting} type="submit">
+                    {isSubmitting ? formContent.submittingLabel : formContent.submitLabel}
+                </Button>
+            </form>
+            <ModalComponent
+                isOpen={isSuccessOpen}
+                message={formContent.successMessage}
+                onClose={() => setIsSuccessOpen(false)}
+                title={formContent.successTitle}
+            />
+        </>
     );
 };
 
