@@ -1,4 +1,4 @@
-const http = require('http');
+const express = require('express');
 const fs = require('fs/promises');
 const path = require('path');
 
@@ -13,21 +13,9 @@ const corsHeaders = {
     'Access-Control-Allow-Headers': 'Content-Type,Authorization,X-Admin-Password',
 };
 
-const send = (response, statusCode, body = '', headers = {}) => {
-    response.writeHead(statusCode, {
-        ...corsHeaders,
-        ...headers,
-    });
-    response.end(body);
-};
-
-const sendJson = (response, statusCode, payload) => {
-    send(response, statusCode, JSON.stringify(payload), {'Content-Type': 'application/json; charset=utf-8'});
-};
-
 const getRequestPassword = (request) => {
-    const headerPassword = request.headers['x-admin-password'];
-    const authorization = request.headers.authorization || '';
+    const headerPassword = request.get('X-Admin-Password');
+    const authorization = request.get('Authorization') || '';
 
     if (typeof headerPassword === 'string' && headerPassword) {
         return headerPassword;
@@ -41,24 +29,6 @@ const getRequestPassword = (request) => {
 };
 
 const isAuthorized = (request) => getRequestPassword(request) === adminPassword;
-
-const readBody = (request) => (
-    new Promise((resolve, reject) => {
-        let body = '';
-
-        request.on('data', chunk => {
-            body += chunk;
-
-            if (Buffer.byteLength(body) > bodyLimitBytes) {
-                reject(new Error('Request body is too large'));
-                request.destroy();
-            }
-        });
-
-        request.on('end', () => resolve(body));
-        request.on('error', reject);
-    })
-);
 
 const readContent = async () => {
     try {
@@ -84,76 +54,98 @@ const removeContent = async () => {
     await fs.rm(contentFile, {force: true});
 };
 
-const server = http.createServer(async (request, response) => {
-    const url = new URL(request.url || '/', `http://${request.headers.host || 'localhost'}`);
+const asyncHandler = (handler) => (request, response, next) => {
+    Promise.resolve(handler(request, response, next)).catch(next);
+};
 
-    if (request.method === 'OPTIONS') {
-        send(response, 204);
+const contentJsonParser = express.json({
+    limit: bodyLimitBytes,
+    strict: false,
+    type: () => true,
+});
+
+const requireAdmin = (request, response, next) => {
+    if (!isAuthorized(request)) {
+        response.status(401).json({error: 'Unauthorized'});
         return;
     }
 
-    try {
-        if (request.method === 'GET' && url.pathname === '/') {
-            sendJson(response, 200, {
-                name: 'TopDental content API',
-                adminUrl: 'Open the React app at /admin, not this API URL.',
-                endpoints: {
-                    health: '/health',
-                    content: '/content',
-                },
-            });
-            return;
-        }
+    next();
+};
 
-        if (request.method === 'GET' && url.pathname === '/health') {
-            sendJson(response, 200, {ok: true});
-            return;
-        }
+const app = express();
 
-        if (request.method === 'GET' && url.pathname === '/content') {
-            sendJson(response, 200, await readContent());
-            return;
-        }
+app.disable('x-powered-by');
 
-        if (request.method === 'POST' && url.pathname === '/auth') {
-            if (!isAuthorized(request)) {
-                sendJson(response, 401, {error: 'Unauthorized'});
-                return;
-            }
+app.use((request, response, next) => {
+    response.set(corsHeaders);
 
-            sendJson(response, 200, {ok: true});
-            return;
-        }
-
-        if (request.method === 'PUT' && url.pathname === '/content') {
-            if (!isAuthorized(request)) {
-                sendJson(response, 401, {error: 'Unauthorized'});
-                return;
-            }
-
-            const rawBody = await readBody(request);
-            await writeContent(JSON.parse(rawBody));
-            sendJson(response, 200, {ok: true});
-            return;
-        }
-
-        if (request.method === 'DELETE' && url.pathname === '/content') {
-            if (!isAuthorized(request)) {
-                sendJson(response, 401, {error: 'Unauthorized'});
-                return;
-            }
-
-            await removeContent();
-            sendJson(response, 200, {ok: true});
-            return;
-        }
-
-        sendJson(response, 404, {error: 'Not found'});
-    } catch (error) {
-        sendJson(response, 500, {
-            error: error instanceof Error ? error.message : 'Internal server error',
-        });
+    if (request.method === 'OPTIONS') {
+        response.status(204).end();
+        return;
     }
+
+    next();
+});
+
+app.get('/', (request, response) => {
+    response.json({
+        name: 'TopDental content API',
+        adminUrl: 'Open the React app at /admin, not this API URL.',
+        endpoints: {
+            health: '/health',
+            content: '/content',
+        },
+    });
+});
+
+app.get('/health', (request, response) => {
+    response.json({ok: true});
+});
+
+app.get('/content', asyncHandler(async (request, response) => {
+    response.json(await readContent());
+}));
+
+app.post('/auth', requireAdmin, (request, response) => {
+    response.json({ok: true});
+});
+
+app.put(
+    '/content',
+    requireAdmin,
+    contentJsonParser,
+    asyncHandler(async (request, response) => {
+        if (request.body === undefined) {
+            response.status(400).json({error: 'Request body is required'});
+            return;
+        }
+
+        await writeContent(request.body);
+        response.json({ok: true});
+    }),
+);
+
+app.delete('/content', requireAdmin, asyncHandler(async (request, response) => {
+    await removeContent();
+    response.json({ok: true});
+}));
+
+app.use((request, response) => {
+    response.status(404).json({error: 'Not found'});
+});
+
+app.use((error, request, response, next) => {
+    const statusCode = error && Number.isInteger(error.status) ? error.status : 500;
+
+    response.status(statusCode).json({
+        error: error instanceof Error ? error.message : 'Internal server error',
+    });
+});
+
+const server = app.listen(port, () => {
+    console.log(`TopDental content API listening on http://localhost:${port}`);
+    console.log(`Content file: ${contentFile}`);
 });
 
 server.on('error', (error) => {
@@ -164,9 +156,4 @@ server.on('error', (error) => {
     }
 
     throw error;
-});
-
-server.listen(port, () => {
-    console.log(`TopDental content API listening on http://localhost:${port}`);
-    console.log(`Content file: ${contentFile}`);
 });

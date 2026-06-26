@@ -45,6 +45,7 @@ export interface DoctorItem {
 export interface ServiceItem {
     description: string;
     details: string[];
+    image?: EditableImage;
     result: string;
     title: string;
 }

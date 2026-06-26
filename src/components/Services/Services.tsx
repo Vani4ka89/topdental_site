@@ -44,41 +44,53 @@ const Services: FC = () => {
                     />
                 </Reveal>
                 <div className="service-grid">
-                    {services.items.map((service, index) => (
-                        <Reveal as="article" className="service-card" delay={index * 70} key={service.title} tabIndex={0}>
-                            <div className="service-card__inner">
-                                <div className="service-card__beam-glow" aria-hidden="true"></div>
-                                <div className="service-card__beam" aria-hidden="true"></div>
-                                <div className="service-card__face service-card__front">
-                                    <div className="service-card__header">
-                                        <div className="service-card__icon" aria-hidden="true">{serviceIcons[index % serviceIcons.length].icon}</div>
-                                        <h2>{service.title}</h2>
+                    {services.items.map((service, index) => {
+                        const serviceImage = service.image;
+                        const hasServiceImage = Boolean(serviceImage?.src);
+
+                        return (
+                            <Reveal as="article" className="service-card" delay={index * 70} key={service.title} tabIndex={0}>
+                                <div className="service-card__inner">
+                                    <div className="service-card__beam-glow" aria-hidden="true"></div>
+                                    <div className="service-card__beam" aria-hidden="true"></div>
+                                    <div className="service-card__face service-card__front">
+                                        <div className="service-card__header">
+                                            <div
+                                                aria-hidden={hasServiceImage ? undefined : true}
+                                                className={`service-card__icon${hasServiceImage ? ' service-card__icon--image' : ''}`}
+                                            >
+                                                {hasServiceImage
+                                                    ? <img src={serviceImage.src} alt={serviceImage.alt || service.title}/>
+                                                    : serviceIcons[index % serviceIcons.length].icon}
+                                            </div>
+                                            <h2>{service.title}</h2>
+                                        </div>
+                                        <p>{service.description}</p>
+                                        <ul className="service-card__chips">
+                                            {service.details.map(detail => <li key={detail}>{detail}</li>)}
+                                        </ul>
+                                        <span className="service-card__hint">{services.hintLabel}</span>
                                     </div>
-                                    <p>{service.description}</p>
-                                    <ul className="service-card__chips">
-                                        {service.details.map(detail => <li key={detail}>{detail}</li>)}
-                                    </ul>
-                                    <span className="service-card__hint">{services.hintLabel}</span>
+                                    <div className="service-card__face service-card__back">
+                                        <span className="service-card__back-label">{services.whatIncludedLabel}</span>
+                                        <h3>{service.title}</h3>
+                                        <p>{service.result}</p>
+                                        <ul className="service-card__details">
+                                            {service.details.map(detail => (
+                                                <li key={detail}>
+                                                    <CheckCircleOutlineRoundedIcon fontSize="small"/>
+                                                    {detail}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording" variant="secondary">
+                                            {content.navigation.mobileCtaLabel}
+                                        </Button>
+                                    </div>
                                 </div>
-                                <div className="service-card__face service-card__back">
-                                    <span className="service-card__back-label">{services.whatIncludedLabel}</span>
-                                    <h3>{service.title}</h3>
-                                    <p>{service.result}</p>
-                                    <ul className="service-card__details">
-                                        {service.details.map(detail => (
-                                            <li key={detail}>
-                                                <CheckCircleOutlineRoundedIcon fontSize="small"/>
-                                                {detail}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording" variant="secondary">
-                                        {content.navigation.mobileCtaLabel}
-                                    </Button>
-                                </div>
-                            </div>
-                        </Reveal>
-                    ))}
+                            </Reveal>
+                        );
+                    })}
                 </div>
             </Container>
         </section>

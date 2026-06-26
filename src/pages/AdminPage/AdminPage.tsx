@@ -33,7 +33,13 @@ const setValue = <T,>(source: T, path: ContentPath, value: unknown): T => {
     const copy = cloneValue(source);
     let target = copy as Record<string, unknown>;
 
-    path.slice(0, -1).forEach(key => {
+    path.slice(0, -1).forEach((key, index) => {
+        const nextKey = path[index + 1];
+
+        if (target[key] === undefined || target[key] === null || typeof target[key] !== 'object') {
+            target[key] = typeof nextKey === 'number' ? [] : {};
+        }
+
         target = target[key] as Record<string, unknown>;
     });
 
@@ -95,6 +101,7 @@ const newService = {
     title: 'Нова послуга',
     description: '',
     details: [''],
+    image: {src: '', alt: 'Зображення послуги'},
     result: '',
 };
 
@@ -492,6 +499,11 @@ const AdminPage: FC = () => {
                     <Field label="Назва" path={['services', 'items', index, 'title']}/>
                     <Field label="Опис" path={['services', 'items', index, 'description']} type="textarea"/>
                     <Field label="Результат / деталі" path={['services', 'items', index, 'result']} type="textarea" rows={4}/>
+                    <ImageEditor
+                        title="Зображення послуги"
+                        srcPath={['services', 'items', index, 'image', 'src']}
+                        altPath={['services', 'items', index, 'image', 'alt']}
+                    />
                     <StringList title="Чипи / пункти" path={['services', 'items', index, 'details']}/>
                     <button className="admin-danger" type="button" onClick={() => removeItem(['services', 'items'], index)}>Видалити послугу</button>
                 </div>
@@ -770,19 +782,23 @@ const AdminPage: FC = () => {
                             <Field label="Контакти: імʼя" path={['forms', 'contact', 'nameLabel']}/>
                             <Field label="Контакти: placeholder імʼя" path={['forms', 'contact', 'namePlaceholder']}/>
                             <Field label="Контакти: телефон" path={['forms', 'contact', 'phoneLabel']}/>
+                            <Field label="Контакти: placeholder телефону" path={['forms', 'contact', 'phonePlaceholder']}/>
                             <Field label="Контакти: helper телефону" path={['forms', 'contact', 'phoneHelper']}/>
                             <Field label="Контакти: коментар" path={['forms', 'contact', 'commentLabel']}/>
                             <Field label="Контакти: placeholder коментаря" path={['forms', 'contact', 'commentPlaceholder']} type="textarea"/>
                             <Field label="Контакти: кнопка" path={['forms', 'contact', 'submitLabel']}/>
+                            <Field label="Контакти: кнопка під час відправлення" path={['forms', 'contact', 'submittingLabel']}/>
                             <Field label="Контакти: помилка" path={['forms', 'contact', 'errorMessage']} type="textarea"/>
                             <Field label="Контакти: модалка title" path={['forms', 'contact', 'successTitle']}/>
                             <Field label="Контакти: модалка message" path={['forms', 'contact', 'successMessage']} type="textarea"/>
                             <Field label="Запис: імʼя" path={['forms', 'recording', 'nameLabel']}/>
                             <Field label="Запис: placeholder імʼя" path={['forms', 'recording', 'namePlaceholder']}/>
                             <Field label="Запис: телефон" path={['forms', 'recording', 'phoneLabel']}/>
+                            <Field label="Запис: placeholder телефону" path={['forms', 'recording', 'phonePlaceholder']}/>
                             <Field label="Запис: helper телефону" path={['forms', 'recording', 'phoneHelper']}/>
                             <Field label="Запис: дата" path={['forms', 'recording', 'dateLabel']}/>
                             <Field label="Запис: кнопка" path={['forms', 'recording', 'submitLabel']}/>
+                            <Field label="Запис: кнопка під час відправлення" path={['forms', 'recording', 'submittingLabel']}/>
                             <Field label="Запис: помилка" path={['forms', 'recording', 'errorMessage']} type="textarea"/>
                             <Field label="Запис: модалка title" path={['forms', 'recording', 'successTitle']}/>
                             <Field label="Запис: модалка message" path={['forms', 'recording', 'successMessage']} type="textarea"/>
