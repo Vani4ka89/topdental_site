@@ -101,7 +101,7 @@ const newService = {
     title: 'Нова послуга',
     description: '',
     details: [''],
-    image: {src: '', alt: 'Зображення послуги'},
+    iconSvg: '',
     result: '',
 };
 
@@ -499,11 +499,7 @@ const AdminPage: FC = () => {
                     <Field label="Назва" path={['services', 'items', index, 'title']}/>
                     <Field label="Опис" path={['services', 'items', index, 'description']} type="textarea"/>
                     <Field label="Результат / деталі" path={['services', 'items', index, 'result']} type="textarea" rows={4}/>
-                    <ImageEditor
-                        title="Зображення послуги"
-                        srcPath={['services', 'items', index, 'image', 'src']}
-                        altPath={['services', 'items', index, 'image', 'alt']}
-                    />
+                    <Field label="SVG-код іконки" path={['services', 'items', index, 'iconSvg']} type="textarea" rows={6}/>
                     <StringList title="Чипи / пункти" path={['services', 'items', index, 'details']}/>
                     <button className="admin-danger" type="button" onClick={() => removeItem(['services', 'items'], index)}>Видалити послугу</button>
                 </div>
