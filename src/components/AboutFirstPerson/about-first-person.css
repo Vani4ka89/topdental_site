@@ -90,6 +90,11 @@
         order: 0;
     }
 
+    .doctor-section__image {
+        width: min(64%, 260px);
+        margin-inline: auto;
+    }
+
     .doctor-section__image::before,
     .doctor-section--secondary .doctor-section__image::before {
         inset: 14px -14px -14px 14px;

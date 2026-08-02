@@ -81,7 +81,7 @@
     width: 100%;
     aspect-ratio: 0.99;
     object-fit: cover;
-    object-position: center bottom;
+    object-position: center top;
     filter: saturate(0.98) contrast(1.02);
     transition: transform 900ms var(--ease-standard);
 }
@@ -112,11 +112,11 @@
     }
 
     .cover__portrait {
-        justify-self: stretch;
-        width: 100%;
+        justify-self: center;
+        width: min(66%, 260px);
     }
 
     .cover__portrait-shell img {
-        aspect-ratio: 1.05;
+        aspect-ratio: 0.92;
     }
 }
