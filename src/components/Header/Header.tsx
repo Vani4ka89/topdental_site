@@ -1,10 +1,12 @@
 import {FC, useEffect, useState} from 'react';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import {Link, NavLink, useLocation} from "react-router-dom";
 
@@ -122,8 +124,7 @@ const Header: FC = () => {
                     onClick={() => setIsMenuOpen(value => !value)}
                     type="button"
                 >
-                    <span></span>
-                    <span></span>
+                    {isMenuOpen ? <CloseRoundedIcon/> : <MenuRoundedIcon/>}
                 </button>
             </Container>
 
