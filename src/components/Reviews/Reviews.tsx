@@ -6,6 +6,7 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import './reviews.css';
 import {useContent} from '../../content';
 import {usePrefersReducedMotion} from '../../hooks/usePrefersReducedMotion';
+import {useSwipeCarousel} from '../../hooks/useSwipeCarousel';
 import {Container, Reveal, SectionTitle} from '../ui';
 
 const Reviews: FC = () => {
@@ -21,6 +22,8 @@ const Reviews: FC = () => {
 
     const showPrevious = () => setCurrentIndex(index => getPreviousIndex(index));
     const showNext = () => setCurrentIndex(index => getNextIndex(index));
+
+    const swipeHandlers = useSwipeCarousel({onSwipeLeft: showNext, onSwipeRight: showPrevious});
 
     const getSlidePosition = (index: number) => {
         if (index === currentIndex) {
@@ -98,7 +101,7 @@ const Reviews: FC = () => {
                             <ChevronLeftRoundedIcon/>
                         </button>
 
-                        <div className="reviews-carousel__track" aria-live="polite">
+                        <div className="reviews-carousel__track" aria-live="polite" {...swipeHandlers}>
                             {items.map((review, index) => {
                                 const position = getSlidePosition(index);
 
@@ -109,7 +112,6 @@ const Reviews: FC = () => {
                                         key={`${review.name}-${index}`}
                                         onClick={() => handleReviewSelect(index)}
                                         onKeyDown={(event) => handleReviewKeyDown(event, index)}
-                                        onPointerDown={() => handleReviewSelect(index)}
                                         role="button"
                                         tabIndex={position === 'hidden' ? -1 : 0}
                                     >

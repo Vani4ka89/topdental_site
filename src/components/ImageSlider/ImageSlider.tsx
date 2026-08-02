@@ -7,6 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import './image-slider.css';
 import {EditableImage, useContent} from '../../content';
 import {usePrefersReducedMotion} from '../../hooks/usePrefersReducedMotion';
+import {useSwipeCarousel} from '../../hooks/useSwipeCarousel';
 import {Container, Reveal, SectionTitle} from '../ui';
 
 const ImageSlider: FC = () => {
@@ -35,6 +36,8 @@ const ImageSlider: FC = () => {
 
     const showPrevious = () => setCurrentIndex(index => getPreviousIndex(index));
     const showNext = () => setCurrentIndex(index => getNextIndex(index));
+
+    const swipeHandlers = useSwipeCarousel({onSwipeLeft: showNext, onSwipeRight: showPrevious});
 
     const getSlidePosition = (index: number) => {
         if (index === currentIndex) {
@@ -121,7 +124,7 @@ const ImageSlider: FC = () => {
                         >
                             <ChevronLeftRoundedIcon/>
                         </button>
-                        <div className="slider-carousel__track" aria-live="polite">
+                        <div className="slider-carousel__track" aria-live="polite" {...swipeHandlers}>
                             {sliderImages.map((image, index) => (
                                 <button
                                     aria-label={index === currentIndex ? `Відкрити фото: ${image.alt}` : `Показати фото: ${image.alt}`}
