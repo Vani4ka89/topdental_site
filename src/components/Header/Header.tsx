@@ -33,14 +33,36 @@ const Header: FC = () => {
     }, []);
 
     useEffect(() => {
-        const previousOverflow = document.body.style.overflow;
-
-        if (isMenuOpen) {
-            document.body.style.overflow = 'hidden';
+        if (!isMenuOpen) {
+            return;
         }
 
+        const scrollY = window.scrollY;
+        const {body} = document;
+        const previousStyle = {
+            position: body.style.position,
+            top: body.style.top,
+            left: body.style.left,
+            right: body.style.right,
+            width: body.style.width,
+            overflow: body.style.overflow,
+        };
+
+        body.style.position = 'fixed';
+        body.style.top = `-${scrollY}px`;
+        body.style.left = '0';
+        body.style.right = '0';
+        body.style.width = '100%';
+        body.style.overflow = 'hidden';
+
         return () => {
-            document.body.style.overflow = previousOverflow;
+            body.style.position = previousStyle.position;
+            body.style.top = previousStyle.top;
+            body.style.left = previousStyle.left;
+            body.style.right = previousStyle.right;
+            body.style.width = previousStyle.width;
+            body.style.overflow = previousStyle.overflow;
+            window.scrollTo(0, scrollY);
         };
     }, [isMenuOpen]);
 
@@ -50,7 +72,7 @@ const Header: FC = () => {
         <header className={`site-header ${isScrolled ? 'is-scrolled' : ''} ${isMenuOpen ? 'is-menu-open' : ''}`}>
             <Container className="site-header__container" size="wide">
                 <Link aria-label={`${clinic.name}, на головну`} className="site-header__brand" to="/" onClick={closeMenu}>
-                    <img src={assets.logo.src} alt={assets.logo.alt} width="56" height="56"/>
+                    <img src={assets.logo.src} alt={assets.logo.alt} width="50" height="50"/>
                     <span>
                         <strong><span>{navigation.brandPrefix}</span>{navigation.brandSuffix}</strong>
                         <small>{navigation.brandTagline}</small>
@@ -70,27 +92,26 @@ const Header: FC = () => {
                     ))}
                 </nav>
 
-                <div className="site-header__meta" aria-label="Швидкі контакти">
-                    <span><AccessTimeOutlinedIcon fontSize="small"/>{clinic.hours.short}</span>
-                    <a href={`tel:${clinic.phone}`}><LocalPhoneOutlinedIcon fontSize="small"/>{clinic.phoneDisplay}</a>
-                </div>
+                <div className="site-header__end">
+                    <div className="site-header__meta" aria-label="Швидкі контакти">
+                        <span><AccessTimeOutlinedIcon fontSize="small"/>{clinic.hours.short}</span>
+                        <a href={`tel:${clinic.phone}`}><LocalPhoneOutlinedIcon fontSize="small"/>{clinic.phoneDisplay}</a>
+                    </div>
 
-                <div className="site-header__actions">
-                    <a aria-label={`Зателефонувати в ${clinic.name}`} className="site-header__icon-link" href={`tel:${clinic.phone}`}>
-                        <LocalPhoneOutlinedIcon fontSize="small"/>
-                    </a>
-                    <a aria-label={`Написати ${clinic.name} на email`} className="site-header__icon-link" href={`mailto:${clinic.email}`}>
-                        <MailOutlineOutlinedIcon fontSize="small"/>
-                    </a>
-                    <a aria-label={`${clinic.name} у Facebook`} className="site-header__icon-link" href={clinic.socials.facebook} rel="noreferrer" target="_blank">
-                        <FacebookIcon fontSize="small"/>
-                    </a>
-                    <a aria-label={`${clinic.name} в Instagram`} className="site-header__icon-link" href={clinic.socials.instagram} rel="noreferrer" target="_blank">
-                        <InstagramIcon fontSize="small"/>
-                    </a>
-                    <Button as="hash" className="site-header__cta" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording">
-                        {navigation.ctaLabel}
-                    </Button>
+                    <div className="site-header__actions">
+                        <a aria-label={`Написати ${clinic.name} на email`} className="site-header__icon-link" href={`mailto:${clinic.email}`}>
+                            <MailOutlineOutlinedIcon fontSize="small"/>
+                        </a>
+                        <a aria-label={`${clinic.name} у Facebook`} className="site-header__icon-link" href={clinic.socials.facebook} rel="noreferrer" target="_blank">
+                            <FacebookIcon fontSize="small"/>
+                        </a>
+                        <a aria-label={`${clinic.name} в Instagram`} className="site-header__icon-link" href={clinic.socials.instagram} rel="noreferrer" target="_blank">
+                            <InstagramIcon fontSize="small"/>
+                        </a>
+                        <Button as="hash" className="site-header__cta" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording">
+                            {navigation.ctaLabel}
+                        </Button>
+                    </div>
                 </div>
 
                 <button
