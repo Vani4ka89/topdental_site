@@ -323,6 +323,17 @@ iframe {
         transform var(--duration-normal) var(--ease-standard);
 }
 
+.form-field input[type="date"] {
+    /*
+     * iOS Safari ignores box-sizing: border-box for date/time inputs and
+     * sizes their content box off -webkit-min-logical-width instead of
+     * width, adding the field's own left/right padding on top of 100%
+     * and pushing it past the form's edge. Setting -webkit-min-logical-width
+     * to 100% minus that padding cancels the extra width out again.
+     */
+    -webkit-min-logical-width: calc(100% - 32px);
+}
+
 .form-field input[type="date"]::-webkit-date-and-time-value {
     text-align: left;
 }
