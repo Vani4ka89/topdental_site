@@ -6,159 +6,67 @@
 
 .service-grid {
     display: grid;
+    align-items: start;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
     margin-top: var(--space-2xl);
 }
 
 .service-card {
-    --service-flip-ease: cubic-bezier(0.16, 1, 0.3, 1);
-    --service-beam-width: 5px;
-    min-height: 390px;
-    border-radius: var(--radius-lg);
-    outline: none;
-    perspective: 1400px;
-}
-
-.service-card__inner {
-    position: relative;
-    min-height: 390px;
-    border-radius: var(--radius-lg);
-    isolation: isolate;
-    transform-style: preserve-3d;
-    transition:
-        transform 520ms var(--service-flip-ease),
-        filter 520ms var(--service-flip-ease);
-    will-change: transform;
-}
-
-.service-card__beam,
-.service-card__beam-glow {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    border-radius: inherit;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 300ms var(--ease-standard);
-}
-
-.service-card__beam {
-    z-index: 1;
-    box-shadow: 0 0 0 1px rgba(99, 194, 188, 0.34) inset;
-}
-
-.service-card__beam-glow {
-    filter: blur(22px);
-}
-
-.service-card__beam::before,
-.service-card__beam-glow::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 99999px;
-    height: 99999px;
-    background-image: conic-gradient(
-        rgba(0, 0, 0, 0) 0deg,
-        rgba(0, 0, 0, 0) 232deg,
-        rgba(25, 118, 237, 0.12) 252deg,
-        rgba(47, 236, 224, 1) 276deg,
-        rgba(255, 255, 255, 1) 296deg,
-        rgba(25, 118, 237, 1) 316deg,
-        rgba(99, 194, 188, 0.34) 334deg,
-        rgba(0, 0, 0, 0) 358deg
-    );
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    transform: translate(-50%, -50%) rotate(0deg);
-    animation: serviceBeamRotate 4s linear infinite;
-    animation-play-state: paused;
-}
-
-.service-card:hover .service-card__inner,
-.service-card:focus-within .service-card__inner {
-    filter: drop-shadow(0 30px 58px rgba(18, 23, 26, 0.12));
-    transform: translate3d(0, -5px, 0);
-}
-
-.service-card:hover .service-card__beam,
-.service-card:hover .service-card__beam-glow,
-.service-card:focus-within .service-card__beam,
-.service-card:focus-within .service-card__beam-glow {
-    transition-delay: 560ms;
-}
-
-.service-card:hover .service-card__beam,
-.service-card:focus-within .service-card__beam {
-    opacity: 1;
-}
-
-.service-card:hover .service-card__beam-glow,
-.service-card:focus-within .service-card__beam-glow {
-    opacity: 0.9;
-}
-
-.service-card:hover .service-card__beam::before,
-.service-card:hover .service-card__beam-glow::before,
-.service-card:focus-within .service-card__beam::before,
-.service-card:focus-within .service-card__beam-glow::before {
-    animation-play-state: running;
-    animation-delay: 560ms;
-}
-
-.service-card:focus-visible .service-card__inner {
-    box-shadow: 0 0 0 4px rgba(31, 142, 163, 0.18);
-}
-
-.service-card__face {
-    position: absolute;
-    inset: var(--service-beam-width);
-    z-index: 2;
-    display: flex;
-    min-height: calc(390px - (var(--service-beam-width) * 2));
-    flex-direction: column;
-    align-items: flex-start;
-    overflow: hidden;
     border: 1px solid var(--color-line);
-    border-radius: calc(var(--radius-lg) - 1px);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72) inset;
-    padding: 28px;
-    transform-style: preserve-3d;
-    transition: transform 1180ms var(--service-flip-ease);
-    will-change: transform;
-}
-
-.service-card__front {
+    border-radius: var(--radius-lg);
     background:
         linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 248, 0.9)),
         var(--color-surface-strong);
-    transform: rotateY(0deg) translateZ(1px);
-    opacity: 1;
+    box-shadow: none;
+    transition:
+        transform var(--duration-normal) var(--ease-standard),
+        box-shadow var(--duration-normal) var(--ease-standard),
+        border-color var(--duration-normal) var(--ease-standard);
 }
 
-.service-card__back {
-    border-color: rgba(255, 255, 255, 0.16);
-    background:
-        radial-gradient(circle at 82% 14%, rgba(99, 194, 188, 0.22), transparent 30%),
-        linear-gradient(145deg, #11181c, #27333a);
-    color: white;
-    transform: rotateY(180deg) translateZ(1px);
-    opacity: 1;
+.service-card::before {
+    display: none;
 }
 
-.service-card:hover .service-card__front,
-.service-card:focus-within .service-card__front {
-    transform: rotateY(-180deg) translateZ(1px);
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
 }
 
-.service-card:hover .service-card__back,
-.service-card:focus-within .service-card__back {
-    transform: rotateY(0deg) translateZ(1px);
+.service-card.Mui-expanded {
+    margin: 0;
+    border-color: rgba(31, 142, 163, 0.3);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.service-card .MuiAccordionSummary-root {
+    align-items: flex-start;
+    padding: 24px;
+}
+
+.service-card .MuiAccordionSummary-content {
+    display: block;
+    margin: 0;
+}
+
+.service-card .MuiAccordionSummary-content.Mui-expanded {
+    margin: 0;
+}
+
+.service-card .MuiAccordionSummary-expandIconWrapper {
+    margin-top: 4px;
+    color: var(--color-muted);
+    transition: color var(--duration-normal) var(--ease-standard);
+}
+
+.service-card .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
+    color: var(--color-blue-strong);
+}
+
+.service-card .MuiAccordionDetails-root {
+    padding: 0 24px 24px;
 }
 
 .service-card__header {
@@ -194,36 +102,25 @@
     place-items: center;
 }
 
-.service-card h2,
-.service-card h3 {
+.service-card h2 {
     color: var(--color-ink);
-    font-size: 1.26rem;
+    font-size: 1.22rem;
     font-weight: 820;
     line-height: 1.15;
 }
 
-.service-card h3 {
-    margin-top: 12px;
-    color: white;
-}
-
-.service-card p {
-    margin-top: 20px;
+.service-card .MuiAccordionSummary-root p {
+    margin-top: 16px;
     color: var(--color-muted);
     font-size: 0.96rem;
-    line-height: 1.65;
-}
-
-.service-card__back p {
-    color: rgba(255, 255, 255, 0.76);
+    line-height: 1.6;
 }
 
 .service-card__chips {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin: auto 0 18px;
-    padding-top: 22px;
+    margin-top: 16px;
     list-style: none;
 }
 
@@ -237,7 +134,6 @@
     padding: 6px 10px;
 }
 
-.service-card__hint,
 .service-card__back-label {
     color: var(--color-blue-strong);
     font-size: 0.72rem;
@@ -246,20 +142,19 @@
     text-transform: uppercase;
 }
 
-.service-card__hint {
-    margin-top: auto;
-    color: rgba(31, 142, 163, 0.72);
-}
-
-.service-card__back-label {
-    color: rgba(99, 194, 188, 0.9);
+.service-card .MuiAccordionDetails-root p {
+    margin-top: 10px;
+    color: var(--color-muted);
+    font-size: 0.96rem;
+    line-height: 1.65;
 }
 
 .service-card__details {
     display: grid;
     gap: 10px;
-    margin: auto 0 var(--space-lg);
-    padding-top: var(--space-lg);
+    margin: 16px 0 var(--space-lg);
+    padding-top: 16px;
+    border-top: 1px solid var(--color-line);
     list-style: none;
 }
 
@@ -267,20 +162,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    color: rgba(255, 255, 255, 0.86);
+    color: var(--color-graphite);
     font-size: 0.92rem;
-    font-weight: 760;
+    font-weight: 700;
 }
 
 .service-card__details svg {
     flex: 0 0 auto;
-    color: var(--color-teal);
-}
-
-@keyframes serviceBeamRotate {
-    to {
-        transform: translate(-50%, -50%) rotate(1turn);
-    }
+    color: var(--color-success);
 }
 
 @media (max-width: 1040px) {
@@ -294,96 +183,10 @@
         grid-template-columns: 1fr;
     }
 
-    .service-card {
-        min-height: auto;
-        perspective: none;
-    }
-
-    .service-card__inner {
-        min-height: auto;
-        transform: none !important;
-        transform-style: flat;
-        will-change: auto;
-    }
-
-    .service-card__inner {
-        display: grid;
-    }
-
-    .service-card__beam,
-    .service-card__beam-glow {
-        display: none;
-    }
-
-    .service-card:hover .service-card__inner,
-    .service-card:focus-within .service-card__inner {
-        filter: none;
-        transform: none;
-    }
-
-    .service-card__face {
-        position: relative;
-        inset: auto;
-        min-height: 0;
-        backface-visibility: visible;
-        transform: none;
-        transform-style: flat;
-        will-change: auto;
-    }
-
-    .service-card__front {
-        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-        border-bottom: 0;
-        padding-bottom: 18px;
-        opacity: 1;
-    }
-
-    .service-card__back {
-        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-        border-top: 0;
-        padding-top: 18px;
-        opacity: 1;
-    }
-
-    .service-card__hint {
-        display: none;
-    }
-
-    /*
-     * Both faces stay permanently visible on mobile (no hover to flip),
-     * so drop the parts that would otherwise repeat: the chips already
-     * covered by the checklist below, and the title already shown once
-     * on the front. Reordering keeps the remaining back-face content
-     * (result copy, "what's included" label, checklist, CTA) reading
-     * top to bottom without needing to touch the markup.
-     */
-    .service-card__chips {
-        display: none;
-    }
-
-    .service-card__back h3 {
-        display: none;
-    }
-
-    .service-card__back p {
-        order: 1;
-        margin-top: 0;
-    }
-
-    .service-card__back-label {
-        order: 2;
-        display: block;
-        margin-top: 18px;
-    }
-
-    .service-card__details {
-        order: 3;
-        margin: 0 0 var(--space-lg);
-        padding-top: 10px;
-    }
-
-    .service-card__back .td-button {
-        order: 4;
+    .service-card .MuiAccordionSummary-root,
+    .service-card .MuiAccordionDetails-root {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .service-card__header {
@@ -398,40 +201,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .service-card__face {
+    .service-card,
+    .service-card.Mui-expanded {
         transition: none;
-    }
-
-    .service-card__front {
-        opacity: 1;
-        transform: rotateY(0deg) translateZ(1px);
-    }
-
-    .service-card__back {
-        opacity: 0;
-        transform: rotateY(0deg) translateZ(1px);
-    }
-
-    .service-card__inner,
-    .service-card:hover .service-card__inner,
-    .service-card:focus-within .service-card__inner {
         transform: none;
-    }
-
-    .service-card:hover .service-card__front,
-    .service-card:focus-within .service-card__front {
-        transform: rotateY(0deg) translateZ(1px);
-        opacity: 0;
-    }
-
-    .service-card:hover .service-card__back,
-    .service-card:focus-within .service-card__back {
-        transform: rotateY(0deg) translateZ(1px);
-        opacity: 1;
-    }
-
-    .service-card__beam::before,
-    .service-card__beam-glow::before {
-        animation: none;
     }
 }

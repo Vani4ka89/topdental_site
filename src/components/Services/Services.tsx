@@ -1,10 +1,12 @@
-import {FC, ReactNode} from 'react';
+import {FC, ReactNode, useState} from 'react';
+import {Accordion, AccordionDetails, AccordionSummary} from '@mui/material';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import BiotechOutlinedIcon from '@mui/icons-material/BiotechOutlined';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOutlined';
 import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
+import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
 import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import StraightenOutlinedIcon from '@mui/icons-material/StraightenOutlined';
@@ -142,6 +144,21 @@ const sanitizeSvg = (svgMarkup = '') => {
 const Services: FC = () => {
     const {content} = useContent();
     const services = content.services;
+    const [openIndexes, setOpenIndexes] = useState<Set<number>>(new Set());
+
+    const toggleOpen = (index: number) => {
+        setOpenIndexes(current => {
+            const next = new Set(current);
+
+            if (next.has(index)) {
+                next.delete(index);
+            } else {
+                next.add(index);
+            }
+
+            return next;
+        });
+    };
 
     return (
         <section className="service td-section">
@@ -158,18 +175,24 @@ const Services: FC = () => {
                 <div className="service-grid">
                     {services.items.map((service, index) => {
                         const serviceIconSvg = sanitizeSvg(service.iconSvg);
+                        const isOpen = openIndexes.has(index);
 
                         return (
-                            <Reveal as="article" className="service-card" delay={index * 70} key={service.title} tabIndex={0}>
-                                <div className="service-card__inner">
-                                    <div className="service-card__beam-glow" aria-hidden="true"></div>
-                                    <div className="service-card__beam" aria-hidden="true"></div>
-                                    <div className="service-card__face service-card__front">
+                            <Reveal delay={index * 70} key={service.title}>
+                                <Accordion
+                                    className="service-card"
+                                    disableGutters
+                                    expanded={isOpen}
+                                    onChange={() => toggleOpen(index)}
+                                    square={false}
+                                >
+                                    <AccordionSummary
+                                        aria-controls={`service-${index}-content`}
+                                        expandIcon={<ExpandMoreRoundedIcon/>}
+                                        id={`service-${index}-header`}
+                                    >
                                         <div className="service-card__header">
-                                            <div
-                                                aria-hidden="true"
-                                                className="service-card__icon"
-                                            >
+                                            <div aria-hidden="true" className="service-card__icon">
                                                 {serviceIconSvg
                                                     ? <span dangerouslySetInnerHTML={{__html: serviceIconSvg}}/>
                                                     : serviceIcons[index % serviceIcons.length].icon}
@@ -180,11 +203,9 @@ const Services: FC = () => {
                                         <ul className="service-card__chips">
                                             {service.details.map(detail => <li key={detail}>{detail}</li>)}
                                         </ul>
-                                        <span className="service-card__hint">{services.hintLabel}</span>
-                                    </div>
-                                    <div className="service-card__face service-card__back">
+                                    </AccordionSummary>
+                                    <AccordionDetails id={`service-${index}-content`}>
                                         <span className="service-card__back-label">{services.whatIncludedLabel}</span>
-                                        <h3>{service.title}</h3>
                                         <p>{service.result}</p>
                                         <ul className="service-card__details">
                                             {service.details.map(detail => (
@@ -197,8 +218,8 @@ const Services: FC = () => {
                                         <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording" variant="secondary">
                                             {content.navigation.mobileCtaLabel}
                                         </Button>
-                                    </div>
-                                </div>
+                                    </AccordionDetails>
+                                </Accordion>
                             </Reveal>
                         );
                     })}
