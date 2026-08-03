@@ -28,7 +28,7 @@ const Footer: FC = () => {
                     <p className="footer__eyebrow">{footer.eyebrow}</p>
                     <h2>{footer.title}</h2>
                     <p>{footer.description}</p>
-                    <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} to="/#recording">
+                    <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording">
                         {footer.ctaLabel}
                     </Button>
                 </div>
