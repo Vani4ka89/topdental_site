@@ -14,13 +14,19 @@ const Custom: FC = () => {
     const {content} = useContent();
     const {clinic} = content;
     const hero = content.home.hero;
+    const [heroBrandWord, ...heroTitleRest] = hero.title.split(/\.\s+/).filter(Boolean);
+    const hasHeroBrandWord = heroTitleRest.length > 0 && hero.title.startsWith(clinic.name);
+    const heroRestTitle = hasHeroBrandWord ? heroTitleRest.join('. ') : hero.title;
 
     return (
         <section className={`hero ${isImageLoaded ? 'is-loaded' : ''}`}>
             <Container className="hero__container" size="wide">
                 <div className="hero__content">
                     <p className="hero__eyebrow"><VerifiedOutlinedIcon fontSize="small"/> {hero.eyebrow}</p>
-                    <h1>{hero.title}</h1>
+                    <h1>
+                        {hasHeroBrandWord && <span className="hero__brand-word">{heroBrandWord}</span>}
+                        {heroRestTitle}
+                    </h1>
                     <p className="hero__description">
                         {hero.description}
                     </p>
