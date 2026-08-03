@@ -302,6 +302,8 @@
     .service-card__inner {
         min-height: auto;
         transform: none !important;
+        transform-style: flat;
+        will-change: auto;
     }
 
     .service-card__inner {
@@ -325,6 +327,8 @@
         min-height: 0;
         backface-visibility: visible;
         transform: none;
+        transform-style: flat;
+        will-change: auto;
     }
 
     .service-card__front {
@@ -343,6 +347,43 @@
 
     .service-card__hint {
         display: none;
+    }
+
+    /*
+     * Both faces stay permanently visible on mobile (no hover to flip),
+     * so drop the parts that would otherwise repeat: the chips already
+     * covered by the checklist below, and the title already shown once
+     * on the front. Reordering keeps the remaining back-face content
+     * (result copy, "what's included" label, checklist, CTA) reading
+     * top to bottom without needing to touch the markup.
+     */
+    .service-card__chips {
+        display: none;
+    }
+
+    .service-card__back h3 {
+        display: none;
+    }
+
+    .service-card__back p {
+        order: 1;
+        margin-top: 0;
+    }
+
+    .service-card__back-label {
+        order: 2;
+        display: block;
+        margin-top: 18px;
+    }
+
+    .service-card__details {
+        order: 3;
+        margin: 0 0 var(--space-lg);
+        padding-top: 10px;
+    }
+
+    .service-card__back .td-button {
+        order: 4;
     }
 
     .service-card__header {
