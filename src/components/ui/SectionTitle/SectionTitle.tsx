@@ -8,7 +8,7 @@ interface ISectionTitleProps {
     description?: string;
     eyebrow?: string;
     inverse?: boolean;
-    title: string;
+    title: ReactNode;
 }
 
 const SectionTitle: FC<ISectionTitleProps> = ({
