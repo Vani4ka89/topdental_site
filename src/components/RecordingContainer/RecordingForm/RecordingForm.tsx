@@ -36,7 +36,7 @@ const RecordingForm: FC = () => {
     const [dateValue, setDateValue] = useState<string>(today);
     const [isSuccessOpen, setIsSuccessOpen] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const {register, handleSubmit, reset, formState: {errors, isSubmitting}} = useForm<IFormTwo>({
+    const {register, handleSubmit, reset, setValue, formState: {errors, isSubmitting}} = useForm<IFormTwo>({
         defaultValues: {date: today, name: '', phoneNumber: ''},
         mode: "onChange",
         resolver: joiResolver(secondFormValidator)
@@ -49,7 +49,16 @@ const RecordingForm: FC = () => {
     });
 
     const dateRegistration = register('date', {
-        onChange: (event) => setDateValue(event.target.value),
+        onChange: (event) => {
+            const value = event.target.value;
+            const nextValue = value && value < today ? today : value;
+
+            if (nextValue !== value) {
+                setValue('date', nextValue, {shouldValidate: true});
+            }
+
+            setDateValue(nextValue);
+        },
     });
 
     const send: SubmitHandler<IFormTwo> = async (fields: IFormTwo) => {
