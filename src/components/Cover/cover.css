@@ -62,8 +62,18 @@
 }
 
 .cover__portrait {
+    position: relative;
     justify-self: end;
     width: min(100%, 470px);
+}
+
+.cover__portrait::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 20px -20px -20px 20px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, rgba(31, 142, 163, 0.34), rgba(99, 194, 188, 0.18));
 }
 
 .cover__portrait-shell {
@@ -114,6 +124,10 @@
     .cover__portrait {
         justify-self: center;
         width: min(66%, 260px);
+    }
+
+    .cover__portrait::before {
+        inset: 12px -12px -12px 12px;
     }
 
     .cover__portrait-shell img {
