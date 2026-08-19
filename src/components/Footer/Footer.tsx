@@ -25,10 +25,12 @@ const Footer: FC = () => {
         <footer className="footer">
             <Container className="footer__container" size="wide">
                 <div className="footer__brand">
-                    <p className="footer__eyebrow">{footer.eyebrow}</p>
+                    <p className="footer__eyebrow">
+                        <span className="footer__eyebrow-accent">{navigation.brandPrefix}</span>{navigation.brandSuffix}
+                    </p>
                     <h2>{footer.title}</h2>
                     <p>{footer.description}</p>
-                    <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} to="/#recording">
+                    <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording">
                         {footer.ctaLabel}
                     </Button>
                 </div>

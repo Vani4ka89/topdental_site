@@ -1,46 +1,70 @@
-import {TouchEvent, useRef} from 'react';
+import {MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent, useRef} from 'react';
 
-interface UseSwipeCarouselOptions {
+interface IUseSwipeCarouselOptions {
     onSwipeLeft: () => void;
     onSwipeRight: () => void;
     threshold?: number;
 }
 
-interface SwipeHandlers {
-    onTouchStart: (event: TouchEvent<HTMLElement>) => void;
-    onTouchMove: (event: TouchEvent<HTMLElement>) => void;
-    onTouchEnd: () => void;
-}
+const useSwipeCarousel = ({onSwipeLeft, onSwipeRight, threshold = 40}: IUseSwipeCarouselOptions) => {
+    const startPoint = useRef<{x: number; y: number} | null>(null);
+    const isSwipe = useRef(false);
 
-const useSwipeCarousel = ({onSwipeLeft, onSwipeRight, threshold = 40}: UseSwipeCarouselOptions): SwipeHandlers => {
-    const touchStartX = useRef<number | null>(null);
-    const touchDeltaX = useRef(0);
-
-    const onTouchStart = (event: TouchEvent<HTMLElement>) => {
-        touchStartX.current = event.touches[0].clientX;
-        touchDeltaX.current = 0;
-    };
-
-    const onTouchMove = (event: TouchEvent<HTMLElement>) => {
-        if (touchStartX.current === null) {
+    const onPointerDown = (event: ReactPointerEvent) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) {
             return;
         }
 
-        touchDeltaX.current = event.touches[0].clientX - touchStartX.current;
+        startPoint.current = {x: event.clientX, y: event.clientY};
+        isSwipe.current = false;
     };
 
-    const onTouchEnd = () => {
-        if (touchDeltaX.current <= -threshold) {
-            onSwipeLeft();
-        } else if (touchDeltaX.current >= threshold) {
-            onSwipeRight();
+    const onPointerMove = (event: ReactPointerEvent) => {
+        if (!startPoint.current) {
+            return;
         }
 
-        touchStartX.current = null;
-        touchDeltaX.current = 0;
+        const deltaX = event.clientX - startPoint.current.x;
+        const deltaY = event.clientY - startPoint.current.y;
+
+        if (!isSwipe.current && Math.abs(deltaX) > 8 && Math.abs(deltaX) > Math.abs(deltaY)) {
+            isSwipe.current = true;
+        }
     };
 
-    return {onTouchStart, onTouchMove, onTouchEnd};
+    const endSwipe = (event: ReactPointerEvent) => {
+        if (!startPoint.current) {
+            return;
+        }
+
+        const deltaX = event.clientX - startPoint.current.x;
+
+        if (isSwipe.current && Math.abs(deltaX) > threshold) {
+            if (deltaX < 0) {
+                onSwipeLeft();
+            } else {
+                onSwipeRight();
+            }
+        }
+
+        startPoint.current = null;
+    };
+
+    const onClickCapture = (event: ReactMouseEvent) => {
+        if (isSwipe.current) {
+            event.preventDefault();
+            event.stopPropagation();
+            isSwipe.current = false;
+        }
+    };
+
+    return {
+        onClickCapture,
+        onPointerCancel: endSwipe,
+        onPointerDown,
+        onPointerMove,
+        onPointerUp: endSwipe,
+    };
 };
 
 export {useSwipeCarousel};

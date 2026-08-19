@@ -6,6 +6,14 @@
     background: var(--color-soft);
 }
 
+.doctor-section.doctor-section--secondary {
+    padding-top: var(--space-3xl);
+}
+
+.doctor-section.doctor-section--primary {
+    padding-bottom: var(--space-3xl);
+}
+
 .doctor-section__container {
     display: grid;
     align-items: center;
@@ -82,6 +90,14 @@
 }
 
 @media (max-width: 860px) {
+    .doctor-section.doctor-section--primary {
+        padding-bottom: var(--space-xl);
+    }
+
+    .doctor-section.doctor-section--secondary {
+        padding-top: var(--space-xl);
+    }
+
     .doctor-section__container {
         grid-template-columns: 1fr;
     }

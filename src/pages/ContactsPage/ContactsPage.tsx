@@ -11,6 +11,14 @@ const ContactsPage: FC = () => {
     const {content} = useContent();
     const {clinic} = content;
     const page = content.pages.contacts;
+    const brandIndex = page.title.indexOf(clinic.name);
+    const pageTitle = brandIndex === -1 ? page.title : (
+        <>
+            {page.title.slice(0, brandIndex)}
+            <span className="contacts-page__brand-word">{clinic.name}</span>
+            {page.title.slice(brandIndex + clinic.name.length)}
+        </>
+    );
 
     return (
         <main className="main">
@@ -28,7 +36,7 @@ const ContactsPage: FC = () => {
                             align="center"
                             as="h1"
                             eyebrow={page.eyebrow}
-                            title={page.title}
+                            title={pageTitle}
                             description={page.description}
                         />
                     </Reveal>

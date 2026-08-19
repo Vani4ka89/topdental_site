@@ -325,13 +325,15 @@ iframe {
 
 .form-field input[type="date"] {
     /*
-     * iOS Safari ignores box-sizing: border-box for date/time inputs and
-     * sizes their content box off -webkit-min-logical-width instead of
-     * width, adding the field's own left/right padding on top of 100%
-     * and pushing it past the form's edge. Setting -webkit-min-logical-width
-     * to 100% minus that padding cancels the extra width out again.
+     * iOS Safari doesn't reliably honor box-sizing: border-box for
+     * date/time inputs (-webkit-min-logical-width based sizing still
+     * let the field push past the form's edge). Switching this field
+     * to content-box and subtracting its own padding + border from the
+     * width sidesteps that quirk entirely with plain box-model math
+     * that every browser, including Safari, computes the same way.
      */
-    -webkit-min-logical-width: calc(100% - 32px);
+    box-sizing: content-box;
+    width: calc(100% - 34px);
 }
 
 .form-field input[type="date"]::-webkit-date-and-time-value {
@@ -523,7 +525,7 @@ iframe {
     }
 
     .td-section {
-        padding: var(--space-3xl) 0;
+        padding: var(--space-2xl) 0;
         scroll-margin-top: 88px;
     }
 
