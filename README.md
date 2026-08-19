@@ -68,6 +68,52 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Forms API and email
+
+Both site forms (contact form, appointment recording) POST to `/users/first_form`
+and `/users/second_form`, handled by `server/forms-router.cjs`. On a valid
+submission the server emails the data via [nodemailer](https://nodemailer.com).
+
+Configure a sender in `.env` (copy from `.env.example`) — see the comments there
+for Resend, Brevo and Gmail examples. Without `SMTP_HOST`/`SMTP_SERVICE` set,
+emails are only logged to the console, not sent.
+
+- `npm run forms:server` — standalone forms API for local dev (default port 4002),
+  used together with `REACT_APP_API_URL=http://localhost:4002 npm start`.
+- `npm run serve` — production entry (`server/app.cjs`): serves the built site
+  from `build/` *and* the forms API from the same Node process/port. This is
+  what you deploy.
+
+## Deploy on Hostinger (Node.js App)
+
+Hostinger's Node.js hosting runs one Node process per app from a single
+startup file — `server/app.cjs` is built for exactly that: it serves the
+built React app and the forms API together on one port.
+
+1. Push this repo to Git and connect it in hPanel → **Websites → your site →
+   Advanced → Node.js**, or upload the files directly (excluding
+   `node_modules`, `build`, `.env`).
+2. Create the Node.js application:
+   - Node.js version: 20.x (see `.nvmrc`)
+   - Application root: the project folder
+   - **Application startup file: `server/app.cjs`**
+3. Add environment variables in that app's settings (see `.env.example` for
+   the full list) — at minimum:
+   ```
+   NODE_ENV=production
+   REACT_APP_API_URL=
+   MAIL_TO=ivan.tym4ak@gmail.com
+   MAIL_FROM=<your sender address>
+   SMTP_SERVICE=gmail        # or SMTP_HOST/SMTP_PORT/SMTP_SECURE
+   SMTP_USER=<sender account>
+   SMTP_PASS=<app password / SMTP key>
+   ```
+   `REACT_APP_API_URL` must be an **empty string** (not deleted) — site and
+   API share the same origin, so no external API URL is needed.
+4. Click **Run NPM Install** in hPanel. With `NODE_ENV=production` set, this
+   also triggers the production build automatically (`scripts/postinstall-build.cjs`).
+5. **Restart** the application and attach your domain in the same panel.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
