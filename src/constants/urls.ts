@@ -3,7 +3,7 @@
 // only fall back to the old external API when the variable is unset entirely.
 const baseURL = process.env.REACT_APP_API_URL !== undefined
     ? process.env.REACT_APP_API_URL
-    : 'https://topdental-api-2a1bf2e56e90.herokuapp.com/';
+    : 'https://topdental-a1fea191ddc7.herokuapp.com/';
 
 const users = '/users';
 
