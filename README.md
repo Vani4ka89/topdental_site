@@ -100,7 +100,7 @@ built React app and the forms API together on one port.
 3. Add environment variables in that app's settings (see `.env.example` for
    the full list) — at minimum:
    ```
-   NODE_ENV=production
+   AUTO_BUILD=1
    REACT_APP_API_URL=
    MAIL_TO=ivan.tym4ak@gmail.com
    MAIL_FROM=<your sender address>
@@ -110,9 +110,27 @@ built React app and the forms API together on one port.
    ```
    `REACT_APP_API_URL` must be an **empty string** (not deleted) — site and
    API share the same origin, so no external API URL is needed.
-4. Click **Run NPM Install** in hPanel. With `NODE_ENV=production` set, this
-   also triggers the production build automatically (`scripts/postinstall-build.cjs`).
+4. Click **Run NPM Install** in hPanel. With `AUTO_BUILD=1` set, this also
+   triggers the production build automatically (`scripts/postinstall-build.cjs`).
 5. **Restart** the application and attach your domain in the same panel.
+
+## Deploy on Heroku
+
+The included `Procfile` (`web: npm run serve`) and `heroku-postbuild` script
+run the same unified `server/app.cjs` used for Hostinger.
+
+```bash
+heroku create your-app-name
+heroku config:set REACT_APP_API_URL= MAIL_TO=ivan.tym4ak@gmail.com \
+  MAIL_FROM=<your sender address> SMTP_SERVICE=gmail \
+  SMTP_USER=<sender account> SMTP_PASS=<app password / SMTP key>
+git push heroku hutsaluck:main
+```
+
+Heroku sets `PORT` and `NODE_ENV=production` automatically, runs
+`heroku-postbuild` (`npm run build`) right after `npm install`, then starts
+the app via the `Procfile`. No `AUTO_BUILD` variable needed here — that one
+is Hostinger-specific.
 
 ## Learn More
 
