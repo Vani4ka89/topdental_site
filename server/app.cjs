@@ -17,6 +17,34 @@ const app = express();
 app.disable('x-powered-by');
 app.use(express.json());
 
+// CORS - safety net for the forms API. Normally the page and the API share
+// the same origin (this same server), so no CORS is needed. But the React
+// build's REACT_APP_API_URL is baked in at build time, so a stale build (or
+// one built without that var pinned to an empty string) can end up calling
+// this server from a *different* origin than the one that served the page -
+// e.g. www.topdental.te.ua vs topdental.te.ua vs the raw *.herokuapp.com
+// host. Without this, the browser silently blocks the request client-side
+// (the API itself would have handled it fine) and the form shows a generic
+// "failed to send" error. The forms endpoints carry no auth/cookies, so
+// reflecting/allowing the origin is safe; set FORMS_ALLOWED_ORIGIN to lock
+// this down to a specific origin instead of the default wildcard.
+const corsHeaders = {
+    'Access-Control-Allow-Origin': process.env.FORMS_ALLOWED_ORIGIN || '*',
+    'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+app.use((request, response, next) => {
+    response.set(corsHeaders);
+
+    if (request.method === 'OPTIONS') {
+        response.status(204).end();
+        return;
+    }
+
+    next();
+});
+
 // Forms API first, so /users/first_form and /users/second_form are never
 // shadowed by the static/SPA fallback below.
 app.use(createFormsRouter());
