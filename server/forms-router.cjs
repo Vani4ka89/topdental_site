@@ -10,9 +10,13 @@ const smtpSecure = process.env.SMTP_SECURE === 'true';
 
 const mailTo = process.env.MAIL_TO || 'ivan.tym4ak@gmail.com';
 const mailFrom = process.env.MAIL_FROM || process.env.SMTP_USER || 'ivan.tym4ak@gmail.com';
-const smtpService = process.env.SMTP_SERVICE || 'gmail';
-const smtpUser = process.env.SMTP_USER || 'ivan.tym4ak@gmail.com';
-const smtpPass = process.env.SMTP_PASS || 'aktp rymf lwrj egek';
+// No hardcoded fallback here on purpose - SMTP_SERVICE/SMTP_USER/SMTP_PASS
+// must come from the environment (see .env.example). Without them,
+// buildTransporter() below falls back to console-only logging instead of
+// silently using a baked-in account/password.
+const smtpService = process.env.SMTP_SERVICE || '';
+const smtpUser = process.env.SMTP_USER || '';
+const smtpPass = process.env.SMTP_PASS || '';
 
 // Same rules as src/validators/*.ts, kept in sync so the server never trusts
 // data the client-side form would have rejected.
