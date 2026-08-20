@@ -4,8 +4,15 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const Joi = require('joi');
 
+const smtpHost = process.env.SMTP_HOST || '';
+const smtpPort = Number(process.env.SMTP_PORT || 587);
+const smtpSecure = process.env.SMTP_SECURE === 'true';
+
 const mailTo = process.env.MAIL_TO || 'ivan.tym4ak@gmail.com';
-const mailFrom = process.env.MAIL_FROM || process.env.SMTP_USER || 'no-reply@topdental.local';
+const mailFrom = process.env.MAIL_FROM || process.env.SMTP_USER || 'ivan.tym4ak@gmail.com';
+const smtpService = process.env.SMTP_SERVICE || 'gmail';
+const smtpUser = process.env.SMTP_USER || 'ivan.tym4ak@gmail.com';
+const smtpPass = process.env.SMTP_PASS || 'aktp rymf lwrj egek';
 
 // Same rules as src/validators/*.ts, kept in sync so the server never trusts
 // data the client-side form would have rejected.
@@ -36,20 +43,20 @@ const secondFormSchema = Joi.object({
 const buildTransporter = () => {
     // Shorthand for well-known providers (e.g. SMTP_SERVICE=gmail) - nodemailer
     // resolves the correct host/port/TLS settings for the named service itself.
-    if (process.env.SMTP_SERVICE) {
+    if (smtpService) {
         return nodemailer.createTransport({
-            service: process.env.SMTP_SERVICE,
-            auth: {user: process.env.SMTP_USER, pass: process.env.SMTP_PASS},
+            service: smtpService,
+            auth: {user: smtpUser, pass: smtpPass},
         });
     }
 
-    if (process.env.SMTP_HOST) {
+    if (smtpHost) {
         return nodemailer.createTransport({
-            host: process.env.SMTP_HOST,
-            port: Number(process.env.SMTP_PORT || 587),
-            secure: process.env.SMTP_SECURE === 'true',
-            auth: process.env.SMTP_USER
-                ? {user: process.env.SMTP_USER, pass: process.env.SMTP_PASS}
+            host: smtpHost,
+            port: Number(smtpPort || 587),
+            secure: smtpSecure,
+            auth: smtpUser
+                ? {user: smtpUser, pass: smtpPass}
                 : undefined,
         });
     }
@@ -190,13 +197,13 @@ const createFormsRouter = () => {
         };
 
         response.json({
-            transport: process.env.SMTP_SERVICE
-                ? `service:${process.env.SMTP_SERVICE}`
-                : process.env.SMTP_HOST
-                    ? `host:${process.env.SMTP_HOST}:${process.env.SMTP_PORT || 587}`
+            transport: smtpService
+                ? `service:${smtpService}`
+                : smtpHost
+                    ? `host:${smtpHost}:${smtpPort || 587}`
                     : 'console-only (SMTP not configured - emails are NOT sent)',
-            smtpUserSet: Boolean(process.env.SMTP_USER),
-            smtpPassSet: Boolean(process.env.SMTP_PASS),
+            smtpUserSet: Boolean(smtpUser),
+            smtpPassSet: Boolean(smtpPass),
             mailTo: mask(mailTo),
             mailFrom: mask(mailFrom),
         });
