@@ -176,6 +176,32 @@ const createFormsRouter = () => {
         response.json({ok: true});
     });
 
+    // Presence-only diagnostics (no secret values ever returned) - lets you
+    // confirm the mail config on a deploy without needing shell/CLI access
+    // to the host. Safe to leave public: it never reveals SMTP_PASS etc.
+    router.get('/mail-status', (request, response) => {
+        const mask = (value) => {
+            if (!value) {
+                return null;
+            }
+
+            const [user, domain] = String(value).split('@');
+            return domain ? `${user.slice(0, 2)}***@${domain}` : `${value.slice(0, 2)}***`;
+        };
+
+        response.json({
+            transport: process.env.SMTP_SERVICE
+                ? `service:${process.env.SMTP_SERVICE}`
+                : process.env.SMTP_HOST
+                    ? `host:${process.env.SMTP_HOST}:${process.env.SMTP_PORT || 587}`
+                    : 'console-only (SMTP not configured - emails are NOT sent)',
+            smtpUserSet: Boolean(process.env.SMTP_USER),
+            smtpPassSet: Boolean(process.env.SMTP_PASS),
+            mailTo: mask(mailTo),
+            mailFrom: mask(mailFrom),
+        });
+    });
+
     router.post('/users/first_form', asyncHandler(async (request, response) => {
         const {error, value} = firstFormSchema.validate(request.body || {}, {abortEarly: false, stripUnknown: true});
 
