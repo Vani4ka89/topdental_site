@@ -231,12 +231,18 @@
 
     .hero__container {
         grid-template-columns: 1fr;
+        gap: clamp(24px, 5vw, 48px);
     }
 }
 
 @media (max-width: 680px) {
     .hero {
-        padding-top: 32px;
+        padding-top: 20px;
+        padding-bottom: var(--space-xl);
+    }
+
+    .hero__eyebrow {
+        margin-bottom: var(--space-sm);
     }
 
     .hero h1 {
@@ -249,9 +255,24 @@
         font-size: inherit;
     }
 
+    .hero__description {
+        margin-top: var(--space-sm);
+    }
+
+    .hero__actions {
+        margin-top: var(--space-md);
+    }
+
+    .hero__quick-info {
+        margin-top: var(--space-md);
+    }
+
+    /* Native photo is ~1280x705 (~16:8.8) - match that instead of the
+       taller 16:10 box so the whole image fits on screen without pushing
+       content below the fold on phones. */
     .hero__image-shell {
         border-radius: 22px;
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 9;
     }
 
     .hero__trust-card {
