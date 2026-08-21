@@ -6,7 +6,6 @@ import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 
 import {Container, Reveal, SectionTitle} from "../../ui";
 import {useContent} from '../../../content';
-import {ContactForm} from "../ContactForm/ContactForm";
 import {Map} from "../../Map/Map";
 import './contact.css';
 
@@ -48,9 +47,6 @@ const Contact: FC = () => {
                         </div>
                     </div>
                     <Map/>
-                </Reveal>
-                <Reveal delay={120}>
-                    <ContactForm/>
                 </Reveal>
             </Container>
         </section>

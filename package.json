@@ -44,7 +44,6 @@
     "forms:server": "node server/forms-server.cjs",
     "serve": "node server/app.cjs",
     "build": "react-scripts build",
-    "postinstall": "node scripts/postinstall-build.cjs",
     "heroku-postbuild": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -3,6 +3,7 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
 import {Button, Container, Reveal, SectionTitle} from '../ui';
 import {useContent} from '../../content';
+import {bookingUrl} from '../../constants';
 import './cover.css';
 
 const Cover: FC = () => {
@@ -20,7 +21,7 @@ const Cover: FC = () => {
                         title={cover.title}
                         description={cover.description}
                     />
-                    <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="lg" to="/#recording">
+                    <Button as="a" href={bookingUrl} icon={<ArrowForwardRoundedIcon fontSize="small"/>} rel="noopener noreferrer" size="lg" target="_blank">
                         {cover.buttonLabel}
                     </Button>
                 </Reveal>

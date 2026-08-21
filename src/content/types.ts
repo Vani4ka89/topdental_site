@@ -103,21 +103,9 @@ export interface SiteContent {
         title: string;
     };
     forms: {
-        contact: {
+        recording: {
             commentLabel: string;
             commentPlaceholder: string;
-            errorMessage: string;
-            nameLabel: string;
-            namePlaceholder: string;
-            phoneHelper: string;
-            phoneLabel: string;
-            phonePlaceholder: string;
-            submitLabel: string;
-            submittingLabel: string;
-            successMessage: string;
-            successTitle: string;
-        };
-        recording: {
             dateLabel: string;
             errorMessage: string;
             nameLabel: string;

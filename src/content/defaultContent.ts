@@ -252,7 +252,7 @@ const defaultContent: SiteContent = {
         contact: {
             eyebrow: 'Контакти',
             title: 'Звʼяжіться з TopDental',
-            description: 'Залиште заявку або зателефонуйте напряму. Ми допоможемо обрати лікаря, час і формат першого візиту.',
+            description: 'Зателефонуйте, напишіть нам напряму або завітайте за адресою. Ми допоможемо обрати лікаря, час і формат першого візиту.',
             addressLabel: 'Адреса',
             hoursLabel: 'Графік',
             phoneLabel: 'Телефон',
@@ -381,20 +381,6 @@ const defaultContent: SiteContent = {
         },
     },
     forms: {
-        contact: {
-            nameLabel: 'Ваше імʼя',
-            namePlaceholder: 'Наприклад, Андрій',
-            phoneLabel: 'Номер телефону',
-            phonePlaceholder: '+380',
-            phoneHelper: 'Формат: +380XXXXXXXXX або 0XXXXXXXXX',
-            commentLabel: 'Коментар',
-            commentPlaceholder: 'Коротко опишіть запит або зручний час для дзвінка',
-            submitLabel: 'Отримати консультацію',
-            submittingLabel: 'Надсилаємо...',
-            errorMessage: 'Не вдалося надіслати повідомлення. Спробуйте ще раз або зателефонуйте нам напряму.',
-            successTitle: 'Дякуємо',
-            successMessage: 'Ми отримали повідомлення. Адміністратор TopDental звʼяжеться з вами найближчим часом.',
-        },
         recording: {
             nameLabel: 'Ваше імʼя',
             namePlaceholder: 'Наприклад, Олена',
@@ -402,6 +388,8 @@ const defaultContent: SiteContent = {
             phonePlaceholder: '+380',
             phoneHelper: 'Формат: +380XXXXXXXXX або 0XXXXXXXXX',
             dateLabel: 'Бажана дата',
+            commentLabel: 'Коментар',
+            commentPlaceholder: 'Коротко опишіть запит або зручний час для дзвінка',
             submitLabel: 'Отримати консультацію',
             submittingLabel: 'Надсилаємо...',
             errorMessage: 'Не вдалося надіслати заявку. Перевірте інтернет-зʼєднання або спробуйте ще раз за кілька хвилин.',

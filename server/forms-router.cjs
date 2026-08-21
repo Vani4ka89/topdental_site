@@ -32,16 +32,11 @@ const phoneSchema = Joi.string().pattern(/^(\+?(38|48|39|34|49|1))?0\d{9}$/).req
     'string.empty': 'Телефон обовʼязковий',
 });
 
-const firstFormSchema = Joi.object({
-    name: nameSchema,
-    phoneNumber: phoneSchema,
-    comment: Joi.string().allow('').optional(),
-});
-
 const secondFormSchema = Joi.object({
     name: nameSchema,
     phoneNumber: phoneSchema,
     date: Joi.string().required().messages({'string.empty': 'Оберіть бажану дату'}),
+    comment: Joi.string().allow('').optional(),
 });
 
 const buildTransporter = () => {
@@ -213,27 +208,6 @@ const createFormsRouter = () => {
         });
     });
 
-    router.post('/users/first_form', asyncHandler(async (request, response) => {
-        const {error, value} = firstFormSchema.validate(request.body || {}, {abortEarly: false, stripUnknown: true});
-
-        if (error) {
-            response.status(400).json({error: 'Validation failed', details: error.details.map((d) => d.message)});
-            return;
-        }
-
-        await sendFormEmail({
-            heading: 'Нова заявка з форми звʼязку',
-            intro: 'На сайті залишили заявку через форму звʼязку. Дані клієнта:',
-            fields: [
-                ['Імʼя', value.name],
-                ['Телефон', value.phoneNumber, `tel:${value.phoneNumber}`],
-                ['Коментар', value.comment || '—'],
-            ],
-        });
-
-        response.json({ok: true});
-    }));
-
     router.post('/users/second_form', asyncHandler(async (request, response) => {
         const {error, value} = secondFormSchema.validate(request.body || {}, {abortEarly: false, stripUnknown: true});
 
@@ -249,6 +223,7 @@ const createFormsRouter = () => {
                 ['Імʼя', value.name],
                 ['Телефон', value.phoneNumber, `tel:${value.phoneNumber}`],
                 ['Бажана дата', value.date],
+                ['Коментар', value.comment || '—'],
             ],
         });
 

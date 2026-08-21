@@ -1,13 +1,17 @@
 .recording {
     overflow: hidden;
+    /* Source photo is nearly square (640x600), but this section is much
+       wider than tall - "cover" zooms in a lot, so a plain center position
+       lands on the patients' torsos instead of the doctor/patient faces
+       higher up in the frame. Bias the focal point toward the top instead. */
     background:
         linear-gradient(90deg, rgba(18, 23, 26, 0.84), rgba(18, 23, 26, 0.56)),
-        url('../../../assets/images/IMG_1756.jpeg') center/cover no-repeat;
+        url('../../../assets/images/IMG_1756.jpeg') center 20% / cover no-repeat;
 }
 
 .recording__container {
     display: grid;
-    align-items: center;
+    align-items: start;
     grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
     gap: clamp(32px, 7vw, 92px);
 }
@@ -54,8 +58,12 @@
     border-radius: var(--radius-xl);
     background: rgba(255, 255, 255, 0.9);
     box-shadow: var(--shadow-lg);
-    padding: clamp(22px, 3vw, 34px);
+    padding: clamp(18px, 2.4vw, 26px);
     backdrop-filter: blur(20px);
+    /* This card is the "#recording" anchor target (see Recording.tsx) -
+       matches the site-wide header clearance (main-layout.css) so the
+       sticky header doesn't cover it when a "Записатись" CTA jumps here. */
+    scroll-margin-top: 96px;
 }
 
 @media (max-width: 860px) {
@@ -65,5 +73,12 @@
 
     .recording__form-card {
         width: 100%;
+        order: -1;
+    }
+}
+
+@media (max-width: 767px) {
+    .recording__form-card {
+        scroll-margin-top: 88px;
     }
 }

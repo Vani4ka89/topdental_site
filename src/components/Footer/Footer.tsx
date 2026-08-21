@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 
 import {Button, Container} from '../ui';
 import {useContent} from '../../content';
+import {bookingUrl} from '../../constants';
 import './footer.css';
 
 const Footer: FC = () => {
@@ -30,7 +31,7 @@ const Footer: FC = () => {
                     </p>
                     <h2>{footer.title}</h2>
                     <p>{footer.description}</p>
-                    <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording">
+                    <Button as="a" href={bookingUrl} icon={<ArrowForwardRoundedIcon fontSize="small"/>} rel="noopener noreferrer" size="sm" target="_blank">
                         {footer.ctaLabel}
                     </Button>
                 </div>

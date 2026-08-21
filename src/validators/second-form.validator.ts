@@ -27,5 +27,6 @@ export const secondFormValidator = Joi.object({
     }).messages({
         'string.empty': 'Оберіть бажану дату',
         'date.past': 'Ця дата вже минула. Оберіть сьогодні або пізнішу дату',
-    })
+    }),
+    comment: Joi.string().allow('').optional(),
 })

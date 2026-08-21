@@ -12,6 +12,7 @@ import {Link, NavLink, useLocation} from "react-router-dom";
 
 import {Button, Container} from '../ui';
 import {useContent} from '../../content';
+import {bookingUrl} from '../../constants';
 import './header.css';
 
 const Header: FC = () => {
@@ -110,7 +111,7 @@ const Header: FC = () => {
                         <a aria-label={`${clinic.name} в Instagram`} className="site-header__icon-link" href={clinic.socials.instagram} rel="noreferrer" target="_blank">
                             <InstagramIcon fontSize="small"/>
                         </a>
-                        <Button as="hash" className="site-header__cta" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording">
+                        <Button as="a" className="site-header__cta" href={bookingUrl} icon={<ArrowForwardRoundedIcon fontSize="small"/>} rel="noopener noreferrer" size="sm" target="_blank">
                             {navigation.ctaLabel}
                         </Button>
                     </div>
@@ -151,7 +152,7 @@ const Header: FC = () => {
                     <a aria-label={`${clinic.name} в Instagram`} href={clinic.socials.instagram} rel="noreferrer" target="_blank"><InstagramIcon/></a>
                     <a aria-label={`${clinic.name} у Telegram`} href={clinic.socials.telegram} rel="noreferrer" target="_blank"><TelegramIcon/></a>
                 </div>
-                <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="lg" to="/#recording" onClick={closeMenu}>
+                <Button as="a" href={bookingUrl} icon={<ArrowForwardRoundedIcon fontSize="small"/>} onClick={closeMenu} rel="noopener noreferrer" size="lg" target="_blank">
                     {navigation.mobileCtaLabel}
                 </Button>
             </div>

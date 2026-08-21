@@ -2,12 +2,35 @@
     width: min(100%, 430px);
 }
 
+.recording-form .form-field {
+    gap: 5px;
+}
+
+.recording-form .form-field__label {
+    font-size: 0.82rem;
+}
+
+.recording-form .form-field input {
+    min-height: 42px;
+    padding: 0 14px;
+}
+
+.recording-form .form-field textarea {
+    min-height: 78px;
+    padding: 10px 14px;
+}
+
+.recording-form .form-field__helper,
+.recording-form .form-field__error {
+    font-size: 0.78rem;
+}
+
 .appointment-form {
     display: grid;
-    gap: 16px;
+    gap: 11px;
 }
 
 .appointment-form__submit {
     width: 100%;
-    margin-top: 4px;
+    margin-top: 2px;
 }

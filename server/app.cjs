@@ -1,6 +1,6 @@
 // Unified production entry point: serves the built React app (./build) and
-// the forms API from a single Node process on a single port - the shape
-// Hostinger's "Node.js App" (one startup file per app) expects.
+// the forms API from a single Node process on a single port. This is what
+// the Heroku Procfile runs.
 //
 // Run `npm run build` before starting this (or as part of your deploy step).
 require('dotenv').config();
@@ -45,8 +45,8 @@ app.use((request, response, next) => {
     next();
 });
 
-// Forms API first, so /users/first_form and /users/second_form are never
-// shadowed by the static/SPA fallback below.
+// Forms API first, so /users/second_form is never shadowed by the
+// static/SPA fallback below.
 app.use(createFormsRouter());
 
 app.use(express.static(buildDir));

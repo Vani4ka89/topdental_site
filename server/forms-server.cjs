@@ -32,7 +32,6 @@ app.get('/', (request, response) => {
         name: 'TopDental forms API',
         endpoints: {
             health: '/health',
-            firstForm: 'POST /users/first_form',
             secondForm: 'POST /users/second_form',
         },
     });

@@ -13,6 +13,7 @@ import StraightenOutlinedIcon from '@mui/icons-material/StraightenOutlined';
 
 import {Button, Container, Reveal, SectionTitle} from '../ui';
 import {useContent} from '../../content';
+import {bookingUrl} from '../../constants';
 import './services.css';
 
 interface IServiceItem {
@@ -215,7 +216,7 @@ const Services: FC = () => {
                                                 </li>
                                             ))}
                                         </ul>
-                                        <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="sm" to="/#recording" variant="secondary">
+                                        <Button as="a" href={bookingUrl} icon={<ArrowForwardRoundedIcon fontSize="small"/>} rel="noopener noreferrer" size="sm" target="_blank" variant="secondary">
                                             {content.navigation.mobileCtaLabel}
                                         </Button>
                                     </AccordionDetails>

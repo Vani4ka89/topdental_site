@@ -70,9 +70,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Forms API and email
 
-Both site forms (contact form, appointment recording) POST to `/users/first_form`
-and `/users/second_form`, handled by `server/forms-router.cjs`. On a valid
-submission the server emails the data via [nodemailer](https://nodemailer.com).
+The appointment recording form POSTs to `/users/second_form`, handled by
+`server/forms-router.cjs`. On a valid submission the server emails the data
+via [nodemailer](https://nodemailer.com).
 
 Configure a sender in `.env` (copy from `.env.example`) — see the comments there
 for Resend, Brevo and Gmail examples. Without `SMTP_HOST`/`SMTP_SERVICE` set,
@@ -84,40 +84,11 @@ emails are only logged to the console, not sent.
   from `build/` *and* the forms API from the same Node process/port. This is
   what you deploy.
 
-## Deploy on Hostinger (Node.js App)
-
-Hostinger's Node.js hosting runs one Node process per app from a single
-startup file — `server/app.cjs` is built for exactly that: it serves the
-built React app and the forms API together on one port.
-
-1. Push this repo to Git and connect it in hPanel → **Websites → your site →
-   Advanced → Node.js**, or upload the files directly (excluding
-   `node_modules`, `build`, `.env`).
-2. Create the Node.js application:
-   - Node.js version: 20.x (see `.nvmrc`)
-   - Application root: the project folder
-   - **Application startup file: `server/app.cjs`**
-3. Add environment variables in that app's settings (see `.env.example` for
-   the full list) — at minimum:
-   ```
-   AUTO_BUILD=1
-   REACT_APP_API_URL=
-   MAIL_TO=ivan.tym4ak@gmail.com
-   MAIL_FROM=<your sender address>
-   SMTP_SERVICE=gmail        # or SMTP_HOST/SMTP_PORT/SMTP_SECURE
-   SMTP_USER=<sender account>
-   SMTP_PASS=<app password / SMTP key>
-   ```
-   `REACT_APP_API_URL` must be an **empty string** (not deleted) — site and
-   API share the same origin, so no external API URL is needed.
-4. Click **Run NPM Install** in hPanel. With `AUTO_BUILD=1` set, this also
-   triggers the production build automatically (`scripts/postinstall-build.cjs`).
-5. **Restart** the application and attach your domain in the same panel.
-
 ## Deploy on Heroku
 
-The included `Procfile` (`web: npm run serve`) and `heroku-postbuild` script
-run the same unified `server/app.cjs` used for Hostinger.
+The included `Procfile` (`web: node server/app.cjs`) and `heroku-postbuild`
+script run the unified `server/app.cjs`, which serves the built site and the
+forms API from the same Node process/port.
 
 ```bash
 heroku create your-app-name
@@ -129,8 +100,7 @@ git push heroku hutsaluck:main
 
 Heroku sets `PORT` and `NODE_ENV=production` automatically, runs
 `heroku-postbuild` (`npm run build`) right after `npm install`, then starts
-the app via the `Procfile`. No `AUTO_BUILD` variable needed here — that one
-is Hostinger-specific.
+the app via the `Procfile`.
 
 ## Learn More
 

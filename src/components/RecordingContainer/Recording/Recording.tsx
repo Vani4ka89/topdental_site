@@ -13,7 +13,7 @@ const Recording: FC = () => {
     const recording = content.home.recording;
 
     return (
-        <section className="recording td-section" id="recording">
+        <section className="recording td-section">
             <Container className="recording__container">
                 <Reveal className="recording__content">
                     <SectionTitle
@@ -27,7 +27,7 @@ const Recording: FC = () => {
                         <a href={`tel:${clinic.phone}`}><PhoneInTalkOutlinedIcon fontSize="small"/>{clinic.phoneDisplay}</a>
                     </div>
                 </Reveal>
-                <Reveal className="recording__form-card" delay={120}>
+                <Reveal className="recording__form-card" delay={120} id="recording">
                     <RecordingForm/>
                 </Reveal>
             </Container>

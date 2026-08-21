@@ -1,9 +1,0 @@
-.contact-form {
-    width: min(100%, 500px);
-    border: 1px solid rgba(255, 255, 255, 0.76);
-    border-radius: var(--radius-xl);
-    background: rgba(255, 255, 255, 0.82);
-    box-shadow: var(--shadow-md);
-    padding: clamp(24px, 4vw, 44px);
-    backdrop-filter: blur(18px);
-}

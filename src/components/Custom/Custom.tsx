@@ -7,6 +7,7 @@ import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 
 import {Button, Container} from '../ui';
 import {useContent} from '../../content';
+import {bookingUrl} from '../../constants';
 import './custom.css';
 
 const Custom: FC = () => {
@@ -31,7 +32,7 @@ const Custom: FC = () => {
                         {hero.description}
                     </p>
                     <div className="hero__actions">
-                        <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} size="lg" to="/#recording">
+                        <Button as="a" href={bookingUrl} icon={<ArrowForwardRoundedIcon fontSize="small"/>} rel="noopener noreferrer" size="lg" target="_blank">
                             {hero.primaryCtaLabel}
                         </Button>
                         <Button as="link" size="lg" to="/services" variant="secondary">

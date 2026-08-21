@@ -6,6 +6,7 @@ import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 
 import {Button, Container, Reveal, SectionTitle, Seo} from "../../components";
 import {createDentalClinicSchema, useContent} from '../../content';
+import {bookingUrl} from '../../constants';
 import './about-page.css';
 
 const factIcons = [
@@ -37,7 +38,7 @@ const AboutPage: FC = () => {
                             description={page.description}
                         />
                         <p>{page.body}</p>
-                        <Button as="hash" icon={<ArrowForwardRoundedIcon fontSize="small"/>} to="/#recording" variant="dark">
+                        <Button as="a" href={bookingUrl} icon={<ArrowForwardRoundedIcon fontSize="small"/>} rel="noopener noreferrer" target="_blank" variant="dark">
                             {page.buttonLabel}
                         </Button>
                     </Reveal>

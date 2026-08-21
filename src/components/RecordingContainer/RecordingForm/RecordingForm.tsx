@@ -37,7 +37,7 @@ const RecordingForm: FC = () => {
     const [isSuccessOpen, setIsSuccessOpen] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const {register, handleSubmit, reset, setValue, formState: {errors, isSubmitting}} = useForm<IFormTwo>({
-        defaultValues: {date: today, name: '', phoneNumber: ''},
+        defaultValues: {comment: '', date: today, name: '', phoneNumber: ''},
         mode: "onChange",
         resolver: joiResolver(secondFormValidator)
     });
@@ -67,7 +67,7 @@ const RecordingForm: FC = () => {
         try {
             await sendFormService.sendSecondForm(fields);
             setDateValue(today);
-            reset({date: today, name: '', phoneNumber: ''});
+            reset({comment: '', date: today, name: '', phoneNumber: ''});
             setIsSuccessOpen(true);
         } catch {
             setErrorMessage(formContent.errorMessage);
@@ -108,6 +108,14 @@ const RecordingForm: FC = () => {
                     required
                     type="date"
                     value={dateValue}
+                />
+                <FormField
+                    as="textarea"
+                    disabled={isSubmitting}
+                    label={formContent.commentLabel}
+                    placeholder={formContent.commentPlaceholder}
+                    registration={register('comment')}
+                    rows={5}
                 />
                 {errorMessage && <p className="form-alert form-alert--error" role="alert">{errorMessage}</p>}
                 <Button className="appointment-form__submit" disabled={isSubmitting} type="submit">

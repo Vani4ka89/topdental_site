@@ -8,11 +8,15 @@ const baseURL = process.env.REACT_APP_API_URL !== undefined
 const users = '/users';
 
 const urls = {
-    firstForm: `${users}/first_form`,
     secondForm: `${users}/second_form`
 };
 
+// Онлайн-запис на прийом через CliniCards - кнопки "Записатись" по сайту
+// ведуть сюди замість форми на секції #recording.
+const bookingUrl = 'https://cliniccards.com/booking/dVeHH7gVXJi8x1lmvhQRDb2wJvj7kwzR';
+
 export {
     baseURL,
+    bookingUrl,
     urls
 };

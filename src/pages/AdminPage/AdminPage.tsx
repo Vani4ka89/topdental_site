@@ -774,25 +774,15 @@ const AdminPage: FC = () => {
                             <Field label="Опис" path={['pages', 'contacts', 'description']} type="textarea"/>
                         </div>
                         <div className="admin-card">
-                            <h3>Форми</h3>
-                            <Field label="Контакти: імʼя" path={['forms', 'contact', 'nameLabel']}/>
-                            <Field label="Контакти: placeholder імʼя" path={['forms', 'contact', 'namePlaceholder']}/>
-                            <Field label="Контакти: телефон" path={['forms', 'contact', 'phoneLabel']}/>
-                            <Field label="Контакти: placeholder телефону" path={['forms', 'contact', 'phonePlaceholder']}/>
-                            <Field label="Контакти: helper телефону" path={['forms', 'contact', 'phoneHelper']}/>
-                            <Field label="Контакти: коментар" path={['forms', 'contact', 'commentLabel']}/>
-                            <Field label="Контакти: placeholder коментаря" path={['forms', 'contact', 'commentPlaceholder']} type="textarea"/>
-                            <Field label="Контакти: кнопка" path={['forms', 'contact', 'submitLabel']}/>
-                            <Field label="Контакти: кнопка під час відправлення" path={['forms', 'contact', 'submittingLabel']}/>
-                            <Field label="Контакти: помилка" path={['forms', 'contact', 'errorMessage']} type="textarea"/>
-                            <Field label="Контакти: модалка title" path={['forms', 'contact', 'successTitle']}/>
-                            <Field label="Контакти: модалка message" path={['forms', 'contact', 'successMessage']} type="textarea"/>
+                            <h3>Форма запису</h3>
                             <Field label="Запис: імʼя" path={['forms', 'recording', 'nameLabel']}/>
                             <Field label="Запис: placeholder імʼя" path={['forms', 'recording', 'namePlaceholder']}/>
                             <Field label="Запис: телефон" path={['forms', 'recording', 'phoneLabel']}/>
                             <Field label="Запис: placeholder телефону" path={['forms', 'recording', 'phonePlaceholder']}/>
                             <Field label="Запис: helper телефону" path={['forms', 'recording', 'phoneHelper']}/>
                             <Field label="Запис: дата" path={['forms', 'recording', 'dateLabel']}/>
+                            <Field label="Запис: коментар" path={['forms', 'recording', 'commentLabel']}/>
+                            <Field label="Запис: placeholder коментаря" path={['forms', 'recording', 'commentPlaceholder']} type="textarea"/>
                             <Field label="Запис: кнопка" path={['forms', 'recording', 'submitLabel']}/>
                             <Field label="Запис: кнопка під час відправлення" path={['forms', 'recording', 'submittingLabel']}/>
                             <Field label="Запис: помилка" path={['forms', 'recording', 'errorMessage']} type="textarea"/>
